@@ -1,0 +1,95 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\begin{document}
+
+\title{Demand-Driven Context: A Framework for Building Enterprise AI Agent Knowledge Bases Through Problem-Driven Curation}
+
+\author{
+  \IEEEauthorblockN{[Author Name]}
+  \IEEEauthorblockA{[Affiliation]\\
+  [Email]}
+}
+
+\markboth{IEEE Software}%
+{Demand-Driven Context}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+Enterprise AI agents excel at reasoning but lack the domain-specific context needed to make accurate decisions about real systems, integrations, and architectures. Current approaches---context window stuffing, retrieval-augmented generation, and top-down knowledge curation---fail because they attempt to anticipate what knowledge an agent needs rather than letting actual problems reveal it.
+
+We present Demand-Driven Context (DDC), a framework inspired by Test-Driven Development where real enterprise problems drive knowledge curation. In DDC, an AI agent attempts to solve a problem with zero domain context, identifies its information gaps via a structured checklist, receives targeted answers from domain experts, and curates the validated knowledge into a structured, navigable repository. We apply DDC in [an enterprise domain] across [N] problems over [M] months, measuring knowledge base growth, context reuse across problems, agent accuracy improvement, and curation time per cycle.
+
+Our results show [coverage convergence / entity reuse / time reduction] after [N] cycles, suggesting that 20-30 real problems can build a more focused and maintainable knowledge base than months of top-down documentation. We also report emergent patterns including self-organizing learning paths, a curator agent pattern, and unprompted agent identity discovery.
+\end{abstract}
+
+\begin{IEEEkeywords}
+AI agents, knowledge management, context engineering, demand-driven development, enterprise software
+\end{IEEEkeywords}}
+
+\maketitle
+
+\IEEEdisplaynontitleabstractindextext
+
+\section{Introduction}
+% The context problem for enterprise AI agents
+% Code generation vs. cognitive work
+% Why new-joiner onboarding is the right analogy
+% Contribution summary
+
+\textit{[To be written after evidence collection --- Phase 5 of roadmap]}
+
+\section{Background and Related Work}
+% RAG and its limitations for enterprise context
+% Active learning and failure-driven knowledge acquisition
+% Knowledge engineering (traditional and modern)
+% Context engineering for LLMs
+% Lean/pull systems as a conceptual ancestor
+% TDD as structural parallel
+
+\textit{[To be written after literature review --- Gate 1]}
+
+\section{The DDC Method}
+% Formalized loop: problem -> sandbox -> checklist -> human answers -> curation -> re-attempt -> graduation
+% The information checklist artifact
+% Knowledge base structure (entities, relationships, frontmatter)
+% The convergence hypothesis
+% TDD structural mapping
+
+\textit{[To be written --- primary contribution section]}
+
+\section{Evaluation}
+% Setting: enterprise domain, N teams, M-year transformation
+% Metrics: coverage curve, curation time, agent accuracy, context reuse
+% Data collection: structured cycle logs
+% Results
+% Comparison: no context vs. top-down vs. DDC
+
+\textit{[To be written after 20+ cycles --- Phase 2 of roadmap]}
+
+\section{Discussion}
+% When DDC works and when it doesn't
+% The curator agent pattern
+% Emergent learning paths
+% Agent self-discovery
+% Threats to validity
+% Scalability considerations
+
+\textit{[To be written]}
+
+\section{Conclusion and Future Work}
+% Summary of contributions
+% Future: multi-domain evaluation, federated context, curator agent formalization
+
+\textit{[To be written]}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

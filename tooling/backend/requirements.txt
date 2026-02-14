@@ -1,0 +1,7 @@
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+pydantic==2.9.2
+python-frontmatter==1.1.0
+pyyaml==6.0.1
+aiofiles==23.2.1
+python-multipart==0.0.6

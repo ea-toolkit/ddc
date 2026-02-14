@@ -1,0 +1,55 @@
+relationship_types:
+  - id: owns
+    display_name: Owns
+    description: Team owns a system or capability
+    color: "#9B59B6"
+
+  - id: implements
+    display_name: Implements
+    description: System implements a capability
+    color: "#3498DB"
+
+  - id: uses
+    display_name: Uses
+    description: System uses an API or service
+    color: "#2ECC71"
+
+  - id: depends_on
+    display_name: Depends On
+    description: System depends on another system
+    color: "#E74C3C"
+
+  - id: manages
+    display_name: Manages
+    description: Team manages data or system
+    color: "#F39C12"
+
+  - id: part_of
+    display_name: Part Of
+    description: Entity is part of a larger entity
+    color: "#1ABC9C"
+
+  - id: integrates_with
+    display_name: Integrates With
+    description: System integrates with another system
+    color: "#E67E22"
+
+  - id: uses_data
+    display_name: Uses Data
+    description: System or API uses a data model
+    color: "#95A5A6"
+
+  - id: related_capabilities
+    display_name: Related To
+    description: Capability is related to another capability
+    color: "#3498DB"
+
+  - id: parent_capability
+    display_name: Parent Of
+    description: Capability is parent of child capabilities
+    color: "#9B59B6"
+
+  - id: child_capabilities
+    display_name: Child Of
+    description: Capability is a child of parent capability
+    color: "#1ABC9C"
