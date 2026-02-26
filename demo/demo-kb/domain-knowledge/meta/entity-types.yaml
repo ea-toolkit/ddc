@@ -1,0 +1,63 @@
+entity_types:
+  - id: capability
+    display_name: Business Capabilities
+    description: High-level business functions and capabilities
+    icon: "capability"
+    color: "#4A90E2"
+
+  - id: team
+    display_name: Team
+    description: Product teams and organizational units
+    icon: "team"
+    color: "#9B59B6"
+
+  - id: system
+    display_name: System/Service
+    description: Software systems, microservices, and applications
+    icon: "system"
+    color: "#E74C3C"
+    fields:
+      - name: make_or_buy
+        type: enum
+        values: [make, buy, hybrid]
+        description: Whether this system is built in-house or procured
+      - name: implements_capability
+        type: reference
+        target: capability
+        description: The business capability this system implements
+
+  - id: api
+    display_name: API
+    description: REST, GraphQL, or gRPC APIs
+    icon: "api"
+    color: "#2ECC71"
+
+  - id: data-model
+    display_name: Data Model
+    description: Data entities and schemas
+    icon: "data"
+    color: "#F39C12"
+
+  - id: jargon-business
+    display_name: Business Jargon
+    description: Business terminology and concepts
+    icon: "business"
+    color: "#34495E"
+
+  - id: jargon-tech
+    display_name: Tech & Engineering Jargon
+    description: Technical and engineering terminology
+    icon: "tech"
+    color: "#7F8C8D"
+
+  - id: persona
+    display_name: Personas
+    description: User roles, stakeholders, and their responsibilities
+    icon: "persona"
+    color: "#DB2777"
+
+  - id: reference-data
+    display_name: Reference Data
+    description: Enumerated values, master data lists (statuses, types, categories)
+    icon: "reference"
+    color: "#64748B"

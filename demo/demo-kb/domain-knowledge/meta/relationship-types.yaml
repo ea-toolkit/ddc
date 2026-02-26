@@ -1,0 +1,25 @@
+relationship_types:
+  - id: owns
+    display_name: Owns
+    description: Team owns a system or capability
+    color: "#9B59B6"
+
+  - id: implements
+    display_name: Implements
+    description: System implements a capability
+    color: "#3498DB"
+
+  - id: uses
+    display_name: Uses
+    description: System uses an API or service
+    color: "#2ECC71"
+
+  - id: depends_on
+    display_name: Depends On
+    description: System depends on another system
+    color: "#E74C3C"
+
+  - id: integrates_with
+    display_name: Integrates With
+    description: System integrates with another system
+    color: "#E67E22"

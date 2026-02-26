@@ -22,6 +22,9 @@ build/
 .DS_Store
 Thumbs.db
 
+# Research PDFs (large binaries, not suitable for git)
+ddc online resources/
+
 # LaTeX
 *.aux
 *.bbl
