@@ -1,0 +1,594 @@
+\documentclass[11pt,a4paper]{article}
+
+% === Packages ===
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{natbib}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+
+% === Hyperlink styling ===
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!70!black,
+  citecolor=blue!70!black,
+  urlcolor=blue!70!black
+}
+
+% === Code listing style ===
+\lstset{
+  basicstyle=\small\ttfamily,
+  frame=single,
+  breaklines=true,
+  backgroundcolor=\color{gray!5},
+  xleftmargin=1em,
+  framexleftmargin=0.5em
+}
+
+% === Title ===
+\title{\textbf{Demand-Driven Context: A Methodology for Building Enterprise Knowledge Bases Through Agent Failure}}
+
+\author{
+  Raj Navakoti \\
+  \texttt{raj.navakoti@example.com}
+  % Add co-authors here if applicable
+}
+
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+% =============================================================================
+% ABSTRACT
+% =============================================================================
+\begin{abstract}
+Large language model agents demonstrate expert-level reasoning and processing capabilities, yet consistently fail on enterprise-specific tasks due to missing domain knowledge---terminology, system descriptions, data models, and architectural decisions that exist only as tribal knowledge. Current approaches fall into two categories: top-down knowledge engineering (document everything, then test) and fully automated context optimization (let agents learn by themselves). Both have fundamental limitations: top-down efforts produce bloated, untested knowledge bases; automated approaches optimize execution strategies but cannot acquire domain knowledge that exists only in human heads. We present \textbf{Demand-Driven Context (DDC)}, a methodology that uses agent failure on real problems as the primary signal for what domain knowledge to curate. Inspired by Test-Driven Development, DDC inverts the knowledge engineering process: instead of curating knowledge and hoping it is useful, DDC gives agents real problems, observes where they fail, and curates only the minimum context needed to succeed. We describe the methodology, its entity meta-model, and a convergence hypothesis suggesting that 20--30 problem cycles produce a knowledge base sufficient for a given domain role. We demonstrate DDC through a complete worked example in the healthcare claims domain, showing how five DDC cycles produce a reusable knowledge base of 41 entities. Finally, we propose a scaling architecture for enterprise adoption that introduces semi-automated curation with human governance, enabling parallel problem-solving across teams.
+\end{abstract}
+
+\noindent\textbf{Keywords:} context engineering, knowledge acquisition, LLM agents, enterprise AI, demand-driven curation, domain knowledge management
+
+\vspace{1em}
+
+% =============================================================================
+% 1. INTRODUCTION
+% =============================================================================
+\section{Introduction}
+\label{sec:introduction}
+
+% [FIGURE 1 — Optional: Memento parallel. A small 2-column comparison diagram.
+%  Place the image file as figures/fig1-memento-parallel.pdf or .png
+%  Uncomment the block below when the image is ready.]
+%
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.7\columnwidth]{figures/fig1-memento-parallel}
+%   \caption{The Memento parallel: Leonard's anterograde amnesia mirrors an LLM agent's lack of enterprise memory. Both have expert capabilities but zero institutional context.}
+%   \label{fig:memento}
+% \end{figure}
+
+Give a large language model a problem in software architecture, medicine, or law, and it performs remarkably well. Give it a problem specific to \emph{your} enterprise---one involving your systems, your terminology, your architectural decisions---and it performs like a new employee on their first day. Expert reasoning. Zero institutional memory.
+
+This is not a model capability problem. Modern LLMs score 10/10 on general expertise (domain-driven design, integration patterns, architectural thinking) and 10/10 on processing power (reasoning, analysis, synthesis). They score 0/10 on enterprise domain knowledge---the terminology, system descriptions, data models, business rules, and architectural history that exist only as tribal knowledge distributed across wikis, Slack threads, and the heads of senior engineers.
+
+The enterprise AI community has recognized this gap. Retrieval-Augmented Generation (RAG) attempts to bridge it by retrieving relevant documents at query time~\citep{lewis2020rag}. But RAG retrieves---it does not curate. It surfaces existing documents without verifying their relevance, currency, or completeness. When the knowledge exists only as tribal knowledge---undocumented, fragmented, or outdated---RAG has nothing to retrieve.
+
+More recently, agentic approaches have emerged. ACE~\citep{zhang2025ace} treats LLM contexts as evolving ``playbooks'' that improve through automated feedback loops. Reflexion~\citep{shinn2023reflexion} enables agents to learn from their own failures. ExpeL~\citep{zhao2023expel} extracts reusable insights from agent experience. These systems optimize \emph{how agents behave}---execution strategies, tool-use patterns, reasoning heuristics. But they cannot acquire the enterprise domain knowledge that makes those strategies meaningful. An agent that has learned excellent reasoning strategies still cannot answer ``Why does our allocation system make two API calls instead of one?'' without someone providing that context.
+
+We propose \textbf{Demand-Driven Context (DDC)}, a methodology that treats agent failure as the primary signal for what enterprise knowledge to curate. The core insight is borrowed from Test-Driven Development~\citep{beck2002tdd}: just as TDD writes a failing test before writing code, DDC gives an agent a failing problem before curating context. The agent's failure identifies precisely what domain knowledge is missing. A human expert then curates only the minimum context needed for the agent to succeed. This curated knowledge is structured using a typed entity meta-model, stored as version-controlled markdown files, and accumulated across cycles.
+
+DDC makes three claims:
+
+\begin{enumerate}
+  \item \textbf{Agent failure is a reliable signal} for identifying knowledge gaps in enterprise domains.
+  \item \textbf{Human-curated, demand-driven knowledge} is more efficient and more accurate than top-down documentation or automated context optimization.
+  \item \textbf{Convergence}: after 20--30 DDC cycles for a given domain role, the knowledge base stabilizes---each new problem requires fewer new entities because previous cycles already curated overlapping knowledge.
+\end{enumerate}
+
+In this paper, we describe the DDC methodology (Section~\ref{sec:methodology}), demonstrate it through a complete worked example in the healthcare claims domain (Section~\ref{sec:example}), present a scaling architecture for enterprise adoption (Section~\ref{sec:scaling}), and discuss limitations and future work (Sections~\ref{sec:discussion}--\ref{sec:conclusion}).
+
+% =============================================================================
+% 2. BACKGROUND AND RELATED WORK
+% =============================================================================
+\section{Background and Related Work}
+\label{sec:related}
+
+DDC sits at the intersection of three established research areas: knowledge acquisition, failure-driven learning for LLM agents, and context engineering.
+
+\subsection{Knowledge Acquisition and Engineering}
+
+The challenge of acquiring domain knowledge for intelligent systems has been studied since the 1980s. \citet{pazzani1986failure} demonstrated failure-driven knowledge base refinement, where system failures triggered targeted knowledge acquisition from human experts. This principle---failure as a signal for what to learn---is foundational to DDC, though DDC modernizes it for the era of LLM agents and structured markdown knowledge bases rather than expert systems and production rules.
+
+More recently, the Agent-in-the-Loop (AITL) framework at Airbnb~\citep{zhao2025aitl} embedded human feedback directly into live customer support operations. AITL includes a ``Missing Knowledge Identification'' step where human agents flag knowledge gaps that feed back into a unified knowledge base. This shares DDC's insight that humans must identify certain knowledge gaps, but AITL is specific to customer support dialogue and does not generalize to a reusable methodology for arbitrary enterprise domains.
+
+CUGA~\citep{ibm2025cuga} similarly uses enterprise agent failures to inject targeted knowledge, demonstrating that failure-driven knowledge enrichment improves agent performance in enterprise settings. However, CUGA focuses on conversational agents and does not propose a systematic curation methodology.
+
+\subsection{Failure-Driven Learning for LLM Agents}
+
+Several recent works enable LLM agents to learn from their own failures. Reflexion~\citep{shinn2023reflexion} introduces a verbal reinforcement loop where agents reflect on task failures and maintain a persistent memory of reflections. ExpeL~\citep{zhao2023expel} extracts reusable insights from agent experiences, building a growing knowledge base of task-solving strategies. Both systems are fully automated---the agent generates, evaluates, and curates its own knowledge.
+
+% [FIGURE 2 — Related Work Positioning Diagram.
+%  2x2 quadrant: Automated <-> Human-Curated (x-axis), Strategy Knowledge <-> Domain Knowledge (y-axis).
+%  DDC in Human-Curated x Domain Knowledge quadrant.
+%  Place the image file as figures/fig2-positioning.pdf or .png
+%  Uncomment the block below when the image is ready.]
+%
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.85\columnwidth]{figures/fig2-positioning}
+%   \caption{DDC's position in the context engineering landscape. Existing approaches cluster in the automated--strategy quadrant. DDC occupies the human-curated--domain knowledge quadrant.}
+%   \label{fig:positioning}
+% \end{figure}
+
+ACE (Agentic Context Engineering)~\citep{zhang2025ace} is the closest related work. ACE treats LLM contexts as evolving ``playbooks'' improved through a three-role architecture: Generator (attempts tasks), Reflector (analyzes failures), and Curator (synthesizes insights into persistent context). ACE achieves +10.6\% on agent benchmarks and +8.6\% on domain-specific finance tasks through fully automated context evolution.
+
+DDC and ACE share the principle of iterative, feedback-driven context improvement. However, they differ in three fundamental ways:
+
+\begin{enumerate}
+  \item \textbf{Knowledge type.} ACE optimizes execution strategies---how the agent should behave (tool-use patterns, reasoning heuristics). DDC curates domain knowledge---what the enterprise knows (system descriptions, terminology, data models, architectural decisions). These are complementary: ACE could optimize an agent's reasoning strategy while DDC provides the domain knowledge that strategy operates on.
+
+  \item \textbf{Human role.} ACE is fully automated. DDC requires a human domain expert to provide answers that exist only as tribal knowledge. No amount of automated reflection can discover that ``our system makes two API calls because the first call explores multi-warehouse options without weight data, and the second call confirms with full item details''---this knowledge exists only in human heads.
+
+  \item \textbf{Output structure.} ACE produces ``playbook bullets''---unstructured text appended to context. DDC produces typed, version-controlled knowledge entities with YAML frontmatter, explicit relationships, and a defined meta-model. This structure enables navigation, validation, and reuse across agents and humans.
+\end{enumerate}
+
+\subsection{Context Engineering}
+
+The term ``context engineering'' has gained prominence through recent work by Karpathy~\citep{karpathy2025context} and Anthropic~\citep{anthropic2025agents}, describing the practice of systematically determining what information an LLM agent needs in its context window. DDC can be understood as a \emph{methodology for context engineering}---it provides a systematic process for determining what context should exist, not just how to retrieve or arrange existing context.
+
+\citet{karidi2025kgarchives} describe a demand-driven curation feedback loop in digital archives, where user search frequency drives metadata enrichment priorities. While applied to archival science rather than software agents, this work independently validates the core DDC principle: let demand (actual usage patterns) drive curation effort rather than attempting comprehensive coverage upfront.
+
+\subsection{Novelty of DDC}
+
+No existing work combines all four of DDC's core components: (a)~agent failure as the primary signal for knowledge gaps, (b)~human-curated structured knowledge entities with a typed meta-model, (c)~a convergence hypothesis for knowledge base completeness, and (d)~a formalized methodology with defined artifacts, analogous to TDD. Table~\ref{tab:novelty} summarizes the gap.
+
+\begin{table}[h]
+\centering
+\caption{Novelty gap analysis. No existing work combines all four DDC components.}
+\label{tab:novelty}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Component} & \textbf{Description} & \textbf{Found in Literature?} \\
+\midrule
+(a) & Agent failure as signal & Yes --- ACE, Reflexion, ExpeL \\
+(b) & Human-curated structured knowledge & Partial --- AITL \\
+(c) & Convergence hypothesis & No \\
+(d) & Formalized named methodology & Partial --- ACE \\
+\midrule
+(a+b) & Failure-driven + human-curated KB & \textbf{No} \\
+(a+b+c) & Above + convergence claim & \textbf{No} \\
+(a+b+c+d) & Full DDC synthesis & \textbf{No --- DDC is novel} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% =============================================================================
+% 3. THE DDC METHODOLOGY
+% =============================================================================
+\section{The DDC Methodology}
+\label{sec:methodology}
+
+\subsection{Overview}
+
+DDC is a cyclic methodology for building enterprise knowledge bases. Each cycle is triggered by a real problem---a vendor integration question, an architectural design task, a cross-team coordination challenge. The agent attempts the problem with its current knowledge, fails, identifies what is missing, and the human curates only what is needed.
+
+% [FIGURE 3 — The DDC Loop. This is the KEY figure of the paper.
+%  Circular/flowchart diagram showing the 9 steps.
+%  (1) Real Problem -> (2) Create Sandbox -> (3) Agent Attempts ->
+%  (4) Identify Gaps (checklist) -> (5) Human Fills Gaps ->
+%  (6) Agent Re-Attempts -> (7) Human Validates -> (8) Graduate Content ->
+%  (9) Log Cycle. Arrow from (7) back to (5) if incomplete.
+%  Arrow from (9) to next cycle.
+%  Place the image file as figures/fig3-ddc-loop.pdf or .png
+%  Uncomment the block below when the image is ready.]
+%
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]{figures/fig3-ddc-loop}
+%   \caption{The DDC cycle. A real problem triggers the loop. The agent attempts the problem, identifies knowledge gaps, and a human expert curates only the minimum context needed. Validated knowledge is graduated to the permanent knowledge base. The dashed arrow indicates iteration when the agent's output is incomplete.}
+%   \label{fig:ddc-loop}
+% \end{figure*}
+
+\subsection{The DDC Cycle}
+
+A single DDC cycle proceeds through nine steps:
+
+\textbf{Step 1: Real Problem Arrives.} A concrete problem requiring domain expertise enters the system. This is not a synthetic exercise---it is a real question that needs answering for business operations to proceed. Examples include: a vendor asking integration questions, a design review requiring architectural reasoning, or a data model review requiring understanding of business rules.
+
+\textbf{Step 2: Create Sandbox.} A workspace is created for the problem, containing the problem description and source documents. This isolation prevents work-in-progress from contaminating the curated knowledge base.
+
+\textbf{Step 3: Agent Attempts (Zero/Current Context).} The agent attempts to solve the problem using only its general capabilities and whatever domain knowledge has been curated in previous cycles. In the first cycle, this means zero domain context.
+
+\textbf{Step 4: Agent Identifies Gaps.} The agent produces an \emph{information checklist}---a structured list of what it needs to answer the problem. This checklist is organized by knowledge type: terminology needing definition, systems needing documentation, reference data needed, business logic needing explanation.
+
+\textbf{Step 5: Human Fills Gaps.} A domain expert provides targeted answers for each checklist item. This is the critical human-in-the-loop step. The expert provides only what is needed---not a comprehensive brain dump, but minimum viable context for the specific problem.
+
+\textbf{Step 6: Agent Re-Attempts.} With the new context, the agent attempts the problem again. If the output is still incorrect or incomplete, the cycle returns to Step~4.
+
+\textbf{Step 7: Human Validates Output.} The domain expert reviews the agent's output for correctness. Minor corrections are incorporated. This validation step ensures that curated knowledge produces correct reasoning.
+
+\textbf{Step 8: Graduate Content.} Validated knowledge is structured as typed entities (see Section~\ref{sec:metamodel}) and moved from the sandbox to the permanent knowledge base in the correct location based on entity type.
+
+\textbf{Step 9: Log Cycle.} The cycle is recorded as a structured log entry containing: problem input, agent's initial performance, information checklist, entities created/updated, agent's final performance, and human review notes. These logs provide the data for convergence analysis.
+
+\subsection{The Entity Meta-Model}
+\label{sec:metamodel}
+
+DDC knowledge is organized as typed entities stored as markdown files with YAML frontmatter. The meta-model defines the entity types shown in Table~\ref{tab:entity-types}.
+
+\begin{table}[h]
+\centering
+\caption{DDC entity types. Each entity is a markdown file with structured YAML frontmatter.}
+\label{tab:entity-types}
+\begin{tabular}{@{}llp{4.5cm}@{}}
+\toprule
+\textbf{Type} & \textbf{Description} & \textbf{Example} \\
+\midrule
+\texttt{jargon-business} & Business terminology & ``Adjudication'', ``Pre-Authorization'' \\
+\texttt{jargon-tech} & Technical terminology & ``EDI 837'', ``HL7 FHIR'' \\
+\texttt{system} & Software systems & ``Claims Gateway'', ``Rules Engine'' \\
+\texttt{capability} & Business capabilities & ``Claims Processing'' \\
+\texttt{data-model} & Core data structures & ``Claim'', ``Member'', ``Provider'' \\
+\texttt{api} & API contracts & ``Claims Submission API'' \\
+\texttt{team} & Organizational units & ``Claims Operations'' \\
+\texttt{persona} & User roles and needs & ``Claims Adjudicator'' \\
+\texttt{decision} & Architectural decisions & ``Batch vs.\ Real-Time Processing'' \\
+\texttt{reference-data} & Enumerations, lookups & ``Claim Statuses'', ``Service Types'' \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Each entity file follows a consistent format:
+
+\begin{lstlisting}[language=yaml,caption={Entity file format with YAML frontmatter and markdown body.}]
+---
+type: system
+id: claims-gateway
+name: Claims Gateway
+description: Ingests and validates incoming claims
+status: active
+related_systems: [rules-engine, eligibility-service]
+implements_capability: claims-processing
+---
+
+# Claims Gateway
+
+## Overview
+[Prose description, purpose, ownership]
+
+## Key Details
+[Technical details, integration patterns, constraints]
+\end{lstlisting}
+
+This structure serves dual purposes: humans read the prose; machines parse the frontmatter for navigation, relationship traversal, and validation.
+
+\subsection{The TDD Parallel}
+
+Engineers will recognize DDC's structure in Test-Driven Development~\citep{beck2002tdd}. TDD writes a failing test, then the minimum code to pass. DDC gives the agent a failing problem, then the minimum context to succeed. Both methodologies share the principle of letting demand drive supply---you do not write all the tests upfront, and you do not curate all the context upfront.
+
+This parallel extends to the development lifecycle:
+
+\begin{itemize}
+  \item \textbf{Red} (TDD) = Agent fails on problem (DDC)
+  \item \textbf{Green} (TDD) = Agent succeeds with new context (DDC)
+  \item \textbf{Refactor} (TDD) = Graduate content to proper knowledge base locations (DDC)
+\end{itemize}
+
+\subsection{The Convergence Hypothesis}
+\label{sec:convergence}
+
+We hypothesize that DDC exhibits convergence behavior: as more cycles are completed for a given domain role, each subsequent cycle requires fewer new entities because previous cycles have already curated overlapping knowledge.
+
+% [FIGURE 4 — Convergence Curve (theoretical).
+%  Line chart. X-axis: Cycle number. Y-axis (left): New entities per cycle (decreasing power law).
+%  Y-axis (right): Cumulative coverage % (approaching asymptote).
+%  Place the image file as figures/fig4-convergence-curve.pdf or .png
+%  Uncomment the block below when the image is ready.]
+%
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.85\columnwidth]{figures/fig4-convergence-curve}
+%   \caption{Hypothesized convergence curve. New entities per cycle follow a power-law decay while cumulative coverage approaches an asymptote. After approximately 20--30 cycles, most new problems can be solved with existing knowledge.}
+%   \label{fig:convergence}
+% \end{figure}
+
+Formally, if $e_n$ is the number of new entities created in cycle $n$, and $r_n$ is the number of entities reused from previous cycles, we expect:
+
+\begin{itemize}
+  \item $e_n$ follows a power-law decay: $e_n \propto n^{-\alpha}$ for some $\alpha > 0$
+  \item $r_n / (e_n + r_n)$ increases monotonically---each cycle reuses a larger fraction of existing knowledge
+  \item After approximately 20--30 cycles, $e_n \approx 0$ for most problems within the domain role's scope
+\end{itemize}
+
+This convergence is a hypothesis, not yet validated at scale. Section~\ref{sec:example} presents preliminary evidence from synthetic cycles. Full validation with real enterprise data is ongoing work.
+
+% =============================================================================
+% 4. WORKED EXAMPLE: HEALTHCARE CLAIMS
+% =============================================================================
+\section{Worked Example: Healthcare Claims}
+\label{sec:example}
+
+To demonstrate DDC in practice, we present a complete worked example in the healthcare claims processing domain. This is a synthetic but realistic domain---entities, systems, and business rules are representative of real healthcare claims operations but do not reflect any specific organization.
+
+\subsection{Domain Setup}
+
+The healthcare claims domain involves processing insurance claims from healthcare providers. Key activities include claim submission, eligibility verification, pre-authorization checks, adjudication (determining payment), and payment processing. The domain has multiple systems, complex business rules, and specialized terminology---characteristics shared with most enterprise domains.
+
+We start with an empty knowledge base and run five DDC cycles triggered by realistic problems.
+
+\subsection{Cycle 1: Vendor Integration Questions}
+
+\textbf{Problem:} A new claims engine vendor asked three integration questions: (1)~Why does adjudication require a pre-authorization lookup? (2)~Who owns eligibility decisions---member eligibility vs.\ provider eligibility? (3)~Should claim processing be batch or real-time?
+
+\textbf{Agent Before (Zero Context):} The agent produced generic healthcare answers. It could not explain the pre-authorization decision code branching logic. It conflated member eligibility with provider eligibility. It gave a non-committal batch vs.\ real-time answer without referencing actual claim types or SLAs.
+
+\textbf{Information Checklist Generated:}
+\begin{itemize}[nosep]
+  \item Claims lifecycle stages and transitions
+  \item Systems involved in adjudication
+  \item Pre-authorization dependency and decision code branching
+  \item Member vs.\ provider eligibility ownership
+  \item Claim formats (EDI 837 professional vs.\ institutional)
+  \item Processing modes and SLAs
+\end{itemize}
+
+\textbf{Human Input:} The domain expert provided specific details on pre-auth branching logic (approved/denied/not-required), clarified that member eligibility is owned by the Eligibility Service while provider eligibility (network status) is owned by the Provider Directory, and explained that professional claims are real-time (30s SLA) while institutional claims are batch (4-hour window).
+
+\textbf{Entities Created:} 8---adjudication, pre-authorization (\texttt{jargon-business}); claims-gateway, rules-engine, eligibility-service, pre-auth-service, provider-directory (\texttt{system}); claims-processing (\texttt{capability}).
+
+\textbf{Agent After:} All three answers contained specific system names, ownership boundaries, branching logic, and SLAs. The vendor could design their integration from these answers alone without further clarification.
+
+\subsection{Cycles 2--5: Accumulating Knowledge}
+
+Table~\ref{tab:cycles} summarizes all five cycles.
+
+\begin{table}[h]
+\centering
+\caption{DDC cycle summary for the healthcare claims domain. New entities decrease and reused entities increase across cycles.}
+\label{tab:cycles}
+\begin{tabular}{@{}clccc@{}}
+\toprule
+\textbf{Cycle} & \textbf{Problem} & \textbf{New} & \textbf{Reused} & \textbf{Total KB} \\
+\midrule
+001 & Vendor integration questions & 8 & 0 & 8 \\
+002 & Pre-auth adjudication dependency & 7 & 3 & 15 \\
+003 & Provider eligibility ownership & 6 & 4 & 21 \\
+004 & Batch vs.\ real-time claims & 5 & 6 & 26 \\
+005 & Fraud detection integration & 5 & 8 & 31 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% [FIGURE 5 — Healthcare Claims Convergence Data.
+%  Dual-axis chart. X-axis: Cycle 1-5.
+%  Left axis: bars showing "New entities" (decreasing: 8, 7, 6, 5, 5).
+%  Right axis: line showing "Reused entities" (increasing: 0, 3, 4, 6, 8).
+%  Place the image file as figures/fig5-healthcare-convergence.pdf or .png
+%  Uncomment the block below when the image is ready.]
+%
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.85\columnwidth]{figures/fig5-healthcare-convergence}
+%   \caption{Entity creation and reuse across five DDC cycles in the healthcare claims domain. New entities per cycle decrease while reused entities increase, consistent with the convergence hypothesis.}
+%   \label{fig:healthcare-convergence}
+% \end{figure}
+
+Two patterns emerge from these five cycles:
+
+\begin{enumerate}
+  \item \textbf{New entities per cycle decrease:} From 8 in cycle~1 to 5 in cycles~4--5. The agent requires less new knowledge because foundational entities (adjudication, claims-gateway, rules-engine) were already curated.
+
+  \item \textbf{Reused entities per cycle increase:} From 0 in cycle~1 to 8 in cycle~5. Each new problem benefits from knowledge curated for previous problems.
+\end{enumerate}
+
+While five cycles are insufficient to validate full convergence, the trend is consistent with the hypothesis. The reuse ratio $r_n / (e_n + r_n)$ increases from 0.0 to 0.62 across five cycles.
+
+\subsection{Knowledge Base Structure}
+
+After five cycles, the healthcare claims knowledge base contains 41 entities organized across the DDC meta-model, as shown in Table~\ref{tab:entity-breakdown}.
+
+\begin{table}[h]
+\centering
+\caption{Entity breakdown by type after five DDC cycles.}
+\label{tab:entity-breakdown}
+\begin{tabular}{@{}lcp{5cm}@{}}
+\toprule
+\textbf{Entity Type} & \textbf{Count} & \textbf{Examples} \\
+\midrule
+\texttt{jargon-business} & 12 & adjudication, pre-authorization, deductible, copay, EOB \\
+\texttt{system} & 8 & claims-gateway, rules-engine, provider-directory, fraud-detection \\
+\texttt{capability} & 6 & claims-processing, provider-management, payment-processing \\
+\texttt{data-model} & 6 & claim, member, provider, policy, benefit-plan, payment \\
+\texttt{team} & 3 & claims-operations, provider-network, member-services \\
+\texttt{persona} & 3 & claims-adjudicator, provider-relations-mgr, member-services-rep \\
+\texttt{api} & 3 & claims-submission-api, eligibility-check-api, payment-api \\
+\midrule
+\textbf{Total} & \textbf{41} & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The full knowledge base, including all entity files, cycle logs, and meta-model definitions, is available as a reproducible artifact.\footnote{Repository URL to be added upon publication.}
+
+% =============================================================================
+% 5. SCALING DDC
+% =============================================================================
+\section{Scaling DDC: A Proposed Architecture}
+\label{sec:scaling}
+
+The DDC methodology as described in Section~\ref{sec:methodology} requires a human domain expert to manually curate every entity. While effective for proving the concept, this creates a bottleneck in enterprise environments where multiple teams encounter problems simultaneously and domain experts' time is scarce.
+
+We propose a scaling architecture that introduces semi-automated curation while preserving human governance as a quality gate.
+
+% [FIGURE 6 — Scaling Architecture Diagram.
+%  Show: Multiple "Problem Sources" (Team A, B, C) feeding parallel DDC cycles.
+%  Each cycle has an "Agent Curator" for initial structuring.
+%  All curated entities flow to a "PR Review Queue".
+%  Human domain experts approve/reject/refine.
+%  Approved entities merge into centralized Knowledge Base.
+%  Show 20/80 split: deep-curated core vs lightweight stubs.
+%  Place the image file as figures/fig6-scaling-architecture.pdf or .png
+%  Uncomment the block below when the image is ready.]
+%
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=0.85\textwidth]{figures/fig6-scaling-architecture}
+%   \caption{Proposed scaling architecture for enterprise DDC adoption. Multiple teams run parallel DDC cycles. An agent curator drafts entities from human-provided answers. All changes go through a pull request review queue where domain stewards approve, reject, or refine before merging into the centralized knowledge base.}
+%   \label{fig:scaling}
+% \end{figure*}
+
+\subsection{The Manual Curation Bottleneck}
+
+In the base DDC methodology, the human performs three roles: (1)~\emph{Information Provider}---answering the agent's checklist questions; (2)~\emph{Entity Author}---structuring answers as typed entities with frontmatter; and (3)~\emph{Validator}---reviewing the agent's output for correctness.
+
+Roles~2 and~3 can be partially automated. The agent can draft entity files from human-provided answers (structured according to the meta-model), and validation can be decomposed into automated checks (schema validation, relationship consistency) and human judgment (domain correctness).
+
+\subsection{Semi-Automated Curation}
+
+In the proposed architecture, the DDC cycle is augmented:
+
+\begin{itemize}
+  \item \textbf{Steps 1--5} remain unchanged---real problems drive the cycle, agents identify gaps, humans provide domain answers.
+  \item \textbf{Step 6 (Enhanced):} The agent drafts structured entities from the human's answers, following the meta-model templates. The human reviews and corrects rather than authors from scratch.
+  \item \textbf{Step 8 (Enhanced):} Graduated content is submitted as a pull request to the centralized knowledge base. Automated checks validate schema, relationships, and naming conventions. A human domain expert reviews for correctness and approves.
+\end{itemize}
+
+\subsection{The 20/80 Curation Strategy}
+
+Not all domain knowledge requires deep curation. We propose a 20/80 strategy:
+
+\begin{itemize}
+  \item \textbf{Deep curation (20\%):} Entities that the agent needs to reason about---systems, business logic, architectural decisions, key terminology. These get full prose descriptions, explicit relationships, and detailed metadata.
+  \item \textbf{Lightweight stubs (80\%):} Entities that exist for reference but are not central to reasoning---peripheral systems, rarely-used terminology, edge-case reference data. These get a one-line description and links to external sources.
+\end{itemize}
+
+The problem determines what falls in the 20\%. Whatever the agent needs to answer the immediate question gets deep curation. Everything else gets a stub. Over time, stubs that are repeatedly referenced across cycles get promoted to deep curation---another form of demand-driven prioritization.
+
+\subsection{Parallel Problem-Solving with Centralized Governance}
+
+In an enterprise with multiple teams, DDC cycles can run in parallel:
+
+\begin{itemize}[nosep]
+  \item Team~A encounters a claims processing question $\rightarrow$ triggers cycle~A
+  \item Team~B encounters a provider eligibility question $\rightarrow$ triggers cycle~B
+  \item Both cycles produce curated entities submitted as pull requests to the same centralized knowledge base
+  \item A domain steward reviews PRs for consistency, deduplication, and correctness
+  \item Merge conflicts (two teams curating the same entity differently) are resolved through the PR review process
+\end{itemize}
+
+This architecture mirrors how software teams manage shared codebases through version control and code review. The knowledge base is treated as a shared codebase with the same governance---branching, pull requests, review, and merge.
+
+\subsection{Limitations of the Proposed Architecture}
+
+This scaling architecture is proposed but not yet validated. Key open questions include: Does human review become the new bottleneck at scale? Can centralized governance maintain entity quality across dozens of parallel contributors? Is the 20/80 ratio stable across domains or domain-dependent? Validating this architecture is planned future work.
+
+% =============================================================================
+% 6. DISCUSSION
+% =============================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{What DDC Claims vs.\ What Needs Validation}
+
+DDC makes claims at three levels of evidence:
+
+\begin{enumerate}
+  \item \textbf{Demonstrated:} The DDC methodology (Section~\ref{sec:methodology}) has been applied in both synthetic (Section~\ref{sec:example}) and real enterprise settings. The cycle mechanics work: agents do identify knowledge gaps, human-curated context does improve agent performance, and entities are reused across cycles.
+
+  \item \textbf{Preliminary evidence:} The convergence trend (decreasing new entities, increasing reuse) is observed in five synthetic cycles. This is suggestive but not statistically significant. Validation with 20+ real enterprise cycles is ongoing.
+
+  \item \textbf{Proposed:} The scaling architecture (Section~\ref{sec:scaling}) is a design, not an implementation. Its effectiveness is hypothetical.
+\end{enumerate}
+
+\subsection{Relationship to Reinforcement Learning}
+
+DDC can be understood through a reinforcement learning lens. The agent's attempt is a policy execution. The human's validation is a reward signal. The knowledge base update is a policy update---not through weight modification but through context modification. The convergence hypothesis parallels the decreasing loss in RL training. This framing is conceptual rather than formal, but it suggests connections to the reward shaping and curriculum learning literature that may prove productive.
+
+\subsection{Limitations}
+
+\textbf{Human dependency.} DDC requires access to domain experts willing to answer agent-generated checklists. In organizations where expert time is scarce, this may limit adoption. The semi-automated architecture (Section~\ref{sec:scaling}) partially addresses this by reducing human effort from authoring to reviewing.
+
+\textbf{Single-domain validation.} The healthcare claims example, while realistic, is synthetic. The convergence hypothesis requires validation across multiple real enterprise domains.
+
+\textbf{Subjectivity of curation.} Different humans may curate different entities for the same problem. DDC does not prescribe how to resolve disagreements in curation, beyond the PR review process proposed in Section~\ref{sec:scaling}.
+
+\textbf{No formal convergence proof.} The convergence hypothesis is empirically motivated but lacks formal analysis. Establishing theoretical bounds on convergence rates is future work.
+
+% =============================================================================
+% 7. CONCLUSION AND FUTURE WORK
+% =============================================================================
+\section{Conclusion and Future Work}
+\label{sec:conclusion}
+
+We have presented Demand-Driven Context (DDC), a methodology for building enterprise knowledge bases by using agent failure on real problems as the primary signal for what to curate. DDC combines failure-driven knowledge acquisition, human-curated structured entities, a convergence hypothesis, and a formalized development methodology analogous to TDD. Through a worked example in healthcare claims, we demonstrated that five DDC cycles produce a reusable knowledge base of 41 entities with increasing reuse across cycles.
+
+DDC contributes a missing piece to the context engineering landscape: while existing work focuses on \emph{retrieving} existing context (RAG) or \emph{optimizing} agent execution strategies (ACE, Reflexion), DDC addresses the upstream question of \emph{what context should exist in the first place}.
+
+\subsection*{Future Work}
+
+\textbf{Convergence validation.} Ongoing work is collecting DDC cycle data from a real enterprise domain to validate the convergence hypothesis with 20+ cycles. We aim to characterize the convergence curve and determine whether the 20--30 cycle threshold holds across domains.
+
+\textbf{Scaling architecture implementation.} The semi-automated architecture with PR governance (Section~\ref{sec:scaling}) will be implemented and evaluated in a multi-team enterprise setting.
+
+\textbf{Multi-agent knowledge sharing.} DDC currently targets one domain role at a time. Investigating how knowledge bases for different roles (architect, product owner, engineer) overlap and can be shared is an open question.
+
+\textbf{Formal convergence analysis.} Establishing theoretical bounds on DDC convergence rates, potentially through connections to curriculum learning and active learning theory.
+
+\textbf{Automated curation quality metrics.} Developing metrics to assess the quality of curated entities beyond human review---measuring coherence, completeness, and consistency programmatically.
+
+% =============================================================================
+% REFERENCES
+% =============================================================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+% =============================================================================
+% APPENDIX
+% =============================================================================
+\appendix
+
+\section{Entity Meta-Model Specification}
+\label{app:metamodel}
+
+The complete entity meta-model, including all type definitions, relationship types, and file format specifications, is available in the accompanying repository under \texttt{meta/entity-types.yaml} and \texttt{meta/relationship-types.yaml}.
+
+\section{DDC Cycle Log Format}
+\label{app:cyclelog}
+
+Each DDC cycle is logged using the following structured format:
+
+\begin{lstlisting}[language=yaml,caption={DDC cycle log format.}]
+---
+cycle_id: "NNN"
+problem_name: "Short problem description"
+date_started: YYYY-MM-DD
+date_completed: YYYY-MM-DD
+time_spent_minutes: N
+entities_created: N
+entities_updated: N
+domain: "domain-name"
+---
+
+# Cycle NNN: Problem Name
+
+## Problem Input
+## Agent Before (Zero/Current Context)
+## Information Checklist
+## Human Answers
+## Entities Curated
+## Agent After (With Context)
+## Human Review
+## Context Reuse Notes
+\end{lstlisting}
+
+\end{document}
