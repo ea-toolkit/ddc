@@ -44,24 +44,15 @@ Think **TDD for knowledge bases**: failing tests drive code, failing agents driv
 | `demo/` | Empty knowledge base + script for trying DDC yourself |
 | `ddc-cycle-log/` | Cycle log format spec and analysis scripts |
 
-## Try DDC in 5 Minutes
+## Try DDC in 30 Minutes
 
-Have Claude Code (or any AI coding agent) installed? Try a DDC cycle right now:
+Have Claude Code (or any AI coding agent) installed? Follow the **[Getting Started guide](./GETTING-STARTED.md)** to:
 
-```bash
-# 1. Clone and open the demo knowledge base
-git clone https://github.com/user/ddc-framework.git
-cd ddc-framework/demo/demo-kb
+1. Browse the example healthcare claims knowledge base
+2. Copy the template and start your own domain
+3. Run your first DDC cycle on a real problem
 
-# 2. Give your agent a problem (see demo/rough-notes.md for a sample)
-#    Open Claude Code and paste a domain problem
-#    Watch the agent attempt it, fail, and tell you what's missing
-
-# 3. Fill the gaps — add entity files to domain-knowledge/entities/
-#    The agent will help you curate them in the right format
-```
-
-See [demo/DEMO-SCRIPT.md](./demo/DEMO-SCRIPT.md) for a full walkthrough.
+See [demo/DEMO-SCRIPT.md](./demo/DEMO-SCRIPT.md) for a live demo walkthrough.
 
 ## Quick Start
 
@@ -95,12 +86,6 @@ After 20-30 real problems:
 - Each new problem requires fewer new entities (knowledge converges)
 - Learning paths emerge naturally from most-referenced entities
 - The knowledge base is smaller, more relevant, and more maintainable than top-down
-
-Track convergence with the analysis script:
-
-```bash
-python ddc-cycle-log/analysis/coverage-curve.py examples/healthcare-claims/ddc-cycle-logs/
-```
 
 ## Contributing
 

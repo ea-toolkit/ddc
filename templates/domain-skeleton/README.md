@@ -4,18 +4,19 @@ Copy this directory structure to start a new DDC knowledge base for your domain.
 
 ## Quick Start
 
-1. Copy this entire directory to your new repo
-2. Copy `entity-types.yaml` and `relationship-types.yaml` from `ddc-framework/meta/` into `domain-knowledge/meta/`
-3. Copy `CLAUDE.md` from `ddc-framework/` and customize the domain scope section
-4. Start your first DDC cycle: create a problem in `sandbox/`
+1. Copy this entire directory: `cp -r templates/domain-skeleton my-domain/`
+2. Open `CLAUDE.md` and customize the `<!-- CUSTOMIZE -->` sections for your domain
+3. Start your first DDC cycle: open Claude Code in your new directory and run `/ddc-cycle`
+
+Everything you need is included — entity type definitions, relationship types, agent instructions, and the full directory structure.
 
 ## Directory Structure
 
 ```
 your-domain/
-|-- CLAUDE.md                      # Agent guidance (customize from template)
+|-- CLAUDE.md                      # Agent guidance (customize the marked sections)
 |-- domain-knowledge/
-|   |-- meta/                      # Entity and relationship type definitions
+|   |-- meta/                      # Entity and relationship type definitions (included)
 |   |-- entities/
 |   |   |-- capabilities/
 |   |   |-- systems/

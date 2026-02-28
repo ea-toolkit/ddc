@@ -1,2 +1,154 @@
-# Copy entity-types.yaml from ddc-framework/meta/ and customize for your domain.
-# See ddc-framework/meta/entity-types.yaml for the full set of entity types.
+entity_types:
+  # North Star - Strategic Direction
+  - id: vision
+    display_name: Vision & Mission
+    description: Domain vision and mission statement
+    icon: "vision"
+    color: "#9333EA"
+
+  - id: five-year-plan
+    display_name: 5-Year Plan
+    description: Long-term strategic plan and goals
+    icon: "target"
+    color: "#7C3AED"
+
+  - id: roadmap
+    display_name: Roadmap
+    description: Execution roadmap and milestones
+    icon: "map"
+    color: "#6366F1"
+
+  # Constitution - Guiding Principles
+  - id: constitution-business
+    display_name: Business Constitution
+    description: Business rules and principles that solutions must follow
+    icon: "scroll"
+    color: "#DC2626"
+
+  - id: constitution-technology
+    display_name: Technology Constitution
+    description: Technology standards and principles that solutions must follow
+    icon: "scroll"
+    color: "#2563EB"
+
+  - id: constitution-data
+    display_name: Data Constitution
+    description: Data governance and principles that solutions must follow
+    icon: "scroll"
+    color: "#059669"
+
+  - id: capability
+    display_name: Business Capabilities
+    description: High-level business functions and capabilities
+    icon: "capability"
+    color: "#4A90E2"
+
+  - id: team
+    display_name: Team
+    description: Product teams and organizational units
+    icon: "team"
+    color: "#9B59B6"
+
+  - id: system
+    display_name: System/Service
+    description: Software systems, microservices, and applications
+    icon: "system"
+    color: "#E74C3C"
+    fields:
+      - name: make_or_buy
+        type: enum
+        values: [make, buy, hybrid]
+        description: Whether this system is built in-house or procured
+      - name: implements_capability
+        type: reference
+        target: capability
+        description: The business capability this system implements
+
+  - id: api
+    display_name: API
+    description: REST, GraphQL, or gRPC APIs
+    icon: "api"
+    color: "#2ECC71"
+    supports_schema: true
+
+  - id: data-model
+    display_name: Data Model
+    description: Data entities and schemas
+    icon: "data"
+    color: "#F39C12"
+    supports_schema: true
+
+  - id: process
+    display_name: Business Process
+    description: Business processes and workflows
+    icon: "process"
+    color: "#1ABC9C"
+    supports_diagram: true
+
+  - id: journey
+    display_name: Customer Journey
+    description: Customer journeys and user flows
+    icon: "journey"
+    color: "#E67E22"
+    supports_diagram: true
+
+  - id: jargon-business
+    display_name: Business Jargon
+    description: Business terminology and concepts
+    icon: "business"
+    color: "#34495E"
+
+  - id: jargon-tech
+    display_name: Tech & Engineering Jargon
+    description: Technical and engineering terminology
+    icon: "tech"
+    color: "#7F8C8D"
+
+  - id: lifecycle
+    display_name: Lifecycles
+    description: Flow diagrams showing state transitions for business objects
+    icon: "lifecycle"
+    color: "#0891B2"
+    supports_diagram: true
+
+  - id: sequence
+    display_name: Sequences
+    description: Sequence diagrams showing interactions between components
+    icon: "sequence"
+    color: "#7C3AED"
+    supports_diagram: true
+
+  - id: persona
+    display_name: Personas
+    description: User roles, stakeholders, and their responsibilities
+    icon: "persona"
+    color: "#DB2777"
+
+  - id: learning-path
+    display_name: Learning Paths
+    description: Guided reading journeys to navigate the knowledge base based on role
+    icon: "learning"
+    color: "#059669"
+
+  - id: reference-data
+    display_name: Reference Data
+    description: Enumerated values, master data lists (statuses, types, categories)
+    icon: "reference"
+    color: "#64748B"
+
+  - id: decision
+    display_name: Architecture Decision
+    description: Architecture decisions being explored or resolved (ADRs)
+    icon: "decision"
+    color: "#B45309"
+    fields:
+      - name: status
+        type: enum
+        values: [active, resolved]
+        description: Whether the decision is still being worked on or has been resolved
+      - name: date_opened
+        type: date
+        description: When the decision was opened
+      - name: date_resolved
+        type: date
+        description: When the decision was resolved (if applicable)
