@@ -22,6 +22,11 @@ build/
 .DS_Store
 Thumbs.db
 
+# Private materials (presentations, paper drafts, CFPs)
+.private/
+*.pptx
+~$*
+
 # Research PDFs (large binaries, not suitable for git)
 ddc online resources/
 

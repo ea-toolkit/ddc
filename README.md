@@ -1,5 +1,7 @@
 # Demand-Driven Context (DDC) Framework
 
+> **DDC is TDD for knowledge bases** — failing agents drive curation, not failing tests.
+
 **A methodology for building enterprise AI agent knowledge bases through problem-driven curation.**
 
 Stop trying to document everything. Give your agent a real problem. Let it tell you what's missing. Repeat 30 times.
@@ -39,10 +41,27 @@ Think **TDD for knowledge bases**: failing tests drive code, failing agents driv
 | `templates/` | Starter kit — domain skeleton, entity templates, cycle log template |
 | `tooling/` | Web UI for exploring knowledge bases (FastAPI + React) |
 | `examples/healthcare-claims/` | Synthetic domain with ~40 entities and 5 DDC cycle logs |
-| `paper/` | IEEE Software paper (in progress) |
-| `talks/` | Conference talk submissions |
-| `blog/` | Published blog post |
+| `demo/` | Empty knowledge base + script for trying DDC yourself |
 | `ddc-cycle-log/` | Cycle log format spec and analysis scripts |
+
+## Try DDC in 5 Minutes
+
+Have Claude Code (or any AI coding agent) installed? Try a DDC cycle right now:
+
+```bash
+# 1. Clone and open the demo knowledge base
+git clone https://github.com/user/ddc-framework.git
+cd ddc-framework/demo/demo-kb
+
+# 2. Give your agent a problem (see demo/rough-notes.md for a sample)
+#    Open Claude Code and paste a domain problem
+#    Watch the agent attempt it, fail, and tell you what's missing
+
+# 3. Fill the gaps — add entity files to domain-knowledge/entities/
+#    The agent will help you curate them in the right format
+```
+
+See [demo/DEMO-SCRIPT.md](./demo/DEMO-SCRIPT.md) for a full walkthrough.
 
 ## Quick Start
 
