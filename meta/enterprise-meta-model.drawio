@@ -1,543 +1,181 @@
-<mxfile host="drawio-plugin" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" modified="2026-02-26T17:31:09.666Z" version="22.1.22" etag="LyuKGOfBz-aovIU18eIq" type="embed">
-  <diagram id="23iRSUPoRavnBvh4doch" name="Page-1">
-    <mxGraphModel dx="789" dy="718" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="DDC Framework" modified="2026-02-28T10:00:00.000Z" version="22.1.22" etag="ddc-meta-model-v1" type="device">
+  <diagram id="ddc-enterprise-meta-model" name="Enterprise Meta-Model">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="0UxPMehF4_2Raiap49CS-5" value="" style="group" parent="1" connectable="0" vertex="1">
-          <mxGeometry x="40" y="252" width="230" height="410" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-1" value="Products &amp;amp; Services&amp;nbsp;&lt;div&gt;(&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;What is offered to Customers)&lt;/span&gt;&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;shape=mxgraph.archimate3.application;appType=grouping;archiType=square;dashed=1;fillColor=none;verticalAlign=top;" parent="0UxPMehF4_2Raiap49CS-5" vertex="1">
-          <mxGeometry width="230" height="410" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-2" value="Customer /&amp;nbsp;&lt;div&gt;Market Segmenet&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=actor;archiType=square;" parent="0UxPMehF4_2Raiap49CS-5" vertex="1">
-          <mxGeometry x="40" y="60" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-3" value="Product" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=product;archiType=square;" parent="0UxPMehF4_2Raiap49CS-5" vertex="1">
-          <mxGeometry x="40" y="180" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-4" value="Business Service" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=serv;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-5" vertex="1">
-          <mxGeometry x="40" y="310" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-17" value="" style="html=1;startArrow=diamondThin;startFill=0;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-5" source="0UxPMehF4_2Raiap49CS-3" target="0UxPMehF4_2Raiap49CS-4" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="60" y="290" as="sourcePoint" />
-            <mxPoint x="220" y="290" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-24" value="Aggregates" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-17" connectable="0" vertex="1">
-          <mxGeometry x="0.2364" y="3" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-18" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-5" source="0UxPMehF4_2Raiap49CS-3" target="0UxPMehF4_2Raiap49CS-2" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="60" y="160" as="sourcePoint" />
-            <mxPoint x="220" y="160" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-25" value="Serving" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-18" connectable="0" vertex="1">
-          <mxGeometry x="0.0667" y="-4" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-59" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="0UxPMehF4_2Raiap49CS-8" target="0UxPMehF4_2Raiap49CS-4" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="320" y="529" />
-            </Array>
-            <mxPoint x="210" y="532" as="sourcePoint" />
-            <mxPoint x="370" y="532" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-69" value="" style="group" parent="1" connectable="0" vertex="1">
-          <mxGeometry x="290" y="252" width="640" height="660" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-6" value="Process &amp;amp; Organization&lt;div&gt;(How are Products &amp;amp; Services Offered)&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;shape=mxgraph.archimate3.application;appType=grouping;archiType=square;dashed=1;fillColor=none;verticalAlign=top;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry width="640" height="660" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-8" value="End to End&lt;div&gt;[Process]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=proc;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="20" y="168" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-9" value="Business Process&amp;nbsp;&lt;div&gt;Module&lt;/div&gt;&lt;div&gt;[Process]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=proc;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="20" y="297" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-10" value="Process Task" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=proc;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="20" y="420" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-11" value="Business Event" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=event;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="20" y="550" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-12" value="Organization Unit&lt;div&gt;[Organization]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=actor;archiType=square;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="260" y="50" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-13" value="Business Role&lt;div&gt;[Role]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=role;archiType=square;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="250" y="180" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-14" value="Business Capability" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=func;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="290" y="297" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-15" value="Business Information&lt;div&gt;Object&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=passive;archiType=square;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="290" y="420" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-16" value="Value Stream" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=proc;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="20" y="50" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-19" value="Aggregates" style="html=1;startArrow=diamondThin;startFill=0;edgeStyle=elbowEdgeStyle;elbow=horizontal;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-16" target="0UxPMehF4_2Raiap49CS-8" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="50" y="150" as="sourcePoint" />
-            <mxPoint x="210" y="150" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-20" value="Aggregates" style="html=1;startArrow=diamondThin;startFill=0;edgeStyle=elbowEdgeStyle;elbow=horizontal;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-8" target="0UxPMehF4_2Raiap49CS-9" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="60" y="270" as="sourcePoint" />
-            <mxPoint x="220" y="270" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-21" value="Composed of" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=horizontal;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-9" target="0UxPMehF4_2Raiap49CS-10" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="60" y="400" as="sourcePoint" />
-            <mxPoint x="220" y="400" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-22" value="Triggers" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;dashed=0;elbow=horizontal;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-10" target="0UxPMehF4_2Raiap49CS-11" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="50" y="520" />
-            </Array>
-            <mxPoint x="40" y="520" as="sourcePoint" />
-            <mxPoint x="200" y="520" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-23" value="Triggers" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;dashed=0;elbow=horizontal;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-11" target="0UxPMehF4_2Raiap49CS-10" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="130" y="530" />
-            </Array>
-            <mxPoint x="90" y="530" as="sourcePoint" />
-            <mxPoint x="250" y="530" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-26" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=openAsync;elbow=vertical;rounded=0;endFill=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-12" target="0UxPMehF4_2Raiap49CS-16" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="200" y="140" as="sourcePoint" />
-            <mxPoint x="360" y="140" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-27" value="Owns" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-26" connectable="0" vertex="1">
-          <mxGeometry x="0.0055" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-28" value="" style="html=1;endArrow=openAsync;elbow=vertical;rounded=0;endFill=0;entryX=1;entryY=0;entryDx=-2.9;entryDy=2.9;entryPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-12" target="0UxPMehF4_2Raiap49CS-8" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="170" y="150" as="sourcePoint" />
-            <mxPoint x="330" y="150" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-29" value="Owns" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-28" connectable="0" vertex="1">
-          <mxGeometry x="0.3096" y="-1" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-30" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-9" target="0UxPMehF4_2Raiap49CS-9" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="140" y="400" as="sourcePoint" />
-            <mxPoint x="300" y="400" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-31" value="" style="endArrow=block;html=1;endFill=1;startArrow=oval;startFill=1;elbow=vertical;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-13" target="0UxPMehF4_2Raiap49CS-10" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="220" y="280" as="sourcePoint" />
-            <mxPoint x="380" y="280" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-32" value="Performs" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-31" connectable="0" vertex="1">
-          <mxGeometry x="-0.0973" y="-1" relative="1" as="geometry">
-            <mxPoint x="-47" y="61" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-33" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=open;elbow=vertical;endFill=0;dashed=1;dashPattern=1 4;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-10" target="0UxPMehF4_2Raiap49CS-15" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="190" y="450" as="sourcePoint" />
-            <mxPoint x="350" y="450" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-34" value="Access" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-33" connectable="0" vertex="1">
-          <mxGeometry x="0.051" y="4" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-36" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;entryPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-14" target="0UxPMehF4_2Raiap49CS-9" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="370" y="350" as="sourcePoint" />
-            <mxPoint x="210" y="350" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-37" value="Actor" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#ffff99;shape=mxgraph.archimate3.application;appType=actor;archiType=square;" parent="0UxPMehF4_2Raiap49CS-69" vertex="1">
-          <mxGeometry x="460" y="110" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-38" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-12" target="0UxPMehF4_2Raiap49CS-37" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="430" y="80" />
-            </Array>
-            <mxPoint x="470" y="80" as="sourcePoint" />
-            <mxPoint x="630" y="80" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-39" value="" style="endArrow=block;html=1;endFill=1;startArrow=oval;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-37" target="0UxPMehF4_2Raiap49CS-13" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="430" y="220" />
-            </Array>
-            <mxPoint x="450" y="240" as="sourcePoint" />
-            <mxPoint x="610" y="240" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-40" value="Acts in the role of" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-39" connectable="0" vertex="1">
-          <mxGeometry x="0.1647" y="-2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-100" value="Owns" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=openAsync;elbow=horizontal;rounded=0;endFill=0;" parent="0UxPMehF4_2Raiap49CS-69" source="0UxPMehF4_2Raiap49CS-14" target="0UxPMehF4_2Raiap49CS-15" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="360" y="390" as="sourcePoint" />
-            <mxPoint x="520" y="390" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-80" value="" style="html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-61" target="0UxPMehF4_2Raiap49CS-14" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="990" y="587" />
-            </Array>
-            <mxPoint x="910" y="582" as="sourcePoint" />
-            <mxPoint x="1070" y="582" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-81" value="Realizes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-80" connectable="0" vertex="1">
-          <mxGeometry x="0.6693" y="2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-82" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-66" target="0UxPMehF4_2Raiap49CS-15" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="910" y="682" />
-            </Array>
-            <mxPoint x="900" y="732" as="sourcePoint" />
-            <mxPoint x="1060" y="732" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-91" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-71" target="0UxPMehF4_2Raiap49CS-11" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1005" y="827" />
-            </Array>
-            <mxPoint x="1100" y="852" as="sourcePoint" />
-            <mxPoint x="1260" y="852" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-92" value="Realizes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-91" connectable="0" vertex="1">
-          <mxGeometry x="0.3005" y="-2" relative="1" as="geometry">
-            <mxPoint x="-1" y="-1" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-104" value="" style="group" parent="1" connectable="0" vertex="1">
-          <mxGeometry x="950" y="257" width="880" height="660" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-58" value="Application &amp;amp; Data&lt;div&gt;(What Structures, systems and data support/execute the processes)&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;shape=mxgraph.archimate3.application;appType=grouping;archiType=square;dashed=1;fillColor=none;verticalAlign=top;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry width="880" height="660" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-60" value="Architecture Area&lt;div&gt;Domain&lt;/div&gt;&lt;div&gt;[Software Boundary]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#f5f5f5;shape=mxgraph.archimate3.application;appType=func;archiType=rounded;fontColor=#333333;strokeColor=#666666;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="21" y="50" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-61" value="Logical component&lt;div&gt;[Software Boundary]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=func;archiType=rounded;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="240" y="70" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-62" value="Physical&lt;div&gt;Business API&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=interface;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="480" y="259" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-63" value="Software system&lt;div&gt;[Physical IS Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=comp;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="700" y="70" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-64" value="Logical Business API&lt;div&gt;[Conceptual IS Service]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.service;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="280" y="259" width="144" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-66" value="Data Concept" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#f5f5f5;shape=mxgraph.archimate3.application;appType=passive;archiType=square;fontColor=#333333;strokeColor=#666666;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="21" y="380" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-68" value="Data Aggregate" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=passive;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="230" y="380" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-70" value="Data Entity" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=passive;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="230" y="480" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-71" value="Domain event" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.event;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="490" y="550" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-72" value="Software subsystem&lt;div&gt;[Physical IS Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=comp;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="700" y="240" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-74" value="Software Component&lt;div&gt;[Physical IS Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=comp;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="700" y="350" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-75" value="Software Code&lt;div&gt;[Physical IS Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#99ffff;shape=mxgraph.archimate3.application;appType=comp;archiType=square;" parent="0UxPMehF4_2Raiap49CS-104" vertex="1">
-          <mxGeometry x="700" y="490" width="150" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-76" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=openAsync;elbow=vertical;rounded=0;endFill=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-60" target="0UxPMehF4_2Raiap49CS-66" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="40" y="200" as="sourcePoint" />
-            <mxPoint x="200" y="200" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-77" value="Owns" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-76" connectable="0" vertex="1">
-          <mxGeometry x="-0.1863" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-78" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-60" target="0UxPMehF4_2Raiap49CS-61" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="220" y="100" />
-            </Array>
-            <mxPoint x="210" y="130" as="sourcePoint" />
-            <mxPoint x="370" y="130" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-79" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-61" target="0UxPMehF4_2Raiap49CS-61" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="390" y="180" as="sourcePoint" />
-            <mxPoint x="550" y="180" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-83" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=openAsync;elbow=vertical;rounded=0;endFill=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-61" target="0UxPMehF4_2Raiap49CS-68" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="270" y="310" />
-            </Array>
-            <mxPoint x="190" y="280" as="sourcePoint" />
-            <mxPoint x="350" y="280" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-84" value="Owns" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-83" connectable="0" vertex="1">
-          <mxGeometry x="-0.5625" y="-2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-85" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-61" target="0UxPMehF4_2Raiap49CS-64" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="320" y="240" as="sourcePoint" />
-            <mxPoint x="480" y="240" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-86" value="" style="endArrow=block;html=1;endFill=1;startArrow=oval;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-62" target="0UxPMehF4_2Raiap49CS-64" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="460" y="220" as="sourcePoint" />
-            <mxPoint x="620" y="220" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-87" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-66" target="0UxPMehF4_2Raiap49CS-68" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="110" y="500" as="sourcePoint" />
-            <mxPoint x="270" y="500" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-88" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-68" target="0UxPMehF4_2Raiap49CS-70" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="230" y="600" as="sourcePoint" />
-            <mxPoint x="390" y="600" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-89" value="Publishes" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;dashed=0;elbow=horizontal;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-62" target="0UxPMehF4_2Raiap49CS-71" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="510" y="443" />
-            </Array>
-            <mxPoint x="500" y="430" as="sourcePoint" />
-            <mxPoint x="660" y="430" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-90" value="Consumes" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=horizontal;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-62" target="0UxPMehF4_2Raiap49CS-71" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="590" y="443" />
-            </Array>
-            <mxPoint x="550" y="450" as="sourcePoint" />
-            <mxPoint x="710" y="450" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-93" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-63" target="0UxPMehF4_2Raiap49CS-72" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="560" y="190" as="sourcePoint" />
-            <mxPoint x="720" y="190" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-94" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-72" target="0UxPMehF4_2Raiap49CS-74" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="690" y="310" as="sourcePoint" />
-            <mxPoint x="850" y="310" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-95" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-74" target="0UxPMehF4_2Raiap49CS-75" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="690" y="490" as="sourcePoint" />
-            <mxPoint x="850" y="490" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-96" value="" style="html=1;startArrow=diamondThin;startFill=1;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-72" target="0UxPMehF4_2Raiap49CS-62" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="510" y="210" as="sourcePoint" />
-            <mxPoint x="670" y="210" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-97" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-63" target="0UxPMehF4_2Raiap49CS-61" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="550" y="130" />
-            </Array>
-            <mxPoint x="600" y="180" as="sourcePoint" />
-            <mxPoint x="440" y="180" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-98" value="" style="html=1;endArrow=openAsync;elbow=vertical;rounded=0;endFill=0;" parent="0UxPMehF4_2Raiap49CS-104" source="0UxPMehF4_2Raiap49CS-72" target="0UxPMehF4_2Raiap49CS-68" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="620" y="410" />
-            </Array>
-            <mxPoint x="530" y="390" as="sourcePoint" />
-            <mxPoint x="690" y="390" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-99" value="Owns" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="0UxPMehF4_2Raiap49CS-98" connectable="0" vertex="1">
-          <mxGeometry x="-0.6483" y="-2" relative="1" as="geometry">
-            <mxPoint as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-110" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-102" target="0UxPMehF4_2Raiap49CS-72" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="2070" y="732" as="sourcePoint" />
-            <mxPoint x="1910" y="732" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-111" value="" style="html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-106" target="0UxPMehF4_2Raiap49CS-72" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="2090" y="522" as="sourcePoint" />
-            <mxPoint x="1960" y="522" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-112" value="" style="html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-103" target="0UxPMehF4_2Raiap49CS-72" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="2070" y="602" as="sourcePoint" />
-            <mxPoint x="1940" y="602" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-113" value="" style="html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="1" source="0UxPMehF4_2Raiap49CS-105" target="0UxPMehF4_2Raiap49CS-72" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="2080" y="822" as="sourcePoint" />
-            <mxPoint x="1950" y="822" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-124" value="" style="group" parent="1" connectable="0" vertex="1">
-          <mxGeometry x="1850" y="257" width="560" height="660" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-101" value="Infrastructure &amp;amp; Hosting" style="html=1;outlineConnect=0;whiteSpace=wrap;shape=mxgraph.archimate3.application;appType=grouping;archiType=square;dashed=1;fillColor=none;verticalAlign=top;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry width="560" height="660" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-102" value="Application&lt;div&gt;Infrastructure&lt;/div&gt;&lt;div&gt;[Physical TI Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=sysSw;archiType=square;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="27.54098360655738" y="240" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-103" value="Techology&lt;div&gt;Infrastructure&lt;/div&gt;&lt;div&gt;[Physical TI Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=sysSw;archiType=square;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="27.54098360655738" y="360" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-105" value="Hosting Node&lt;div&gt;[Physical TI Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=node;archiType=square;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="110.16393442622952" y="538" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-106" value="Infrastructure API&lt;div&gt;[Logical TI Service]&amp;nbsp;&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=serv;archiType=rounded" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="321.3114754098361" y="93" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-107" value="Infrastructure Function&lt;div&gt;[Logical TI Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=func;archiType=square;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="321.3114754098361" y="240" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-108" value="Networking Equipment&lt;div&gt;[Physical TI Component]&lt;/div&gt;" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=device;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="321.3114754098361" y="395" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-109" value="Network Zone" style="html=1;outlineConnect=0;whiteSpace=wrap;fillColor=#AFFFAF;shape=mxgraph.archimate3.application;appType=netw;archiType=square;" parent="0UxPMehF4_2Raiap49CS-124" vertex="1">
-          <mxGeometry x="321.3114754098361" y="538" width="137.70491803278688" height="75" as="geometry" />
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-114" value="" style="html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-103" target="0UxPMehF4_2Raiap49CS-102" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="271.7377049180328" y="823" as="sourcePoint" />
-            <mxPoint x="18.360655737704917" y="600" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-115" value="" style="html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-105" target="0UxPMehF4_2Raiap49CS-103" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="336" y="933" as="sourcePoint" />
-            <mxPoint x="82.62295081967213" y="710" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-116" value="" style="html=1;endArrow=open;elbow=vertical;endFill=1;rounded=0;edgeStyle=orthogonalEdgeStyle;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-105" target="0UxPMehF4_2Raiap49CS-102" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="211.14754098360658" y="277" />
-            </Array>
-            <mxPoint x="528.7868852459017" y="493" as="sourcePoint" />
-            <mxPoint x="275.40983606557376" y="270" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-117" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-102" target="0UxPMehF4_2Raiap49CS-107" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="275.40983606557376" y="260" />
-            </Array>
-            <mxPoint x="201.96721311475412" y="250" as="sourcePoint" />
-            <mxPoint x="348.8524590163934" y="250" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-118" value="" style="html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-103" target="0UxPMehF4_2Raiap49CS-107" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="247.8688524590164" y="290" />
-            </Array>
-            <mxPoint x="238.68852459016395" y="260" as="sourcePoint" />
-            <mxPoint x="449.8360655737705" y="260" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-119" value="" style="html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-105" target="0UxPMehF4_2Raiap49CS-107" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="257.04918032786884" y="390" />
-            </Array>
-            <mxPoint x="238.68852459016395" y="601" as="sourcePoint" />
-            <mxPoint x="465.44262295081967" y="520" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-120" value="" style="html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-107" target="0UxPMehF4_2Raiap49CS-106" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="257.04918032786884" y="810" as="sourcePoint" />
-            <mxPoint x="300.1967213114754" y="740" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-121" value="" style="html=1;endArrow=block;elbow=vertical;endFill=0;dashed=1;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-108" target="0UxPMehF4_2Raiap49CS-107" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="449.8360655737705" y="377" as="sourcePoint" />
-            <mxPoint x="449.8360655737705" y="310" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-122" value="" style="html=1;startArrow=diamondThin;startFill=0;edgeStyle=elbowEdgeStyle;elbow=vertical;startSize=10;endArrow=none;endFill=0;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-109" target="0UxPMehF4_2Raiap49CS-108" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="367.21311475409834" y="500" as="sourcePoint" />
-            <mxPoint x="514.0983606557377" y="500" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="0UxPMehF4_2Raiap49CS-123" value="" style="edgeStyle=elbowEdgeStyle;html=1;endArrow=none;elbow=vertical;rounded=0;" parent="0UxPMehF4_2Raiap49CS-124" source="0UxPMehF4_2Raiap49CS-105" target="0UxPMehF4_2Raiap49CS-109" edge="1">
-          <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="257.04918032786884" y="520" as="sourcePoint" />
-            <mxPoint x="403.93442622950823" y="520" as="targetPoint" />
-          </mxGeometry>
+
+        <!-- Title -->
+        <mxCell id="title" value="DDC Enterprise Meta-Model" style="text;html=1;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="350" y="20" width="400" height="40" as="geometry" />
         </mxCell>
+        <mxCell id="subtitle" value="How DDC entity types map to enterprise architecture layers" style="text;html=1;fontSize=11;fontStyle=2;align=center;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="350" y="55" width="400" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== -->
+        <!-- LAYER 1: STRATEGY    -->
+        <!-- ==================== -->
+        <mxCell id="layer-strategy" value="Strategy &amp; Direction" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#9333EA;fontColor=#9333EA;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="90" width="1080" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="vision" value="Vision &amp;&amp;amp; Mission" style="html=1;whiteSpace=wrap;fillColor=#E9D5FF;strokeColor=#9333EA;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="120" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fiveyr" value="5-Year Plan" style="html=1;whiteSpace=wrap;fillColor=#E9D5FF;strokeColor=#7C3AED;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="230" y="120" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="roadmap" value="Roadmap" style="html=1;whiteSpace=wrap;fillColor=#E0E7FF;strokeColor=#6366F1;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="390" y="120" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="constitution" value="Constitutions&lt;div&gt;(Business / Tech / Data)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#DC2626;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="550" y="120" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="decision" value="Architecture&lt;div&gt;Decision (ADR)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#B45309;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="740" y="120" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Strategy relationships -->
+        <mxCell id="e-vision-plan" style="endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="vision" target="fiveyr" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-plan-roadmap" style="endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fiveyr" target="roadmap" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================= -->
+        <!-- LAYER 2: BUSINESS          -->
+        <!-- ========================= -->
+        <mxCell id="layer-business" value="Business Layer" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#4A90E2;fontColor=#4A90E2;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="220" width="1080" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="capability" value="Business&lt;div&gt;Capability&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#DBEAFE;strokeColor=#4A90E2;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="260" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="process" value="Business&lt;div&gt;Process&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#1ABC9C;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="260" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="journey" value="Customer&lt;div&gt;Journey&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FFEDD5;strokeColor=#E67E22;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="430" y="260" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="persona" value="Persona" style="html=1;whiteSpace=wrap;fillColor=#FCE7F3;strokeColor=#DB2777;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="260" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="team" value="Team" style="html=1;whiteSpace=wrap;fillColor=#EDE9FE;strokeColor=#9B59B6;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="790" y="260" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Business relationships -->
+        <mxCell id="e-cap-proc" value="realized by" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="capability" target="process" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-jour-pers" value="performed by" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="journey" target="persona" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-team-cap" value="owns" style="endArrow=open;endFill=0;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="team" target="capability" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================= -->
+        <!-- LAYER 3: APPLICATION       -->
+        <!-- ========================= -->
+        <mxCell id="layer-app" value="Application Layer" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#E74C3C;fontColor=#E74C3C;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="380" width="1080" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="system" value="System /&lt;div&gt;Service&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#E74C3C;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="API" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#2ECC71;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="datamodel" value="Data Model" style="html=1;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#F39C12;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="430" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lifecycle" value="Lifecycle&lt;div&gt;(State Machine)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#E0F2FE;strokeColor=#0891B2;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="610" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sequence" value="Sequence&lt;div&gt;Diagram&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#EDE9FE;strokeColor=#7C3AED;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="790" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="refdata" value="Reference&lt;div&gt;Data&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#64748B;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="970" y="420" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Application relationships -->
+        <mxCell id="e-sys-api" value="exposes" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="system" target="api" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-sys-data" value="stores" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="api" target="datamodel" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-data-lc" value="has states" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="datamodel" target="lifecycle" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-seq-sys" value="shows interactions" style="endArrow=open;endFill=0;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="sequence" target="system" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ========================= -->
+        <!-- LAYER 4: KNOWLEDGE         -->
+        <!-- ========================= -->
+        <mxCell id="layer-knowledge" value="Knowledge Layer" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#34495E;fontColor=#34495E;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="540" width="1080" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="jargon-biz" value="Business&lt;div&gt;Jargon&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#34495E;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="70" y="575" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="jargon-tech" value="Tech &amp;&amp;amp; Eng&lt;div&gt;Jargon&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#7F8C8D;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="575" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="learning" value="Learning&lt;div&gt;Path&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#059669;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="430" y="575" width="130" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ========================= -->
+        <!-- CROSS-LAYER RELATIONSHIPS  -->
+        <!-- ========================= -->
+
+        <!-- Strategy -> Business: Roadmap guides capabilities -->
+        <mxCell id="e-road-cap" value="guides" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="roadmap" target="capability" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Strategy -> Application: Decisions constrain systems -->
+        <mxCell id="e-dec-sys" value="constrains" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="decision" target="sequence" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Business -> Application: Capability implemented by system -->
+        <mxCell id="e-cap-sys" value="implemented by" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="capability" target="system" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Business -> Application: Process uses system -->
+        <mxCell id="e-proc-api" value="uses" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="process" target="api" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Team -> System: owns -->
+        <mxCell id="e-team-sys" value="owns" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="team" target="system" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Knowledge -> All: Jargon annotates everything -->
+        <mxCell id="e-jargon-note" value="Jargon terms annotate entities across all layers" style="text;html=1;fontSize=10;fontStyle=2;align=left;verticalAlign=middle;fontColor=#999999;" parent="1" vertex="1">
+          <mxGeometry x="610" y="590" width="300" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="legend-box" value="Legend" style="html=1;whiteSpace=wrap;dashed=1;fillColor=#FAFAFA;verticalAlign=top;fontSize=11;fontStyle=1;strokeColor=#CCCCCC;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="670" width="500" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-1" value="Each box = a DDC entity type (see meta/entity-types.yaml)" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="60" y="695" width="350" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-2" value="Dashed arrows = relationships (see meta/relationship-types.yaml)" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="60" y="718" width="350" height="20" as="geometry" />
+        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>
