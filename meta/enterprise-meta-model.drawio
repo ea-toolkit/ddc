@@ -1,179 +1,191 @@
-<mxfile host="app.diagrams.net" agent="DDC Framework" modified="2026-02-28T10:00:00.000Z" version="22.1.22" etag="ddc-meta-model-v1" type="device">
-  <diagram id="ddc-enterprise-meta-model" name="Enterprise Meta-Model">
-    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+<mxfile host="app.diagrams.net" agent="DDC Framework" modified="2026-03-03T06:00:00.000Z" version="22.1.22" etag="ddc-meta-model-v2" type="device">
+  <diagram id="ddc-meta-model-13" name="DDC Meta-Model (13 Entities)">
+    <mxGraphModel dx="1400" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <!-- Title -->
-        <mxCell id="title" value="DDC Enterprise Meta-Model" style="text;html=1;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
-          <mxGeometry x="350" y="20" width="400" height="40" as="geometry" />
+        <mxCell id="title" value="DDC Meta-Model — 13 Entity Types" style="text;html=1;fontSize=20;fontStyle=1;align=center;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="400" y="15" width="500" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="How DDC entity types map to enterprise architecture layers" style="text;html=1;fontSize=11;fontStyle=2;align=center;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
-          <mxGeometry x="350" y="55" width="400" height="25" as="geometry" />
-        </mxCell>
-
-        <!-- ==================== -->
-        <!-- LAYER 1: STRATEGY    -->
-        <!-- ==================== -->
-        <mxCell id="layer-strategy" value="Strategy &amp; Direction" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#9333EA;fontColor=#9333EA;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="40" y="90" width="1080" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="vision" value="Vision &amp;&amp;amp; Mission" style="html=1;whiteSpace=wrap;fillColor=#E9D5FF;strokeColor=#9333EA;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="120" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="fiveyr" value="5-Year Plan" style="html=1;whiteSpace=wrap;fillColor=#E9D5FF;strokeColor=#7C3AED;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="230" y="120" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="roadmap" value="Roadmap" style="html=1;whiteSpace=wrap;fillColor=#E0E7FF;strokeColor=#6366F1;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="390" y="120" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="constitution" value="Constitutions&lt;div&gt;(Business / Tech / Data)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#DC2626;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="550" y="120" width="160" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="decision" value="Architecture&lt;div&gt;Decision (ADR)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#B45309;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="740" y="120" width="130" height="50" as="geometry" />
+        <mxCell id="subtitle" value="Simplified from enterprise meta-models for demand-driven context curation" style="text;html=1;fontSize=11;fontStyle=2;align=center;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="400" y="48" width="500" height="20" as="geometry" />
         </mxCell>
 
-        <!-- Strategy relationships -->
-        <mxCell id="e-vision-plan" style="endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="vision" target="fiveyr" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- ============================== -->
+        <!-- LAYER 1: WHAT (Offering)       -->
+        <!-- ============================== -->
+        <mxCell id="layer-what" value="What — What the org delivers" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=12;fontStyle=1;strokeColor=#8B5CF6;fontColor=#8B5CF6;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="80" width="260" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="e-plan-roadmap" style="endArrow=block;endFill=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="fiveyr" target="roadmap" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- ========================= -->
-        <!-- LAYER 2: BUSINESS          -->
-        <!-- ========================= -->
-        <mxCell id="layer-business" value="Business Layer" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#4A90E2;fontColor=#4A90E2;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="40" y="220" width="1080" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="capability" value="Business&lt;div&gt;Capability&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#DBEAFE;strokeColor=#4A90E2;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="260" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="process" value="Business&lt;div&gt;Process&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#1ABC9C;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="250" y="260" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="journey" value="Customer&lt;div&gt;Journey&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FFEDD5;strokeColor=#E67E22;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="430" y="260" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="persona" value="Persona" style="html=1;whiteSpace=wrap;fillColor=#FCE7F3;strokeColor=#DB2777;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="610" y="260" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="team" value="Team" style="html=1;whiteSpace=wrap;fillColor=#EDE9FE;strokeColor=#9B59B6;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="790" y="260" width="130" height="50" as="geometry" />
+        <mxCell id="offering" value="Offering" style="html=1;whiteSpace=wrap;fillColor=#EDE9FE;strokeColor=#8B5CF6;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="115" width="180" height="45" as="geometry" />
         </mxCell>
 
-        <!-- Business relationships -->
-        <mxCell id="e-cap-proc" value="realized by" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="capability" target="process" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- ============================== -->
+        <!-- LAYER 2: WHY (Capability)      -->
+        <!-- ============================== -->
+        <mxCell id="layer-why" value="Why — Business strategy" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=12;fontStyle=1;strokeColor=#4A90E2;fontColor=#4A90E2;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="80" width="260" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="e-jour-pers" value="performed by" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="journey" target="persona" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="e-team-cap" value="owns" style="endArrow=open;endFill=0;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="team" target="capability" edge="1">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- ========================= -->
-        <!-- LAYER 3: APPLICATION       -->
-        <!-- ========================= -->
-        <mxCell id="layer-app" value="Application Layer" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#E74C3C;fontColor=#E74C3C;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="40" y="380" width="1080" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="system" value="System /&lt;div&gt;Service&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#E74C3C;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="420" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="api" value="API" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#2ECC71;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="250" y="420" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="datamodel" value="Data Model" style="html=1;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#F39C12;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="430" y="420" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="lifecycle" value="Lifecycle&lt;div&gt;(State Machine)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#E0F2FE;strokeColor=#0891B2;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="610" y="420" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="sequence" value="Sequence&lt;div&gt;Diagram&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#EDE9FE;strokeColor=#7C3AED;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="790" y="420" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="refdata" value="Reference&lt;div&gt;Data&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#64748B;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="970" y="420" width="130" height="50" as="geometry" />
+        <mxCell id="capability" value="Business&lt;div&gt;Capability&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#DBEAFE;strokeColor=#4A90E2;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="380" y="115" width="180" height="45" as="geometry" />
         </mxCell>
 
-        <!-- Application relationships -->
-        <mxCell id="e-sys-api" value="exposes" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="system" target="api" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <!-- ============================== -->
+        <!-- LAYER 3: WHO (Team, Persona)   -->
+        <!-- ============================== -->
+        <mxCell id="layer-who" value="Who — People and organization" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=12;fontStyle=1;strokeColor=#9B59B6;fontColor=#9B59B6;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="640" y="80" width="360" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="e-sys-data" value="stores" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="api" target="datamodel" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="team" value="Team" style="html=1;whiteSpace=wrap;fillColor=#EDE9FE;strokeColor=#9B59B6;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="670" y="115" width="140" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="e-data-lc" value="has states" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="datamodel" target="lifecycle" edge="1">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="persona" value="Persona" style="html=1;whiteSpace=wrap;fillColor=#FCE7F3;strokeColor=#DB2777;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="830" y="115" width="140" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="e-seq-sys" value="shows interactions" style="endArrow=open;endFill=0;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;" parent="1" source="sequence" target="system" edge="1">
+
+        <!-- ============================== -->
+        <!-- LAYER 4: HOW (Process, Event)  -->
+        <!-- ============================== -->
+        <mxCell id="layer-how" value="How — Processes and events" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=12;fontStyle=1;strokeColor=#1ABC9C;fontColor=#1ABC9C;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="210" width="560" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="process" value="Business&lt;div&gt;Process&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#1ABC9C;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="250" width="220" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="business-event" value="Business&lt;div&gt;Event&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FFEDD5;strokeColor=#F97316;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="340" y="250" width="220" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ============================== -->
+        <!-- LAYER 5: WITH (Technology)     -->
+        <!-- ============================== -->
+        <mxCell id="layer-with" value="With — Technology" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=12;fontStyle=1;strokeColor=#E74C3C;fontColor=#E74C3C;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="350" width="960" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="system" value="System" style="html=1;whiteSpace=wrap;fillColor=#FEE2E2;strokeColor=#E74C3C;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="400" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="api" value="API" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#2ECC71;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="270" y="400" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="data-model" value="Data Model" style="html=1;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#F39C12;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="460" y="400" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="data-product" value="Data Product" style="html=1;whiteSpace=wrap;fillColor=#E0F2FE;strokeColor=#0EA5E9;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="650" y="400" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="platform" value="Platform" style="html=1;whiteSpace=wrap;fillColor=#E0E7FF;strokeColor=#6366F1;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="475" width="150" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ============================== -->
+        <!-- LAYER 6: CONTEXT (Knowledge)   -->
+        <!-- ============================== -->
+        <mxCell id="layer-context" value="Context — Domain knowledge" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=12;fontStyle=1;strokeColor=#34495E;fontColor=#34495E;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="580" width="960" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="jargon-biz" value="Business&lt;div&gt;Jargon&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#34495E;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="620" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="jargon-tech" value="Tech&lt;div&gt;Jargon&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#7F8C8D;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="270" y="620" width="150" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="decision" value="Architecture&lt;div&gt;Decision (ADR)&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#FEF3C7;strokeColor=#B45309;rounded=1;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="460" y="620" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- ============================================ -->
+        <!-- RELATIONSHIPS (Key connections between types) -->
+        <!-- ============================================ -->
+
+        <!-- Offering delivers Capability -->
+        <mxCell id="r-off-cap" value="delivers" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#8B5CF6;" parent="1" source="offering" target="capability" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- ========================= -->
-        <!-- LAYER 4: KNOWLEDGE         -->
-        <!-- ========================= -->
-        <mxCell id="layer-knowledge" value="Knowledge Layer" style="html=1;whiteSpace=wrap;dashed=1;fillColor=none;verticalAlign=top;fontSize=13;fontStyle=1;strokeColor=#34495E;fontColor=#34495E;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="40" y="540" width="1080" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="jargon-biz" value="Business&lt;div&gt;Jargon&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#34495E;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="70" y="575" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="jargon-tech" value="Tech &amp;&amp;amp; Eng&lt;div&gt;Jargon&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#F1F5F9;strokeColor=#7F8C8D;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="250" y="575" width="130" height="50" as="geometry" />
-        </mxCell>
-        <mxCell id="learning" value="Learning&lt;div&gt;Path&lt;/div&gt;" style="html=1;whiteSpace=wrap;fillColor=#D1FAE5;strokeColor=#059669;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="430" y="575" width="130" height="50" as="geometry" />
-        </mxCell>
-
-        <!-- ========================= -->
-        <!-- CROSS-LAYER RELATIONSHIPS  -->
-        <!-- ========================= -->
-
-        <!-- Strategy -> Business: Roadmap guides capabilities -->
-        <mxCell id="e-road-cap" value="guides" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="roadmap" target="capability" edge="1">
+        <!-- Team owns Capability -->
+        <mxCell id="r-team-cap" value="owns" style="endArrow=open;endFill=0;dashed=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#9B59B6;" parent="1" source="team" target="capability" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Strategy -> Application: Decisions constrain systems -->
-        <mxCell id="e-dec-sys" value="constrains" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="decision" target="sequence" edge="1">
+        <!-- Capability realized by Process -->
+        <mxCell id="r-cap-proc" value="realized by" style="endArrow=open;endFill=0;dashed=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#4A90E2;" parent="1" source="capability" target="process" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Business -> Application: Capability implemented by system -->
-        <mxCell id="e-cap-sys" value="implemented by" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="capability" target="system" edge="1">
+        <!-- Capability implemented by System -->
+        <mxCell id="r-cap-sys" value="implemented by" style="endArrow=block;endFill=1;dashed=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="capability" target="system" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Business -> Application: Process uses system -->
-        <mxCell id="e-proc-api" value="uses" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="process" target="api" edge="1">
+        <!-- Team owns System -->
+        <mxCell id="r-team-sys" value="owns" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#9B59B6;" parent="1" source="team" target="system" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Team -> System: owns -->
-        <mxCell id="e-team-sys" value="owns" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#999999;" parent="1" source="team" target="system" edge="1">
+        <!-- Process triggers/consumes Event -->
+        <mxCell id="r-proc-evt" value="triggers / consumes" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#F97316;" parent="1" source="process" target="business-event" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Knowledge -> All: Jargon annotates everything -->
-        <mxCell id="e-jargon-note" value="Jargon terms annotate entities across all layers" style="text;html=1;fontSize=10;fontStyle=2;align=left;verticalAlign=middle;fontColor=#999999;" parent="1" vertex="1">
-          <mxGeometry x="610" y="590" width="300" height="25" as="geometry" />
+        <!-- System publishes Event -->
+        <mxCell id="r-sys-evt" value="publishes" style="endArrow=open;endFill=0;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#F97316;" parent="1" source="system" target="business-event" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="155" y="340" />
+              <mxPoint x="450" y="340" />
+            </Array>
+          </mxGeometry>
         </mxCell>
 
-        <!-- Legend -->
-        <mxCell id="legend-box" value="Legend" style="html=1;whiteSpace=wrap;dashed=1;fillColor=#FAFAFA;verticalAlign=top;fontSize=11;fontStyle=1;strokeColor=#CCCCCC;rounded=1;" parent="1" vertex="1">
-          <mxGeometry x="40" y="670" width="500" height="80" as="geometry" />
+        <!-- System exposes API -->
+        <mxCell id="r-sys-api" value="exposes" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#2ECC71;" parent="1" source="system" target="api" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="legend-1" value="Each box = a DDC entity type (see meta/entity-types.yaml)" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
-          <mxGeometry x="60" y="695" width="350" height="20" as="geometry" />
+
+        <!-- API uses Data Model -->
+        <mxCell id="r-api-dm" value="uses data" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#F39C12;" parent="1" source="api" target="data-model" edge="1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="legend-2" value="Dashed arrows = relationships (see meta/relationship-types.yaml)" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
-          <mxGeometry x="60" y="718" width="350" height="20" as="geometry" />
+
+        <!-- Data Model sources Data Product -->
+        <mxCell id="r-dm-dp" value="sources" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#0EA5E9;" parent="1" source="data-model" target="data-product" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Platform hosts System -->
+        <mxCell id="r-plat-sys" value="hosts" style="endArrow=open;endFill=0;dashed=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=1;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#6366F1;" parent="1" source="platform" target="system" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Decision constrains System -->
+        <mxCell id="r-dec-sys" value="constrains" style="endArrow=block;endFill=1;dashed=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontSize=9;fontColor=#888888;strokeColor=#B45309;" parent="1" source="decision" target="data-model" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ============================== -->
+        <!-- LEGEND                          -->
+        <!-- ============================== -->
+        <mxCell id="legend-box" value="" style="html=1;whiteSpace=wrap;dashed=1;fillColor=#FAFAFA;verticalAlign=top;fontSize=11;fontStyle=1;strokeColor=#CCCCCC;rounded=1;" parent="1" vertex="1">
+          <mxGeometry x="40" y="720" width="960" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-title" value="Legend" style="text;html=1;fontSize=11;fontStyle=1;align=left;verticalAlign=middle;fontColor=#333333;" parent="1" vertex="1">
+          <mxGeometry x="55" y="725" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-1" value="Each box = a DDC entity type (14 YAML entries, 13 conceptual — Jargon has business + tech subtypes)" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="55" y="745" width="500" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-2" value="Dashed arrows = key relationships (see meta/relationship-types.yaml for full list of 14 relationship types)" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="55" y="763" width="500" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-3" value="Layers: What | Why | Who | How | With | Context" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
+          <mxGeometry x="600" y="745" width="350" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-4" value="Derived from IKEA&apos;s 32-entity enterprise meta-model, simplified for general use" style="text;html=1;fontSize=10;fontStyle=2;align=left;verticalAlign=middle;fontColor=#999999;" parent="1" vertex="1">
+          <mxGeometry x="600" y="763" width="380" height="18" as="geometry" />
         </mxCell>
 
       </root>

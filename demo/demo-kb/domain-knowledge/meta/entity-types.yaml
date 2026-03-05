@@ -1,18 +1,58 @@
 entity_types:
+  # What — What the organization delivers
+  - id: offering
+    display_name: Offering
+    description: Products and services the organization delivers to customers
+    icon: "package"
+    color: "#8B5CF6"
+    fields:
+      - name: offering_type
+        type: enum
+        values: [product, service, hybrid]
+        description: Whether this is a product, service, or both
+
+  # Why/What — Business strategy and structure
   - id: capability
-    display_name: Business Capabilities
+    display_name: Business Capability
     description: High-level business functions and capabilities
     icon: "capability"
     color: "#4A90E2"
 
+  # Who — People and organizational units
   - id: team
     display_name: Team
     description: Product teams and organizational units
     icon: "team"
     color: "#9B59B6"
 
+  - id: persona
+    display_name: Persona
+    description: User roles, stakeholders, and their responsibilities
+    icon: "persona"
+    color: "#DB2777"
+
+  # How — Processes and events
+  - id: process
+    display_name: Business Process
+    description: Business processes and workflows
+    icon: "process"
+    color: "#1ABC9C"
+    supports_diagram: true
+
+  - id: business-event
+    display_name: Business Event
+    description: Domain events that trigger processes or system interactions
+    icon: "event"
+    color: "#F97316"
+    fields:
+      - name: event_type
+        type: enum
+        values: [command, domain, integration]
+        description: Classification of the event
+
+  # With — Technology that runs things
   - id: system
-    display_name: System/Service
+    display_name: System
     description: Software systems, microservices, and applications
     icon: "system"
     color: "#E74C3C"
@@ -28,16 +68,41 @@ entity_types:
 
   - id: api
     display_name: API
-    description: REST, GraphQL, or gRPC APIs
+    description: REST, GraphQL, gRPC, or event-based APIs
     icon: "api"
     color: "#2ECC71"
+    supports_schema: true
 
   - id: data-model
     display_name: Data Model
-    description: Data entities and schemas
+    description: Data entities, schemas, and their relationships
     icon: "data"
     color: "#F39C12"
+    supports_schema: true
 
+  - id: data-product
+    display_name: Data Product
+    description: Curated, governed data assets published for consumption
+    icon: "database"
+    color: "#0EA5E9"
+    fields:
+      - name: data_product_type
+        type: enum
+        values: [source-aligned, aggregate, consumer-aligned]
+        description: Classification per data mesh topology
+
+  - id: platform
+    display_name: Platform
+    description: Infrastructure and platform services that host systems
+    icon: "cloud"
+    color: "#6366F1"
+    fields:
+      - name: platform_type
+        type: enum
+        values: [cloud, on-premise, hybrid]
+        description: Where the platform runs
+
+  # Context — Domain knowledge and decisions
   - id: jargon-business
     display_name: Business Jargon
     description: Business terminology and concepts
@@ -45,19 +110,24 @@ entity_types:
     color: "#34495E"
 
   - id: jargon-tech
-    display_name: Tech & Engineering Jargon
+    display_name: Tech Jargon
     description: Technical and engineering terminology
     icon: "tech"
     color: "#7F8C8D"
 
-  - id: persona
-    display_name: Personas
-    description: User roles, stakeholders, and their responsibilities
-    icon: "persona"
-    color: "#DB2777"
-
-  - id: reference-data
-    display_name: Reference Data
-    description: Enumerated values, master data lists (statuses, types, categories)
-    icon: "reference"
-    color: "#64748B"
+  - id: decision
+    display_name: Architecture Decision
+    description: Architecture decisions being explored or resolved (ADRs)
+    icon: "decision"
+    color: "#B45309"
+    fields:
+      - name: status
+        type: enum
+        values: [active, resolved]
+        description: Whether the decision is still being worked on or has been resolved
+      - name: date_opened
+        type: date
+        description: When the decision was opened
+      - name: date_resolved
+        type: date
+        description: When the decision was resolved (if applicable)
