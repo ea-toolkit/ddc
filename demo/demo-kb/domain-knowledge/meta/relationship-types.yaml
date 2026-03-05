@@ -1,14 +1,27 @@
 relationship_types:
+  # Ownership and responsibility
   - id: owns
     display_name: Owns
-    description: Team owns a system or capability
+    description: Team owns a system, capability, or data product
     color: "#9B59B6"
 
+  - id: manages
+    display_name: Manages
+    description: Team manages data or system operations
+    color: "#F39C12"
+
+  # Capability realization
   - id: implements
     display_name: Implements
-    description: System implements a capability
+    description: System implements a business capability
     color: "#3498DB"
 
+  - id: delivers
+    display_name: Delivers
+    description: Offering delivers a business capability
+    color: "#8B5CF6"
+
+  # System integration
   - id: uses
     display_name: Uses
     description: System uses an API or service
@@ -16,10 +29,49 @@ relationship_types:
 
   - id: depends_on
     display_name: Depends On
-    description: System depends on another system
+    description: Entity depends on another entity
     color: "#E74C3C"
 
   - id: integrates_with
     display_name: Integrates With
     description: System integrates with another system
     color: "#E67E22"
+
+  - id: exposes
+    display_name: Exposes
+    description: System exposes an API
+    color: "#10B981"
+
+  # Data relationships
+  - id: uses_data
+    display_name: Uses Data
+    description: System or API uses a data model
+    color: "#95A5A6"
+
+  - id: produces
+    display_name: Produces
+    description: System or team produces a data product
+    color: "#0EA5E9"
+
+  # Hierarchy
+  - id: part_of
+    display_name: Part Of
+    description: Entity is part of a larger entity (capability hierarchy, system decomposition)
+    color: "#1ABC9C"
+
+  # Infrastructure
+  - id: hosts
+    display_name: Hosts
+    description: Platform hosts a system
+    color: "#6366F1"
+
+  # Events
+  - id: publishes
+    display_name: Publishes
+    description: System publishes a business event
+    color: "#F97316"
+
+  - id: consumes
+    display_name: Consumes
+    description: System or process consumes a business event
+    color: "#FB923C"

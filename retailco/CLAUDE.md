@@ -1,14 +1,20 @@
-# DDC Agent Instructions
+# CLAUDE.md - DDC Knowledge Base
 
-You are a **Domain Agent** operating within the Demand-Driven Context (DDC) framework. You help users solve enterprise domain problems by leveraging a structured knowledge base.
+> This is a DDC knowledge base for **RetailCo** — a large European home furnishing retailer.
 
-## Your Workflow
+## What This Is
+
+This folder is a domain knowledge base for RetailCo, built using the DDC (Demand-Driven Context) methodology. It covers RetailCo's enterprise architecture — systems, capabilities, data models, integrations, and domain terminology across retail, supply chain, e-commerce, and store operations.
+
+The knowledge base grows through problem-driven curation: an agent tries to answer a domain question, identifies what's missing, and curates structured knowledge from human input.
+
+## Your Workflow (DDC Agent Behavior)
 
 When the user asks a domain question, follow these steps IN ORDER:
 
 ### Step 1: Search the Knowledge Base
 
-Look for relevant entity files in the `domain-knowledge/entities/` folder. Read any files that might be relevant to the question. Check:
+Look for relevant entity files in `domain-knowledge/entities/`. Check all subfolders:
 - `entities/offerings/` for products and services
 - `entities/capabilities/` for business capabilities
 - `entities/teams/` for team ownership
@@ -23,22 +29,19 @@ Look for relevant entity files in the `domain-knowledge/entities/` folder. Read 
 - `entities/jargon-business/` for terminology
 - `entities/jargon-tech/` for technical terminology
 
-Also check `domain-knowledge/meta/entity-types.yaml` to understand the meta-model structure.
-
 ### Step 2: If Knowledge is Insufficient — Create a Demand Checklist
 
 If you cannot find enough structured domain knowledge to answer the question accurately, you MUST:
 
 1. Say: **"I searched the knowledge base but don't have enough domain-specific context to answer this accurately."**
 2. Explain what you found (if anything) and what's missing
-3. Create a **Demand Checklist** — a structured list of exactly what information you need, organized by type:
+3. Create a **Demand Checklist** — a structured list of exactly what information you need:
 
 ```
 ## Demand Checklist
 
 ### Terminology I Need Defined
 - [ ] Term 1 — what does this mean in YOUR domain?
-- [ ] Term 2 — ...
 
 ### Systems I Need Documented
 - [ ] System name — what does it do? who owns it? what does it integrate with?
@@ -79,12 +82,12 @@ related_systems: [id-1, id-2]  # if applicable
 <Structured details from the user's input>
 ```
 
-4. Create the files in the knowledge base
+4. Create the files in the knowledge base under `domain-knowledge/entities/<type>/`
 5. Confirm what you created: "I've curated N entities from your input: [list them]"
 
 ### Step 4: Answer the Question
 
-Now re-read the entity files you just created and answer the original question using SPECIFIC information from the knowledge base — system names, decision codes, SLAs, ownership, relationships. Your answer should be precise enough that someone could design an integration from it.
+Now re-read the entity files you just created and answer the original question using SPECIFIC information from the knowledge base — system names, decision codes, SLAs, ownership, relationships.
 
 ## Entity Type Reference
 
@@ -104,6 +107,15 @@ Now re-read the entity files you just created and answer the original question u
 | `jargon-business` | `entities/jargon-business/` | Business terminology and concepts |
 | `jargon-tech` | `entities/jargon-tech/` | Technical terminology |
 | `decision` | `decisions/` | Architecture Decision Records |
+
+<!-- CUSTOMIZE: Add domain-specific entity types if needed -->
+
+## Domain-Specific Rules
+
+- RetailCo is an **anonymized representation** of a real large European retailer. All system names, team names, and internal terminology are fictional but structurally accurate.
+- When documenting systems, always capture: make_or_buy status, owning team, key integrations, and the business capability it implements.
+- Retail domain has distinct areas: **store operations**, **e-commerce**, **supply chain**, **range & product**, **customer engagement**, and **corporate functions**. Use these as top-level capability groupings.
+- All entity descriptions should be precise enough for an enterprise architect to reason about integration design.
 
 ## Important Rules
 

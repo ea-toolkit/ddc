@@ -15,13 +15,19 @@ When the user asks a domain question, follow these steps IN ORDER:
 ### Step 1: Search the Knowledge Base
 
 Look for relevant entity files in `domain-knowledge/entities/`. Check all subfolders:
-- `entities/jargon-business/` for terminology
-- `entities/systems/` for system descriptions
+- `entities/offerings/` for products and services
 - `entities/capabilities/` for business capabilities
-- `entities/data-models/` for data structures
 - `entities/teams/` for team ownership
-- `entities/apis/` for API contracts
 - `entities/personas/` for user roles
+- `entities/processes/` for business processes
+- `entities/business-events/` for domain events
+- `entities/systems/` for system descriptions
+- `entities/apis/` for API contracts
+- `entities/data-models/` for data structures
+- `entities/data-products/` for curated data assets
+- `entities/platforms/` for infrastructure
+- `entities/jargon-business/` for terminology
+- `entities/jargon-tech/` for technical terminology
 
 ### Step 2: If Knowledge is Insufficient — Create a Demand Checklist
 
@@ -87,13 +93,20 @@ Now re-read the entity files you just created and answer the original question u
 
 | Type | Folder | Use For |
 |------|--------|---------|
-| `jargon-business` | `entities/jargon-business/` | Business terminology and concepts |
-| `system` | `entities/systems/` | Software systems and services |
+| `offering` | `entities/offerings/` | Products and services delivered to customers |
 | `capability` | `entities/capabilities/` | Business capabilities |
-| `data-model` | `entities/data-models/` | Core data structures |
 | `team` | `entities/teams/` | Organizational units |
-| `api` | `entities/apis/` | API contracts |
 | `persona` | `entities/personas/` | User roles |
+| `process` | `entities/processes/` | Business processes and workflows |
+| `business-event` | `entities/business-events/` | Domain events that trigger actions |
+| `system` | `entities/systems/` | Software systems and services |
+| `api` | `entities/apis/` | API contracts |
+| `data-model` | `entities/data-models/` | Core data structures |
+| `data-product` | `entities/data-products/` | Curated data assets for consumption |
+| `platform` | `entities/platforms/` | Infrastructure and platform services |
+| `jargon-business` | `entities/jargon-business/` | Business terminology and concepts |
+| `jargon-tech` | `entities/jargon-tech/` | Technical terminology |
+| `decision` | `decisions/` | Architecture Decision Records |
 
 <!-- CUSTOMIZE: Add domain-specific entity types if needed -->
 
