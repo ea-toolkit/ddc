@@ -18,12 +18,17 @@ your-domain/
 |-- domain-knowledge/
 |   |-- meta/                      # Entity and relationship type definitions (included)
 |   |-- entities/
+|   |   |-- offerings/
 |   |   |-- capabilities/
-|   |   |-- systems/
 |   |   |-- teams/
+|   |   |-- personas/
+|   |   |-- processes/
+|   |   |-- business-events/
+|   |   |-- systems/
 |   |   |-- apis/
 |   |   |-- data-models/
-|   |   |-- personas/
+|   |   |-- data-products/
+|   |   |-- platforms/
 |   |   |-- jargon-business/
 |   |   +-- jargon-tech/
 |   |-- diagrams/

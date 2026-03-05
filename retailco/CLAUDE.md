@@ -1,12 +1,12 @@
 # CLAUDE.md - DDC Knowledge Base
 
-<!-- CUSTOMIZE: Replace this description with your domain -->
-> This is a DDC knowledge base for **[YOUR DOMAIN NAME]**.
+> This is a DDC knowledge base for **RetailCo** — a large European home furnishing retailer.
 
 ## What This Is
 
-<!-- CUSTOMIZE: Describe what this knowledge base covers -->
-This folder is a domain knowledge base built using the DDC (Demand-Driven Context) methodology. It grows through problem-driven curation: an agent tries to answer a domain question, identifies what's missing, and curates structured knowledge from human input.
+This folder is a domain knowledge base for RetailCo, built using the DDC (Demand-Driven Context) methodology. It covers RetailCo's enterprise architecture — systems, capabilities, data models, integrations, and domain terminology across retail, supply chain, e-commerce, and store operations.
+
+The knowledge base grows through problem-driven curation: an agent tries to answer a domain question, identifies what's missing, and curates structured knowledge from human input.
 
 ## Your Workflow (DDC Agent Behavior)
 
@@ -110,6 +110,13 @@ Now re-read the entity files you just created and answer the original question u
 
 <!-- CUSTOMIZE: Add domain-specific entity types if needed -->
 
+## Domain-Specific Rules
+
+- RetailCo is an **anonymized representation** of a real large European retailer. All system names, team names, and internal terminology are fictional but structurally accurate.
+- When documenting systems, always capture: make_or_buy status, owning team, key integrations, and the business capability it implements.
+- Retail domain has distinct areas: **store operations**, **e-commerce**, **supply chain**, **range & product**, **customer engagement**, and **corporate functions**. Use these as top-level capability groupings.
+- All entity descriptions should be precise enough for an enterprise architect to reason about integration design.
+
 ## Important Rules
 
 - NEVER make up domain-specific information. If you don't have it in the knowledge base, say so.
@@ -117,5 +124,3 @@ Now re-read the entity files you just created and answer the original question u
 - When curating, create SEPARATE files for each entity — don't combine multiple entities into one file.
 - Use kebab-case for file names and IDs.
 - Keep descriptions concise — minimum viable context, not encyclopedic.
-
-<!-- CUSTOMIZE: Add domain-specific rules or constraints below -->
