@@ -53,13 +53,18 @@ Don't create files randomly. Every piece of content has a designated location ba
 |   |   |-- entity-types.yaml      # What entity types exist
 |   |   +-- relationship-types.yaml # How things connect
 |   |
-|   |-- entities/                  # Domain entities
+|   |-- entities/                  # Domain entities (13 types)
+|   |   |-- offerings/             # Products and services delivered
 |   |   |-- capabilities/          # Business capabilities
-|   |   |-- systems/               # Software systems
 |   |   |-- teams/                 # Product teams
-|   |   |-- apis/                  # API documentation
-|   |   |-- data-models/           # Data structures and reference data
 |   |   |-- personas/              # User roles
+|   |   |-- processes/             # Business processes and workflows
+|   |   |-- business-events/       # Domain events that trigger actions
+|   |   |-- systems/               # Software systems
+|   |   |-- apis/                  # API documentation
+|   |   |-- data-models/           # Data structures and schemas
+|   |   |-- data-products/         # Curated data assets for consumption
+|   |   |-- platforms/             # Infrastructure and platform services
 |   |   |-- jargon-business/       # Business terminology
 |   |   +-- jargon-tech/           # Technical terminology
 |   |
@@ -86,10 +91,12 @@ Don't create files randomly. Every piece of content has a designated location ba
 When you receive a problem or question, follow this navigation pattern:
 
 ### Step 1: Identify the Problem Type
-- **Integration question?** -> Start with `diagrams/sequences/` and `entities/systems/`
-- **Data question?** -> Start with `entities/data-models/`
+- **Integration question?** -> Start with `entities/systems/`, `entities/apis/`, and `diagrams/sequences/`
+- **Data question?** -> Start with `entities/data-models/` and `entities/data-products/`
 - **Terminology confusion?** -> Start with `entities/jargon-business/` or `entities/jargon-tech/`
-- **Process question?** -> Start with `diagrams/processes/`
+- **Process question?** -> Start with `entities/processes/` and `entities/business-events/`
+- **Infrastructure question?** -> Start with `entities/platforms/` and `entities/systems/`
+- **Product/offering question?** -> Start with `entities/offerings/` and `entities/capabilities/`
 - **Architecture decision?** -> Check `decisions/` for similar past decisions
 
 ### Step 2: Gather Context

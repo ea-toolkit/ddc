@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/validate-entity.sh"
+          }
+        ],
+        "description": "Validate entity type field matches target directory before writing"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/auto-commit.sh"
+          }
+        ],
+        "description": "Auto-commit domain-knowledge and cycle-log changes (DDC principle: commit early, commit often)"
+      }
+    ]
+  }
+}
