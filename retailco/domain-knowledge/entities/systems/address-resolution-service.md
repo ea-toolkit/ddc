@@ -13,7 +13,7 @@ depends_on: []
 
 ## Overview
 
-The AddressResolutionService handles geocoding — converting customer delivery addresses into geographic coordinates and determining which serviceability zone the address falls into. This zone information is critical for the CapacityController to determine what delivery options are available.
+The AddressResolutionService handles address resolution — converting customer delivery addresses into geographic coordinates and determining which serviceability zone the address falls into. This zone information is critical for the CapacityController to determine what delivery options are available.
 
 ## Details
 
@@ -24,10 +24,10 @@ The AddressResolutionService handles geocoding — converting customer delivery 
 
 ### Integration Points
 - **Inbound**: Called by `delivery-options-orchestrator` during checkout
-- **Outbound**: Previously used an external geocoding provider; migrated to an internal solution
+- **Outbound**: Previously used an external address resolution provider; migrated to an internal solution
 
 ### Known Incidents
-- **Geocoding migration overload**: During migration from an external geocoding provider to an internal solution, the new service was not load tested. Under production traffic, it became overloaded and caused the delivery options page to fail globally (except China) for approximately one hour. Hundreds of orders were lost.
+- **Address resolution migration overload**: During migration from an external provider to an internal solution, the new service was not load tested. Under production traffic, it became overloaded and caused the delivery options page to fail globally (except China) for approximately one hour. Hundreds of orders were lost.
 
 ### Known Issues
 - Load testing gaps — the migration incident revealed that capacity planning for this service was inadequate
