@@ -53,10 +53,10 @@ The OrderIntegrationHub routes orders based on market, product type, and warehou
 - **Picking Service → External Routing Provider**: Direct API calls (parcel data: weight, dimensions, destination)
 
 ### Backorder Path
-If inventory allocation determines no stock is available (ATP check fails), the order is marked as `backordered` instead of proceeding to fulfillment. The customer sees no delivery date. This can happen incorrectly if the allocation logic checks the wrong fulfillment locations or has misconfigured market-to-DC mappings. See `backordered`, `inventory-allocation`, `available-to-promise`.
+If inventory allocation determines no stock is available (ATP check fails), the order is marked as `backordered` instead of proceeding to fulfillment. The customer sees no delivery date. This can happen incorrectly when upstream data is corrupted — e.g., a Change Data Capture pipeline tagging orders with wrong region metadata causes ATP to check inventory in the wrong region. See `backordered`, `change-data-capture`, `available-to-promise`.
 
 ### Known Failure Modes
-- **False backorders**: Inventory allocation marks orders backordered despite stock being available at distribution centers. Known to have affected the entire EU region due to configuration/migration errors. See `backordered`.
+- **False backorders via data replication error**: Orders backordered despite stock being available at distribution points. Root cause: misconfigured Change Data Capture pipeline tagged orders with wrong region, so ATP checked inventory in a region with no stock. Pattern: correct logic, corrupted data. See `backordered`, `change-data-capture`.
 - Poison messages blocking Picking Service queue (no dead letter queue)
 - **Unit conversion bugs** on weight data: Picking Service sends grams as kilograms (or similar), causing 1000x errors. No validation on either side. Deployments roll out regionally, affecting thousands of orders within hours. See `unit-conversion-bug`, `picking-to-routing-parcel-api`.
 - Consumer lag with no automated detection or recovery
