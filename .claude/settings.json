@@ -10,6 +10,16 @@
           }
         ],
         "description": "Validate entity type field matches target directory before writing"
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/anonymization-guard.sh"
+          }
+        ],
+        "description": "Block writes containing real (non-anonymized) names in public knowledge base files"
       }
     ],
     "PostToolUse": [
