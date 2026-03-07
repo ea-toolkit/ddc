@@ -78,9 +78,38 @@ The domain expert provided:
 | Orders Not Dropping | jargon-tech | updated | `entities/jargon-tech/orders-not-dropping.md` |
 | Service Order Manager | system | reused | `entities/systems/service-order-manager.md` |
 
-## Agent After (With Context)
+## Agent After — First Attempt (Rejected)
 
-Correctly identified:
+After curating initial entities, the agent produced a "4 failure zones" diagnostic framework:
+- Zone 1: StoreSellingApp (terminal-side crashes/errors)
+- Zone 2: Intermediate services (vaguely described as "black box")
+- Zone 3: OrderCaptureAPI
+- Zone 4: Service Order Manager and downstream
+
+The answer recommended generic triage: "check if online works," "check logs," "check for deployments." This was **rejected by the human reviewer** for being too vague and missing the actual architecture.
+
+Key failures in this attempt:
+- Treated Zone 2 as a "black box" instead of identifying the 3-service architecture
+- Mentioned "code refactoring" incident in passing without making it the central pattern
+- Diagnostic was generic ("check logs") rather than specific ("which of the 3 services broke?")
+- Framed it as an operational/infrastructure problem when it was a testing/change-management gap
+- "Online vs in-store" diagnostic was backwards — the real question is which of the 3 store services failed, not whether online works
+
+**Confidence: 3/5** (agent self-assessed; human scored lower)
+
+## Human Correction
+
+The expert rejected the answer and provided specific corrections:
+- There are **3 specific services** that call Service Order Manager to save orders — not a vague "intermediate layer"
+- The root cause was **incomplete refactoring**: 2 of 3 services updated, 3rd missed
+- This is a **testing gap**, not an operational gap — integration tests should catch this
+- Partial failures (1 of 3 broken) mean some orders still flow, making detection harder
+- The expert recommended documenting "incomplete refactoring across multiple services" as a distinct anti-pattern
+- Duration was 2 hours 8 minutes, detected relatively fast vs other "orders not dropping" incidents
+
+## Agent After — Second Attempt (Accepted)
+
+After correction, the agent correctly identified:
 - 3 services handle store order creation, each calling Service Order Manager's save order endpoint
 - Root cause: incomplete refactoring — 2 of 3 services updated, 3rd missed
 - Partial failure pattern: some store orders flow (via updated services), others don't (via missed service)
@@ -93,11 +122,11 @@ Correctly identified:
 
 **Score: 4/5** — "Much better! Now you've got it."
 
-Corrections applied:
-- First answer was too generic ("check each zone") — corrected to specific 3-service architecture
-- Added the incomplete refactoring anti-pattern as a distinct entity
-- Updated duration from "~2 hours" to "2 hours 8 minutes"
-- Added that orders were captured correctly in StoreSellingApp — failure was between intermediate services and SOM
+What the agent got wrong initially and had to be corrected on:
+- Handwaving Zone 2 as a "black box" instead of documenting the 3-service architecture
+- Generic diagnostic approach instead of targeting the specific failure pattern
+- Misframing as operational failure instead of change management/testing gap
+- The "online vs in-store" diagnostic being backwards
 
 Remaining gaps:
 - Names of the 3 intermediate services — unknown even to the expert
