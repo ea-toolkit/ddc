@@ -16,7 +16,7 @@ A fulfillment unit is any physical location that holds inventory and can fulfill
 ## Details
 
 ### Types
-- **Distribution Center (DC)**: Large dedicated warehouses for customer order fulfillment
+- **Distribution Point (DP)**: Large dedicated warehouses for customer order fulfillment. See `distribution-point`.
 - **Store**: Regular retail stores that ship from their own inventory
 - **Central Warehouse**: Centralized storage and distribution facilities
 

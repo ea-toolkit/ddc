@@ -52,7 +52,11 @@ The OrderIntegrationHub routes orders based on market, product type, and warehou
 - **Service Order Manager → Picking Service**: Order dispatch
 - **Picking Service → External Routing Provider**: Direct API calls (parcel data: weight, dimensions, destination)
 
+### Backorder Path
+If inventory allocation determines no stock is available (ATP check fails), the order is marked as `backordered` instead of proceeding to fulfillment. The customer sees no delivery date. The ATP check runs against inventory state in the Service Order Manager's inventory module — if that module's configuration is corrupted, all orders for the affected region are falsely backordered. See `backordered`, `available-to-promise`.
+
 ### Known Failure Modes
+- **False backorders via cross-compartment deployment**: A cutover team ran a deployment script intended for the CN compartment against the EU compartment, corrupting the Service Order Manager's inventory module configuration. ATP ran correctly but against wrong data — all EU orders immediately backordered despite stock being available at distribution points. Pattern: correct logic, corrupted configuration. See `cross-compartment-deployment-error`.
 - Poison messages blocking Picking Service queue (no dead letter queue)
 - **Unit conversion bugs** on weight data: Picking Service sends grams as kilograms (or similar), causing 1000x errors. No validation on either side. Deployments roll out regionally, affecting thousands of orders within hours. See `unit-conversion-bug`, `picking-to-routing-parcel-api`.
 - Consumer lag with no automated detection or recovery
