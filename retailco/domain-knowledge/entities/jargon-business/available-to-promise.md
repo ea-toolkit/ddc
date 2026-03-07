@@ -22,9 +22,4 @@ Available-to-Promise is the inventory availability calculation that determines w
 - **Safety stock thresholds**: Minimum inventory levels that should not be allocated
 
 ### Role in Order Flow
-When an order is placed, the system checks ATP to determine if inventory is available. If ATP returns zero or negative for all eligible fulfillment locations, the order is marked as `backordered`. If ATP is positive, the order proceeds to fulfillment.
-
-### Knowledge Gaps
-- Exact system or service that performs the ATP calculation is not documented
-- Whether ATP checks all warehouses or only geographically eligible ones is unknown
-- How ATP interacts with market-specific warehouse configurations is unclear
+When an order is placed, the system checks ATP to determine if inventory is available. If ATP returns zero or negative for all eligible fulfillment locations, the order is marked as `backordered`. If ATP is positive, the order proceeds to fulfillment. The ATP check runs against inventory state held within the Service Order Manager's inventory module.
