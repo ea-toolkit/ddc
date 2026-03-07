@@ -48,12 +48,15 @@ How orders are distributed across the 3 services is unknown. Possible factors: o
 
 ### Known Failure Pattern: Incomplete Refactoring
 A specific incident occurred where a team refactored code across the store order processing services:
+- All 3 services call the Service Order Manager's **save order endpoint**
 - 2 of the 3 services were updated correctly
 - The 3rd service was missed
 - Orders routed through the missed service never reached the Service Order Manager
-- **Duration**: ~2 hours
+- Orders were captured correctly in StoreSellingApp — the failure was between the intermediate services and Service Order Manager
+- **Duration**: 2 hours 8 minutes
 - **Scope**: Global (all markets except China)
 - **Detection**: Not caught by automated tests — no integration test coverage exists for the complete StoreSellingApp → Service Order Manager path across all 3 services
+- See `incomplete-refactoring-pattern` for the anti-pattern and safeguards
 
 ### Root Cause Pattern
 This is NOT an operational failure (network, infrastructure). It's a **change management and testing gap**:
