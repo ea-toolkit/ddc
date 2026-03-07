@@ -14,6 +14,7 @@ Execute a full Demand-Driven Context cycle for: $ARGUMENTS
 1. Find the nearest `domain-knowledge/` directory. If multiple exist, ask which one to use.
 2. Determine the next cycle number by checking existing files in `ddc-cycle-logs/`.
 3. Check if `.private/anonymization-map.yaml` exists. If yes, load it — all entity names, system names, and domain-specific terms MUST be mapped through it before writing any public entity files.
+4. **Create a feature branch**: Run `git checkout -b ddc/<NNN>-<problem-slug>` (e.g., `ddc/005-in-store-orders-not-flowing`). All cycle work happens on this branch. If already on a `ddc/` branch, skip this step.
 
 ## Step 1: Source Document (optional)
 
@@ -77,9 +78,11 @@ Apply any corrections to entity files immediately.
 4. Ask for review again (Step 5 again)
 5. Repeat until accepted — each rejected attempt MUST be logged in the cycle log (Step 6)
 
-## Step 6: Log the Cycle
+## Step 6: Log the Cycle and Wrap Up
 
 Create a cycle log at `ddc-cycle-logs/<NNN>-<problem-slug>.md` using the cycle-log-format rule.
+
+After logging, ask the user: "Ready to push and create a PR for this cycle?"
 
 Include these metrics in the frontmatter:
 - `entities_created`: count of new entity files
