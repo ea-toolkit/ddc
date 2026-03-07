@@ -1,10 +1,14 @@
 #!/bin/bash
+set -euo pipefail
 # PreToolUse hook: validate that entity type field matches target directory
 # Runs before Write/Edit on domain-knowledge/entities/** files
 # Exit 0 = allow, Exit 2 = block with message
 
-# Extract file path from TOOL_INPUT
-FILE_PATH=$(echo "$TOOL_INPUT" | grep -o '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"file_path"[[:space:]]*:[[:space:]]*"//;s/"$//')
+# Claude Code passes hook input via stdin as JSON
+input=$(cat)
+
+# Extract file path from stdin JSON using jq
+FILE_PATH=$(echo "$input" | jq -r '.tool_input.file_path // empty')
 
 # Only validate entity files
 if [[ "$FILE_PATH" != *"/domain-knowledge/entities/"* ]]; then
@@ -26,7 +30,7 @@ fi
 
 # Extract the type field from content being written
 # Look in either 'content' (Write) or the file itself (Edit)
-CONTENT=$(echo "$TOOL_INPUT" | grep -o '"content"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1)
+CONTENT=$(echo "$input" | jq -r '.tool_input.content // empty')
 
 if [ -n "$CONTENT" ]; then
   # Check for type field in the YAML frontmatter

@@ -1,11 +1,15 @@
 #!/bin/bash
+set -euo pipefail
 # Auto-commit hook for DDC cycles
 # Triggers after Write/Edit on domain-knowledge or ddc-cycle-logs files
 # Follows the DDC principle: "Commit Early, Commit Often"
 # A logical unit = one entity added, one diagram updated, one decision documented
 
-# Extract file path from TOOL_INPUT (JSON)
-FILE_PATH=$(echo "$TOOL_INPUT" | grep -o '"file_path"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"file_path"[[:space:]]*:[[:space:]]*"//;s/"$//')
+# Claude Code passes hook input via stdin as JSON
+input=$(cat)
+
+# Extract file path from stdin JSON using jq
+FILE_PATH=$(echo "$input" | jq -r '.tool_input.file_path // empty')
 
 # Exit if no file path found
 if [ -z "$FILE_PATH" ]; then
