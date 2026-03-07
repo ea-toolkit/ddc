@@ -27,6 +27,7 @@ related_systems: [service-order-manager, picking-service, warehouse-management-s
 4. **Consumer shutdown during planned maintenance** — LCM activities on integration platforms shut down consumers without notifying downstream teams. See `planned-maintenance-communication-gap`.
 5. **Deployment breaking consumers** — OrderIntegrationHub deployment breaks message flow to WMS
 6. **Status transition failures** — order reaches the database but fails internal processing to become actionable
+7. **Incomplete refactoring across store order services** — 3 services handle store order creation, each calling Service Order Manager. Code refactoring applied to 2 of 3, missed the 3rd. Orders through the missed service never reached Service Order Manager. Global impact (~2 hours, all markets except China). See `in-store-order-flow`.
 
 ### Why It Recurs
 - No centralized order flow monitoring across the fulfillment chain
