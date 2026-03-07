@@ -30,6 +30,8 @@ related_systems: [service-order-manager, picking-service, warehouse-management-s
 7. **Incomplete refactoring across store order services** — 3 services handle store order creation, each calling Service Order Manager. Code refactoring applied to 2 of 3, missed the 3rd. Orders through the missed service never reached Service Order Manager. Global impact (~2 hours, all markets except China). See `in-store-order-flow`.
 8. **Cross-compartment deployment corrupting inventory** — cutover team ran XML deployment script intended for CN compartment on EU compartment, corrupting Service Order Manager's inventory module. Orders didn't "not drop" in the traditional sense — they flowed correctly but were immediately marked `backordered` due to corrupted inventory data. EU-wide impact. See `cross-compartment-deployment-error`.
 
+9. **External Routing Provider internal processing failure** — Service Order Manager successfully sends SaveWorkOrder messages, External Routing Provider receives and stores them in its database, but fails to generate picking instructions for warehouse systems. Orders exist upstream but warehouses see no pick tasks. This is a subtler variant: messages were *delivered* but the recipient failed to *act* on them. See `work-order-release`, `work-order-to-picking-flow`.
+
 ### Why It Recurs
 - No centralized order flow monitoring across the fulfillment chain
 - Each system boundary is a potential drop point with no end-to-end tracing
