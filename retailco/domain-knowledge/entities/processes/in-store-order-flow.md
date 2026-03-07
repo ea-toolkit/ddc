@@ -2,7 +2,7 @@
 type: process
 id: in-store-order-flow
 name: In-Store Order Creation Flow
-description: The process by which store staff create customer orders via the StoreSellingApp and route them into the fulfillment pipeline.
+description: The process by which store staff create customer orders via the StoreSellingApp, routed through 3 intermediate services to the Service Order Manager.
 status: active
 related_systems: [store-selling-app, order-capture-api, service-order-manager]
 implements_capability: order-capture
@@ -12,7 +12,7 @@ implements_capability: order-capture
 
 ## Overview
 
-Store staff create orders for walk-in customers using the StoreSellingApp. The order should flow from the app through order capture services and into the Service Order Manager, where it enters the same fulfillment pipeline as online orders. The upstream path (StoreSellingApp to Service Order Manager) is less well-understood than the downstream fulfillment chain.
+Store staff create orders for walk-in customers using the StoreSellingApp. These orders are routed through **3 separate services** that each call the Service Order Manager to save the order. The routing decision — which of the 3 services handles a given order — is based on criteria that are not yet documented. This 3-service architecture is the critical upstream path that differs from the online channel.
 
 ## Details
 
@@ -22,43 +22,47 @@ Store staff create orders for walk-in customers using the StoreSellingApp. The o
 3. Enters product codes / scans items
 4. Selects delivery or pickup option
 5. Processes payment
-6. Submits order — expects confirmation that order is placed
+6. Submits order — routed to one of 3 services that calls Service Order Manager
 
-### Technical Flow (Partially Known)
+### Technical Flow
 ```
 StoreSellingApp (in-store terminal)
-    ↓ [unknown integration pattern — API call? multiple hops?]
-OrderCaptureAPI / intermediate services
-    ↓ [Kafka]
+    ↓
+[3 intermediate services — names unknown]
+    Service A ──→ Service Order Manager (save order)
+    Service B ──→ Service Order Manager (save order)
+    Service C ──→ Service Order Manager (save order)
+    ↓
 Service Order Manager
     ↓ [downstream fulfillment — well-documented]
 Picking / WMS / Routing
 ```
 
-### Online vs In-Store Path Differences
-- **Online**: E-commerce frontend → OrderCaptureAPI → Service Order Manager (relatively direct)
-- **In-Store**: StoreSellingApp → ??? → Service Order Manager (path less clear, possibly involves additional services or network bridges)
-- Both paths should converge at the Service Order Manager
-- Regional differences may exist — some markets may route differently
+### Routing Logic
+How orders are distributed across the 3 services is unknown. Possible factors: order type, market, product category, or legacy routing rules. This routing is critical — a failure in one service means only orders routed to that service fail, while others continue working. This creates **partial failures** that are harder to detect than total outages.
 
-### Failure Scenarios (Hypothesized)
-When "store staff cannot process orders," the failure could be at any of these layers:
-1. **StoreSellingApp itself** — app crash, freeze, UI error
-2. **Network** — store terminal cannot reach cloud services (different network topology than cloud-native services)
-3. **Intermediate services** — one of the services between StoreSellingApp and OrderCaptureAPI is down or broken
-4. **OrderCaptureAPI** — API rejecting or silently dropping orders
-5. **Kafka/Service Order Manager** — downstream rejection (less likely to be store-specific)
+### Online vs In-Store Path
+- **Online**: Goes through OrderCaptureAPI more directly to Service Order Manager
+- **In-Store**: Goes through the 3-service layer before reaching Service Order Manager
+- Both converge at Service Order Manager for downstream fulfillment
 
-### Diagnostic Approach
-To pinpoint where the flow breaks:
-- **Check StoreSellingApp**: What does the staff member see? Error message? Timeout? Silent failure?
-- **Check OrderCaptureAPI logs**: Are store orders arriving at all?
-- **Check Service Order Manager**: Are orders from the store channel present?
-- If Service Order Manager has them → downstream issue (well-documented in KB)
-- If Service Order Manager doesn't have them → upstream issue (less documented)
+### Known Failure Pattern: Incomplete Refactoring
+A specific incident occurred where a team refactored code across the store order processing services:
+- 2 of the 3 services were updated correctly
+- The 3rd service was missed
+- Orders routed through the missed service never reached the Service Order Manager
+- **Duration**: ~2 hours
+- **Scope**: Global (all markets except China)
+- **Detection**: Not caught by automated tests — no integration test coverage exists for the complete StoreSellingApp → Service Order Manager path across all 3 services
+
+### Root Cause Pattern
+This is NOT an operational failure (network, infrastructure). It's a **change management and testing gap**:
+- The 3-service architecture creates a dependency mapping problem — teams don't know all the services they need to update
+- No integration tests verify that all 3 services correctly save orders to Service Order Manager
+- Partial failures (1 of 3 broken) are harder to detect because some orders still flow
 
 ### Knowledge Gaps
-- The exact services between StoreSellingApp and OrderCaptureAPI
-- Whether store network infrastructure introduces unique failure modes
-- Whether there's monitoring on the store order path specifically
-- Historical incident where "code refactoring broke one of the services" — details unknown
+- **Names of the 3 services** — what are they called?
+- **Routing logic** — how is it decided which service handles a given order?
+- **Dependency mapping** — is there a documented map of which services call Service Order Manager?
+- **Test coverage** — what tests exist today, and what would a proper integration test look like?
