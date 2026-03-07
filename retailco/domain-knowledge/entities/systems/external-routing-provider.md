@@ -35,8 +35,12 @@ The External Routing Provider is not just a pass-through — it is the system th
 
 This makes the External Routing Provider a critical link: if it stops processing, warehouses have inventory but no pick instructions. See `work-order-release`, `work-order-to-picking-flow`.
 
+### Dispatch Date and Delivery Slot Calculation
+The External Routing Provider also serves as the delivery slot engine. When the Service Order Manager calculates a dispatch date (based on picking capacity templates) and sends it to the External Routing Provider, it evaluates whether it can offer delivery slots within a reasonable window from that dispatch date. If the dispatch date is absurdly far in the future (e.g., months out), the External Routing Provider returns no available delivery slots — this is correct behavior from its perspective, but the customer sees an empty delivery options page.
+
 ### Known Issues
 - Access level management across platform versions
 - Data duplication via SaveWorkOrder API
 - **No weight validation**: Accepts any numeric weight value from upstream systems without schema validation, sanity checks, or min/max bounds. Assumes all values are in kilograms. See `picking-to-routing-parcel-api` and `unit-conversion-bug`.
 - **Work order processing failures**: If the External Routing Provider receives work orders but fails to generate picking instructions (database issue, internal processing error, routing logic failure), warehouses see no pick tasks despite orders existing upstream. This is distinct from the "orders not dropping" pattern — messages were delivered successfully, but the recipient failed to act on them.
+- **No dispatch date validation**: Accepts dispatch dates from upstream without checking reasonableness. Returns empty slots for absurd dates (months out) instead of flagging the input as anomalous. This makes upstream config errors invisible — the provider just silently returns nothing.
