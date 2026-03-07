@@ -34,10 +34,13 @@ Different markets (EU, Asia, etc.) have their own distribution center networks. 
 - Geographic proximity to the delivery address
 - Fulfillment unit capabilities (not all warehouses ship all product types)
 
-### Known Failure Mode
-EU orders were mass-backordered despite available inventory. Suspected root cause: a configuration or migration error — possibly incorrect region selection — caused the allocation logic to look at the wrong fulfillment locations or misreport availability for EU markets.
+### Known Failure Mode: Correct Logic, Wrong Data
+EU orders were mass-backordered despite available inventory. The allocation logic itself was correct — it checked inventory for the region specified on the order. The problem was upstream: a Change Data Capture pipeline misconfiguration tagged orders with the wrong region metadata. The allocation system faithfully checked inventory for a region that had none, producing correct-but-wrong backorder decisions. See `change-data-capture`.
+
+This pattern — **correct logic operating on corrupted data** — is particularly hard to diagnose because every system appears to be working correctly in isolation.
 
 ### Knowledge Gaps
 - The exact system performing inventory allocation is undocumented — may be part of Service Order Manager, a separate inventory service, or the warehouse systems themselves
 - The configuration model (how markets map to fulfillment units) is not documented
 - Whether allocation is done at order time or asynchronously is unknown
+- How order region metadata flows from Change Data Capture into the allocation decision is not documented
