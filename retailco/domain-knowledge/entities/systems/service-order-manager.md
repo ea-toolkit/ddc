@@ -33,7 +33,7 @@ The Service Order Manager is RetailCo's central system for managing orders acros
 - Orders getting stuck in ReadyToAssign status is a chronic recurring issue (2+ years)
 - Multiple root causes have produced the same symptom over time, suggesting a systemic design issue
 - No order flow monitoring has been in place, leading to 24+ hour detection times
-- **Mass backorder incidents**: Orders marked as backordered despite inventory being available at distribution centers. Root cause tied to inventory allocation logic — either incorrect configuration mapping markets to fulfillment locations, or the availability check returning wrong results. See `backordered`, `inventory-allocation`.
+- **Mass backorder incidents**: Orders marked as backordered despite inventory being available at distribution points. Root cause was not in the allocation logic itself — it was upstream data corruption from a misconfigured Change Data Capture pipeline that tagged orders with the wrong region metadata. See `backordered`, `change-data-capture`.
 
 ### Queue Pattern
 - Queue naming example: `SOM_AP_som.order.SalesOrder1_CREATE_CONSUMER_QUEUE`
