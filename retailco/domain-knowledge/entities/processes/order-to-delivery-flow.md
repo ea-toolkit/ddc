@@ -45,7 +45,7 @@ The OrderIntegrationHub routes orders based on market, product type, and warehou
 
 ### Order Channels
 - **Online**: Customer orders via e-commerce site
-- **In-Store**: Staff creates order via StoreSellingApp
+- **In-Store**: Staff creates order via StoreSellingApp — see `in-store-order-flow` for detailed upstream path
 
 ### Critical Integration Points
 - **OrderCaptureAPI → Service Order Manager**: Kafka
