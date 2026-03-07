@@ -28,6 +28,7 @@ related_systems: [service-order-manager, picking-service, warehouse-management-s
 5. **Deployment breaking consumers** — OrderIntegrationHub deployment breaks message flow to WMS
 6. **Status transition failures** — order reaches the database but fails internal processing to become actionable
 7. **Incomplete refactoring across store order services** — 3 services handle store order creation, each calling Service Order Manager. Code refactoring applied to 2 of 3, missed the 3rd. Orders through the missed service never reached Service Order Manager. Global impact (~2 hours, all markets except China). See `in-store-order-flow`.
+8. **Cross-compartment deployment corrupting inventory** — cutover team ran XML deployment script intended for CN compartment on EU compartment, corrupting Service Order Manager's inventory module. Orders didn't "not drop" in the traditional sense — they flowed correctly but were immediately marked `backordered` due to corrupted inventory data. EU-wide impact. See `cross-compartment-deployment-error`.
 
 ### Why It Recurs
 - No centralized order flow monitoring across the fulfillment chain
