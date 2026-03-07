@@ -70,6 +70,13 @@ Ask the user to review:
 
 Apply any corrections to entity files immediately.
 
+**If the human rejects your answer:**
+1. Record what you got wrong and why
+2. Incorporate the human's corrections into entities
+3. Re-answer the problem (Step 4 again)
+4. Ask for review again (Step 5 again)
+5. Repeat until accepted — each rejected attempt MUST be logged in the cycle log (Step 6)
+
 ## Step 6: Log the Cycle
 
 Create a cycle log at `ddc-cycle-logs/<NNN>-<problem-slug>.md` using the cycle-log-format rule.

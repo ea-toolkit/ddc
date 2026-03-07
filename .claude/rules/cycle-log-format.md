@@ -22,10 +22,16 @@ globs: "**/ddc-cycle-logs/**"
 3. **Information Checklist** — gaps the agent identified, organized by type
 4. **Human Answers** — domain expert's responses to the checklist
 5. **Entities Curated** — table of entities created/updated (Entity, Type, Action, File)
-6. **Agent After (With Context)** — improved output after curation
+6. **Agent After (With Context)** — improved output after curation. If the human rejected the first answer, log ALL attempts:
+   - **Agent After — Attempt 1 (Rejected)**: what the agent said and why it was wrong
+   - **Human Correction**: what the expert corrected, with specifics
+   - **Agent After — Attempt 2 (Accepted)**: the corrected answer
+   - Continue numbering if more rounds were needed (Attempt 3, etc.)
+   - Each rejected attempt must explain what was wrong and what the agent learned
 7. **Human Review** — expert validation, corrections needed, remaining gaps
 
 ## Rules
 - Log every cycle, even quick ones. Data is irreplaceable for the research.
 - Be honest about failures. If the agent still got it wrong, say why.
 - The "Entities Curated" table must list actual file paths, not just names.
+- **Log ALL attempts, not just the final accepted one.** The correction loop is the most valuable data — it shows what the agent gets wrong and what domain knowledge fixes it. Skipping rejected attempts makes the log dishonest.
