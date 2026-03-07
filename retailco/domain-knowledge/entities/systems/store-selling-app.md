@@ -29,8 +29,9 @@ The StoreSellingApp is RetailCo's in-store point-of-sale application used by sto
 - Service bookings (assembly, installation — same types as online)
 
 ### Integration Points
-- **Outbound**: Sends created orders to downstream order capture services. The exact integration path is unclear — may go through `order-capture-api` (Selling API) or through other intermediate services. Multiple services may be involved in store order ingestion.
-- **Convergence point**: In-store orders should eventually reach `service-order-manager`, but the path to get there likely differs from the online channel path.
+- **Outbound**: Sends orders to **3 separate intermediate services** (names unknown), each of which calls `service-order-manager` to save the order. The routing logic that determines which service handles a given order is not documented.
+- **Convergence point**: All 3 services call `service-order-manager` — this is where in-store orders enter the same pipeline as online orders.
+- **Critical risk**: Because there are 3 services, a code change must be applied to all 3. Missing one causes partial failure — some store orders flow, others don't. See `in-store-order-flow`.
 
 ### Known Characteristics
 - Legacy system — has been around for many years with accumulated technical debt
