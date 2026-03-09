@@ -2,9 +2,9 @@
 type: system
 id: store-selling-app
 name: StoreSellingApp
-description: In-store POS application used by store staff to create customer orders for delivery, pickup, and services.
+description: Legacy in-store POS application used by store staff to create customer orders. Being replaced by ModernStoreSellingApp in some markets.
 status: active
-related_systems: [order-capture-api, service-order-manager]
+related_systems: [order-capture-api, service-order-manager, modern-store-selling-app]
 implements_capability: order-capture
 depends_on: []
 ---
