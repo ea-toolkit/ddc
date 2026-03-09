@@ -17,7 +17,7 @@ The External Routing Provider is an external third-party system used for transpo
 ## Details
 
 ### Platform Versions
-- **RoutingPlatformV2**: Current active platform
+- **RoutingPlatformV2**: Current active platform — the TSP-facing web portal where Transport Service Providers log in to view assigned jobs and update work order status
 - **RoutingPlatformV1**: Legacy platform, being decommissioned
 
 ### Integration Points
@@ -25,6 +25,7 @@ The External Routing Provider is an external third-party system used for transpo
 - **From Provided Services Manager**: Receives service fulfillment orders
 - **From Picking Service**: Receives picked order data including weight/dimensions
 - **Outbound**: Dispatches to Transport Service Providers (TSPs)
+- **Inbound from TSPs**: Receives status updates from TSPs via RoutingPlatformV2 portal and propagates them back to ServiceOrderManager (see `work-order-status-update-flow`)
 
 ### Work Order Processing
 The External Routing Provider is not just a pass-through — it is the system that **generates picking instructions** for warehouses:
