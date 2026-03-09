@@ -47,7 +47,7 @@ The decommission of RoutingPlatformV1 involves migrating users and order data to
 
 1. **Access level bug causing DB throttling**: During user migration, a bug in RoutingPlatformV1's search shipment page caused users with historically modified access levels to trigger expensive database queries, throttling the shared database and blocking order processing. Second access level incident on this platform. See `migration-traffic-amplification`.
 
-2. **Parallel-run data corruption**: During the data cutover, both V1 and V2 ran simultaneously with routing logic directing orders to one or the other. The shared database caused orders to be picked up by both systems (duplicates) or fall through the cracks entirely (lost). In-flight orders during the cutover moment were particularly vulnerable. The SaveWorkOrder duplication from ServiceOrderManager compounded the problem. See `parallel-run-data-corruption`.
+2. **Parallel-run data corruption (theoretical risk)**: The shared database architecture means any cutover involving both systems running simultaneously risks duplicate processing or lost orders. This has not been confirmed as a documented incident, but is an architectural risk inherent to the shared-database design. See `parallel-run-data-corruption`.
 
 ### Key Internal Components
 - **WOH/WOMGR**: Work Order Handler / Work Order Manager — internal components that process work orders. Run as pods (baseline: 10 pods). Vulnerable to connection pool exhaustion when database throttles.
