@@ -2,9 +2,9 @@
 type: system
 id: store-selling-app
 name: StoreSellingApp
-description: In-store POS application used by store staff to create customer orders for delivery, pickup, and services.
+description: Legacy in-store POS application used by store staff to create customer orders. Being replaced by ModernStoreSellingApp in some markets.
 status: active
-related_systems: [order-capture-api, service-order-manager]
+related_systems: [order-capture-api, service-order-manager, modern-store-selling-app]
 implements_capability: order-capture
 depends_on: []
 ---
@@ -13,7 +13,7 @@ depends_on: []
 
 ## Overview
 
-The StoreSellingApp is RetailCo's in-store point-of-sale application used by store staff to create customer orders. It runs on terminals in stores and supports the same order types as online (delivery, click & collect, service bookings). It is a legacy system with layers of accumulated code, owned across multiple teams.
+The StoreSellingApp is RetailCo's legacy in-store point-of-sale application used by store staff to create customer orders. It runs on terminals in stores and supports the same order types as online (delivery, click & collect, service bookings). It is being replaced by `modern-store-selling-app` in some markets, but both frontends use the same backend path through OrderCaptureAPI's 3 microservices. It is a legacy system with layers of accumulated code, owned across multiple teams.
 
 ## Details
 

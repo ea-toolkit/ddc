@@ -29,16 +29,26 @@ The incomplete refactoring pattern occurs when a shared integration point (e.g.,
 - **Silent** — no errors at the calling service level if the refactoring changed something the missed service still sends (e.g., changed field names, removed endpoints)
 
 ### Known Incident
-- 3 services handle store order creation from StoreSellingApp to Service Order Manager
-- Code refactoring updated 2 of 3 services
-- The 3rd service was missed — its orders never reached Service Order Manager
-- **Duration**: 2 hours 8 minutes
-- **Scope**: Global (all markets except China)
-- Orders were captured correctly in StoreSellingApp — the failure was between the store order services and Service Order Manager's save order endpoint
-- Detected relatively fast compared to other "orders not dropping" incidents
+- 3 microservices within OrderCaptureAPI handle the store order path from store frontends to Service Order Manager
+- A developer was consolidating duplicate parameters across the 3 services
+- 2 of the 3 services were updated with the new parameter name
+- The 3rd service still expected the old parameter name — orders passed through the first two services, then failed at the third
+- **Failure mode**: Parameter name mismatch — the missed service couldn't find the parameter it needed
+- **Scope**: Total store order failure, global (all markets except China, which has its own stack)
+- **Time to first alert**: 26 minutes — markets reported the issue before formal escalation
+- **Resolution**: Rollback, took ~16 minutes once the decision was made
+- Orders were captured correctly in the store app but stuck in "pending"/"read-only" state — not flowing to Service Order Manager
+
+### Deployment Gaps That Enabled This
+- **No canary deployment** — change went to all traffic immediately
+- **No automated health checks** — no post-deployment validation of the store order path
+- **No auto-rollback** — manual decision and manual rollback process
+- **No integration test environment** — no test environment exists that mimics the full 3-service flow with real data; services were only tested locally in isolation
 
 ### Required Safeguards
 1. **Dependency mapping** — maintain a registry of every service that calls shared endpoints like Service Order Manager's save order API
 2. **Coordinated changes** — when refactoring shared integration points, update ALL callers, not just the ones the team knows about
-3. **Integration tests** — end-to-end tests proving the complete flow works across all calling services
+3. **Integration tests** — end-to-end tests proving the complete flow works across all 3 microservices in the store order path
 4. **Distributed tracing** — would show failed or missing calls from specific services to the shared endpoint
+5. **Canary deployments** — roll out changes incrementally to catch failures before full rollout
+6. **Automated health checks** — post-deployment validation that the store order path is functional

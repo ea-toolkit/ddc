@@ -4,7 +4,7 @@ id: in-store-order-flow
 name: In-Store Order Creation Flow
 description: The process by which store staff create customer orders via the StoreSellingApp, routed through 3 intermediate services to the Service Order Manager.
 status: active
-related_systems: [store-selling-app, order-capture-api, service-order-manager]
+related_systems: [store-selling-app, modern-store-selling-app, order-capture-api, service-order-manager]
 implements_capability: order-capture
 ---
 
@@ -12,7 +12,7 @@ implements_capability: order-capture
 
 ## Overview
 
-Store staff create orders for walk-in customers using the StoreSellingApp. These orders are routed through **3 separate services** that each call the Service Order Manager to save the order. The routing decision — which of the 3 services handles a given order — is based on criteria that are not yet documented. This 3-service architecture is the critical upstream path that differs from the online channel.
+Store staff create orders for walk-in customers using either StoreSellingApp (legacy) or ModernStoreSellingApp (newer, market-dependent). Regardless of frontend, orders are submitted to OrderCaptureAPI, which processes them through **3 internal microservices** (order capture, validation, and coordination with Service Order Manager). This 3-service architecture is the critical upstream path that differs from the online channel.
 
 ## Details
 
@@ -26,20 +26,20 @@ Store staff create orders for walk-in customers using the StoreSellingApp. These
 
 ### Technical Flow
 ```
-StoreSellingApp (in-store terminal)
+StoreSellingApp / ModernStoreSellingApp (in-store terminal)
     ↓
-[3 intermediate services — names unknown]
-    Service A ──→ Service Order Manager (save order)
-    Service B ──→ Service Order Manager (save order)
-    Service C ──→ Service Order Manager (save order)
+OrderCaptureAPI (3 microservices — sequential pipeline)
+    ┌─ Order Capture Service (receives submission)
+    ├─ Validation Service (validates order data)
+    └─ Coordination Service (persists to Service Order Manager)
     ↓
 Service Order Manager
     ↓ [downstream fulfillment — well-documented]
 Picking / WMS / Routing
 ```
 
-### Routing Logic
-How orders are distributed across the 3 services is unknown. Possible factors: order type, market, product category, or legacy routing rules. This routing is critical — a failure in one service means only orders routed to that service fail, while others continue working. This creates **partial failures** that are harder to detect than total outages.
+### Error Behavior
+When any microservice in the pipeline fails, the error propagates back to the store frontend. The order gets stuck in a "pending" or "read-only" state in the store app — captured locally but not flowing downstream. The staff member sees an error and cannot resubmit.
 
 ### Online vs In-Store Path
 - **Online**: Goes through OrderCaptureAPI more directly to Service Order Manager
