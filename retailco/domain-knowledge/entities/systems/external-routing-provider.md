@@ -43,7 +43,11 @@ The External Routing Provider also serves as the delivery slot engine. When the 
 TSPs log into RoutingPlatformV2 with individual accounts. Users can belong to multiple groups (regions, clients, service types). The permission model is complex — multi-market, multi-group users have fragile access configurations that are prone to breaking during deployments (see `access-level-deployment-regression`).
 
 ### V1 to V2 Migration Risk
-The decommission of RoutingPlatformV1 involves migrating users to RoutingPlatformV2. Both versions share backend infrastructure (database). During migration, a bug in RoutingPlatformV1's search shipment page caused users with historically modified access levels to trigger expensive database queries, throttling the shared database and blocking order processing. This is the second access level incident on this platform (see also `access-level-deployment-regression`). See `migration-traffic-amplification`.
+The decommission of RoutingPlatformV1 involves migrating users and order data to RoutingPlatformV2. Both versions share backend infrastructure (database). Known migration failure modes:
+
+1. **Access level bug causing DB throttling**: During user migration, a bug in RoutingPlatformV1's search shipment page caused users with historically modified access levels to trigger expensive database queries, throttling the shared database and blocking order processing. Second access level incident on this platform. See `migration-traffic-amplification`.
+
+2. **Parallel-run data corruption (theoretical risk)**: The shared database architecture means any cutover involving both systems running simultaneously risks duplicate processing or lost orders. This has not been confirmed as a documented incident, but is an architectural risk inherent to the shared-database design. See `parallel-run-data-corruption`.
 
 ### Key Internal Components
 - **WOH/WOMGR**: Work Order Handler / Work Order Manager — internal components that process work orders. Run as pods (baseline: 10 pods). Vulnerable to connection pool exhaustion when database throttles.
