@@ -39,8 +39,11 @@ This makes the External Routing Provider a critical link: if it stops processing
 ### Dispatch Date and Delivery Slot Calculation
 The External Routing Provider also serves as the delivery slot engine. When the Service Order Manager calculates a dispatch date (based on picking capacity templates) and sends it to the External Routing Provider, it evaluates whether it can offer delivery slots within a reasonable window from that dispatch date. If the dispatch date is absurdly far in the future (e.g., months out), the External Routing Provider returns no available delivery slots — this is correct behavior from its perspective, but the customer sees an empty delivery options page.
 
+### TSP Access Model
+TSPs log into RoutingPlatformV2 with individual accounts. Users can belong to multiple groups (regions, clients, service types). The permission model is complex — multi-market, multi-group users have fragile access configurations that are prone to breaking during deployments (see `access-level-deployment-regression`).
+
 ### Known Issues
-- Access level management across platform versions
+- **Access level deployment regressions**: Recurring pattern where deployments break permission calculations for multi-group TSP users, causing them to lose visibility of assigned work orders (see `access-level-deployment-regression`)
 - Data duplication via SaveWorkOrder API
 - **No weight validation**: Accepts any numeric weight value from upstream systems without schema validation, sanity checks, or min/max bounds. Assumes all values are in kilograms. See `picking-to-routing-parcel-api` and `unit-conversion-bug`.
 - **Work order processing failures**: If the External Routing Provider receives work orders but fails to generate picking instructions (database issue, internal processing error, routing logic failure), warehouses see no pick tasks despite orders existing upstream. This is distinct from the "orders not dropping" pattern — messages were delivered successfully, but the recipient failed to act on them.
