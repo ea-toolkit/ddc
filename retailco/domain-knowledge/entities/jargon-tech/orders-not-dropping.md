@@ -38,5 +38,7 @@ related_systems: [service-order-manager, picking-service, warehouse-management-s
 - Detection relies on humans noticing (warehouse staff, customer complaints), not automated alerts
 - Different root causes produce the identical symptom, making pattern recognition difficult
 
+10. **Infrastructure-layer failure during data center migration** — physical infrastructure (DNS servers, authentication servers) hosted in a data center being decommissioned becomes unreachable. Warehouse terminals, forklifts, and printers lose network connectivity entirely. Orders exist upstream but cannot be acted upon physically. This is not an application-level failure — it's the infrastructure layer beneath all applications. See `data-center-migration`, `dns-single-point-of-failure`, `load-balancer-stale-member`.
+
 ### Systemic Nature
-This is not individual bugs — it's a systemic design gap. The fulfillment chain has multiple asynchronous hops (queues, middleware, APIs) with no end-to-end delivery guarantees or monitoring.
+This is not individual bugs — it's a systemic design gap. The fulfillment chain has multiple asynchronous hops (queues, middleware, APIs) with no end-to-end delivery guarantees or monitoring. Additionally, infrastructure-layer failures (DNS, authentication, network) can produce identical symptoms to application-level failures, making diagnosis harder.
