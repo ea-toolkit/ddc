@@ -32,6 +32,9 @@ A recurring failure pattern where deployments to the ExternalRoutingProvider (sp
 - Edge cases (users belonging to many groups, cross-market users) are not covered in pre-deployment testing
 - Each deployment can introduce new permission calculation logic that works for simple users but breaks for complex ones
 
+### Related Incident: V1 Access Level Bug
+This is the first of two access level incidents on the External Routing Provider platform. The second occurred during RoutingPlatformV1 to V2 migration, where a different access level bug (in V1's search shipment page) caused expensive database queries and order processing throttling. See `migration-traffic-amplification`. Together, these incidents establish that the access level model across both platform versions is fragile.
+
 ### Impact
 
 - Deliveries continue physically but are not tracked in systems
