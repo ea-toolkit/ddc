@@ -26,20 +26,20 @@ Store staff create orders for walk-in customers using either StoreSellingApp (le
 
 ### Technical Flow
 ```
-StoreSellingApp (in-store terminal)
+StoreSellingApp / ModernStoreSellingApp (in-store terminal)
     ↓
-[3 intermediate services — names unknown]
-    Service A ──→ Service Order Manager (save order)
-    Service B ──→ Service Order Manager (save order)
-    Service C ──→ Service Order Manager (save order)
+OrderCaptureAPI (3 microservices — sequential pipeline)
+    ┌─ Order Capture Service (receives submission)
+    ├─ Validation Service (validates order data)
+    └─ Coordination Service (persists to Service Order Manager)
     ↓
 Service Order Manager
     ↓ [downstream fulfillment — well-documented]
 Picking / WMS / Routing
 ```
 
-### Routing Logic
-How orders are distributed across the 3 services is unknown. Possible factors: order type, market, product category, or legacy routing rules. This routing is critical — a failure in one service means only orders routed to that service fail, while others continue working. This creates **partial failures** that are harder to detect than total outages.
+### Error Behavior
+When any microservice in the pipeline fails, the error propagates back to the store frontend. The order gets stuck in a "pending" or "read-only" state in the store app — captured locally but not flowing downstream. The staff member sees an error and cannot resubmit.
 
 ### Online vs In-Store Path
 - **Online**: Goes through OrderCaptureAPI more directly to Service Order Manager
