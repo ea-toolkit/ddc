@@ -42,6 +42,12 @@ The External Routing Provider also serves as the delivery slot engine. When the 
 ### TSP Access Model
 TSPs log into RoutingPlatformV2 with individual accounts. Users can belong to multiple groups (regions, clients, service types). The permission model is complex — multi-market, multi-group users have fragile access configurations that are prone to breaking during deployments (see `access-level-deployment-regression`).
 
+### V1 to V2 Migration Risk
+The decommission of RoutingPlatformV1 involves migrating users to RoutingPlatformV2. Both versions share backend infrastructure (database). During migration, a bug in RoutingPlatformV1's search shipment page caused users with historically modified access levels to trigger expensive database queries, throttling the shared database and blocking order processing. This is the second access level incident on this platform (see also `access-level-deployment-regression`). See `migration-traffic-amplification`.
+
+### Key Internal Components
+- **WOH/WOMGR**: Work Order Handler / Work Order Manager — internal components that process work orders. Run as pods (baseline: 10 pods). Vulnerable to connection pool exhaustion when database throttles.
+
 ### Known Issues
 - **Access level deployment regressions**: Recurring pattern where deployments break permission calculations for multi-group TSP users, causing them to lose visibility of assigned work orders (see `access-level-deployment-regression`)
 - Data duplication via SaveWorkOrder API

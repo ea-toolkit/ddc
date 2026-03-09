@@ -40,5 +40,7 @@ related_systems: [service-order-manager, picking-service, warehouse-management-s
 
 10. **Infrastructure-layer failure during data center migration** — physical infrastructure (DNS servers, authentication servers) hosted in a data center being decommissioned becomes unreachable. Warehouse terminals, forklifts, and printers lose network connectivity entirely. Orders exist upstream but cannot be acted upon physically. This is not an application-level failure — it's the infrastructure layer beneath all applications. See `data-center-migration`, `dns-single-point-of-failure`, `load-balancer-stale-member`.
 
+11. **Migration-induced database throttling via access level bug** — during RoutingPlatformV1 to V2 user migration, a bug in RoutingPlatformV1's search shipment page caused users with historically modified access levels to trigger expensive database queries. Shared database throttled, connection pools on WOH/WOMGR exhausted. Picking Service's synchronous API calls backed up. User reported 24 minutes before system detection. Rollback took ~70 minutes; WOH/WOMGR pods scaled 10→16 and servers restarted. Second access level incident on this platform. See `migration-traffic-amplification`.
+
 ### Systemic Nature
 This is not individual bugs — it's a systemic design gap. The fulfillment chain has multiple asynchronous hops (queues, middleware, APIs) with no end-to-end delivery guarantees or monitoring. Additionally, infrastructure-layer failures (DNS, authentication, network) can produce identical symptoms to application-level failures, making diagnosis harder.
