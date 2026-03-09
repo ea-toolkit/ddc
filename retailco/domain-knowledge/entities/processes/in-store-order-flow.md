@@ -4,7 +4,7 @@ id: in-store-order-flow
 name: In-Store Order Creation Flow
 description: The process by which store staff create customer orders via the StoreSellingApp, routed through 3 intermediate services to the Service Order Manager.
 status: active
-related_systems: [store-selling-app, order-capture-api, service-order-manager]
+related_systems: [store-selling-app, modern-store-selling-app, order-capture-api, service-order-manager]
 implements_capability: order-capture
 ---
 
