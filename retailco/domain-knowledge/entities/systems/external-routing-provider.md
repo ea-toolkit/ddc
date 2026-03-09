@@ -42,6 +42,9 @@ The External Routing Provider also serves as the delivery slot engine. When the 
 ### TSP Access Model
 TSPs log into RoutingPlatformV2 with individual accounts. Users can belong to multiple groups (regions, clients, service types). The permission model is complex — multi-market, multi-group users have fragile access configurations that are prone to breaking during deployments (see `access-level-deployment-regression`).
 
+### V1 to V2 Migration Risk
+The decommission of RoutingPlatformV1 involves migrating users to RoutingPlatformV2. Both versions share backend infrastructure (database). During migration, redirected users' query patterns on V2 can amplify database load beyond capacity, throttling order processing for the entire platform. See `migration-traffic-amplification`.
+
 ### Known Issues
 - **Access level deployment regressions**: Recurring pattern where deployments break permission calculations for multi-group TSP users, causing them to lose visibility of assigned work orders (see `access-level-deployment-regression`)
 - Data duplication via SaveWorkOrder API
