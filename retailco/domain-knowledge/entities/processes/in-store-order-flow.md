@@ -12,7 +12,7 @@ implements_capability: order-capture
 
 ## Overview
 
-Store staff create orders for walk-in customers using the StoreSellingApp. These orders are routed through **3 separate services** that each call the Service Order Manager to save the order. The routing decision — which of the 3 services handles a given order — is based on criteria that are not yet documented. This 3-service architecture is the critical upstream path that differs from the online channel.
+Store staff create orders for walk-in customers using either StoreSellingApp (legacy) or ModernStoreSellingApp (newer, market-dependent). Regardless of frontend, orders are submitted to OrderCaptureAPI, which processes them through **3 internal microservices** (order capture, validation, and coordination with Service Order Manager). This 3-service architecture is the critical upstream path that differs from the online channel.
 
 ## Details
 
