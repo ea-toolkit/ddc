@@ -107,7 +107,7 @@ The agent treated the expert's diagnostic questions as confirmed root cause. It:
 ### Human Correction (Round 2)
 
 The expert revealed the actual root cause:
-- A cutover team ran an XML deployment script intended for the CN (China) compartment on the EU compartment
+- A cutover team ran an XML deployment script intended for the market-cn compartment on the EU compartment
 - This corrupted the Service Order Manager's inventory module configuration for EU
 - ATP ran correctly against corrupted data — producing false backorders
 - The abbreviation used in the incident report referred to physical distribution point warehouse codes, NOT a data replication technology
