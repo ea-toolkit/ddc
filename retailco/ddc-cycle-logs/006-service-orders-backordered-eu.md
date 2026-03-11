@@ -117,7 +117,7 @@ The expert revealed the actual root cause:
 ## Agent After — Attempt 3 (Accepted)
 
 With the confirmed root cause, the agent correctly identified:
-- **Root cause**: Cutover team ran XML deployment script intended for CN compartment against EU compartment
+- **Root cause**: Cutover team ran XML deployment script intended for market-cn compartment against EU compartment
 - **Mechanism**: Corrupted Service Order Manager's inventory module configuration — ATP checked corrupted data — false backorders
 - **Pattern**: "Correct logic, corrupted configuration" — every system works correctly in isolation, the failure is in the data/config
 - **Missing safeguards**: No compartment validation, no four-eyes principle, no pre/post deployment health checks
