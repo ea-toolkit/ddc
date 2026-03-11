@@ -38,7 +38,7 @@ Searched the knowledge base and found entities covering: order capture flow, in-
 
 ### Terminology
 - [x] What does "book" mean — delivery slot selection at checkout
-- [x] Which APAC market — market-au (Australia)
+- [x] Which APAC market — market-au
 - [x] Delivery types affected — truck and curbside only, not parcel
 
 ### Systems
