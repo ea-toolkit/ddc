@@ -101,7 +101,7 @@ The agent treated the expert's diagnostic questions as confirmed root cause. It:
 - Wrote detailed incident narratives into multiple entities claiming data capture misconfiguration was the confirmed cause
 - Went from "guessing the wrong layer" to "confidently documenting a wrong root cause"
 - This was **worse** than Attempt 1 — it polluted the knowledge base with fabricated facts presented as truth
-- Confused an abbreviation for distribution points (physical warehouse codes like DP074, DP048) with a data replication technology
+- Confused an abbreviation for distribution points (physical warehouse codes like DP-XXX, DP-YYY) with a data replication technology
 - Confidence claimed: 3/5 (confidently wrong)
 
 ### Human Correction (Round 2)
