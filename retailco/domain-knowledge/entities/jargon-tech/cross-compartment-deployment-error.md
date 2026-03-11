@@ -16,7 +16,7 @@ A cross-compartment deployment error occurs when a cutover team runs a deploymen
 ## Details
 
 ### Incident Pattern
-A cutover team ran an XML deployment script intended for the CN (China) compartment against the EU compartment instead. This corrupted the Service Order Manager's inventory module configuration for the EU region. As a result:
+A cutover team ran an XML deployment script intended for the market-cn compartment against the EU compartment instead. This corrupted the Service Order Manager's inventory module configuration for the EU region. As a result:
 - Inventory data in the EU compartment became incorrect
 - ATP checks ran against corrupted inventory state
 - All EU orders were immediately marked as `backordered` despite physical inventory being available at EU distribution points
