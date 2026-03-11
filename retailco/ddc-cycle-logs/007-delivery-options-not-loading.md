@@ -93,7 +93,7 @@ The delivery options page is powered by the `checkout-delivery-options-flow`. Th
 5. Check for recent deployments to any service in the chain
 6. Check for traffic spikes — all services use static pod counts with no autoscaling
 
-**Key architectural insight**: The system has no graceful degradation. Any single failure in the chain = zero delivery options for ALL customers globally (except China). This is compounded by the `no-autoscaling-pattern` — static pods with no HPA means traffic spikes beyond baseline capacity cause total failure.
+**Key architectural insight**: The system has no graceful degradation. Any single failure in the chain = zero delivery options for ALL customers globally (except market-cn). This is compounded by the `no-autoscaling-pattern` — static pods with no HPA means traffic spikes beyond baseline capacity cause total failure.
 
 **Confidence**: 4/5 — Strong understanding of the architecture and failure modes. Missing details on monitoring/alerting setup, exact API contracts, and China's separate stack.
 
