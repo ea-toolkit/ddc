@@ -46,7 +46,7 @@ Initial attempt produced a generic "check each zone" diagnostic framework with 4
 
 ### Failure Context
 - [x] Root cause — incomplete refactoring, 1 of 3 services missed
-- [x] Scope — global except China, ~2 hours 8 minutes
+- [x] Scope — global except market-cn, ~2 hours 8 minutes
 - [x] Pattern — partial failure (some orders flow, others don't)
 
 ### Personas
@@ -59,7 +59,7 @@ The domain expert provided:
 - 3 separate services sit between StoreSellingApp and Service Order Manager, each calling SOM's save order endpoint
 - The root cause was code refactoring: 2 of 3 services updated, 3rd missed
 - Orders captured correctly in StoreSellingApp but never reached SOM through the missed service
-- Duration: 2h 8m, global except China
+- Duration: 2h 8m, global except market-cn
 - Expert could not provide: names of the 3 services, routing logic between them
 - Expert identified this as a testing gap (no integration tests) and dependency mapping gap, not an operational failure
 - Expert recommended documenting as a distinct anti-pattern: "incomplete refactoring across multiple services"
