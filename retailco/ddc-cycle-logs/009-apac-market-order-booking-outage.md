@@ -66,7 +66,7 @@ Searched the knowledge base and found entities covering: order capture flow, in-
 
 The human provided all answers directly:
 
-- **Market**: Australia (AU). Single market, not whole APAC.
+- **Market**: market-au. Single market, not whole APAC.
 - **"Book" means**: Customer reaches checkout, system queries delivery time slots, returns nothing for certain zip codes trying to book truck or curbside delivery.
 - **System**: Service Order Manager has a picking capacity template system — configuration defining warehouse picking capacity and lead times per fulfillment unit. Modifiable directly in production.
 - **Root cause**: Someone modified picking capacity thresholds in production. The change created undefined template scenarios for certain stores. Service Order Manager calculated dispatch dates months in the future. External Routing Provider received those absurd dates and correctly returned no delivery slots.
