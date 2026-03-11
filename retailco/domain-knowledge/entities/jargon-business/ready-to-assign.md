@@ -1,13 +1,13 @@
 ---
 type: jargon-business
 id: ready-to-assign
-name: ReadyToAssign (RTA)
+name: ReadyToAssign
 description: Order status indicating a service order has been captured but not yet assigned to a service provider.
 status: active
 related_systems: [service-order-manager, provided-services-manager]
 ---
 
-# ReadyToAssign (RTA)
+# ReadyToAssign
 
 ## Overview
 
