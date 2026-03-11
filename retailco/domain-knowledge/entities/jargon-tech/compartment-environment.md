@@ -2,7 +2,7 @@
 type: jargon-tech
 id: compartment-environment
 name: Compartment / Environment
-description: Oracle Cloud compartment used to isolate regional infrastructure and configuration, such as separate compartments for EU, CN, and other regions.
+description: CloudPlatform compartment used to isolate regional infrastructure and configuration, such as separate compartments for EU, CN, and other regions.
 status: active
 related_systems: [service-order-manager]
 ---
@@ -11,7 +11,7 @@ related_systems: [service-order-manager]
 
 ## Overview
 
-A compartment is an Oracle Cloud isolation boundary used to separate regional infrastructure, configuration, and deployments. RetailCo operates separate compartments per region (e.g., EU compartment, CN compartment), each containing region-specific system configurations, inventory data, and deployment targets.
+A compartment is an CloudPlatform isolation boundary used to separate regional infrastructure, configuration, and deployments. RetailCo operates separate compartments per region (e.g., EU compartment, CN compartment), each containing region-specific system configurations, inventory data, and deployment targets.
 
 ## Details
 
