@@ -44,7 +44,7 @@ The agent could list plausible failure zones but produced a diagnostic-style che
 ### Failure Context
 - [x] Error behavior — orders stuck in pending/read-only state in store app, not flowing to Service Order Manager
 - [x] Specific failure mode — parameter name mismatch after incomplete refactoring
-- [x] Scope — total store order failure, global except China
+- [x] Scope — total store order failure, global except market-cn
 - [x] Time to first alert — 26 minutes, markets reported before formal escalation
 - [x] Resolution — rollback, ~16 minutes once decided
 
