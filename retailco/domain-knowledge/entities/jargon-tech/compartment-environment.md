@@ -11,7 +11,7 @@ related_systems: [service-order-manager]
 
 ## Overview
 
-A compartment is an CloudPlatform isolation boundary used to separate regional infrastructure, configuration, and deployments. RetailCo operates separate compartments per region (e.g., EU compartment, CN compartment), each containing region-specific system configurations, inventory data, and deployment targets.
+A compartment is an CloudPlatform isolation boundary used to separate regional infrastructure, configuration, and deployments. RetailCo operates separate compartments per region (e.g., EU compartment, market-cn compartment), each containing region-specific system configurations, inventory data, and deployment targets.
 
 ## Details
 
