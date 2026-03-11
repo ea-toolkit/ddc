@@ -45,7 +45,7 @@ With an empty knowledge base, the agent produced a generic guess:
 
 ## Human Answers
 
-Answers provided from deep-dive analysis of incident INC1005707330 and domain knowledge base. Key information included:
+Answers provided from deep-dive analysis of an internal production incident and domain knowledge base. Key information included:
 - Complete system landscape: Service Order Manager, Provided Services Manager, External Routing Provider
 - Message broker details: MessageBroker platform, no queue registry, no competing consumer detection
 - Full order lifecycle: Order Created → ReadyToAssign → Assigned → Confirmed → Delivered

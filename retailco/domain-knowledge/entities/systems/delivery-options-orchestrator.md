@@ -34,4 +34,4 @@ The DeliveryOptionsOrchestrator is the backend service that powers the delivery 
 - If this service is down or unresponsive, the delivery options page shows nothing — checkout is effectively dead
 - Depends on the nginx-ingress-controller for traffic routing; if the load balancer is overloaded, requests never reach this service
 - No graceful degradation — when any downstream dependency fails, the entire delivery options page fails rather than showing partial results
-- Global impact when failures occur (all markets except potentially China which may have a separate stack)
+- Global impact when failures occur (all markets except potentially market-cn which may have a separate stack)

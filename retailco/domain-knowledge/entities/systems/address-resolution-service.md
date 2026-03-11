@@ -27,7 +27,7 @@ The AddressResolutionService handles address resolution — converting customer 
 - **Outbound**: Previously used an external address resolution provider; migrated to an internal solution
 
 ### Known Incidents
-- **Address resolution migration overload**: During migration from an external provider to an internal solution, the new service was not load tested. Under production traffic, it became overloaded and caused the delivery options page to fail globally (except China) for approximately one hour. Hundreds of orders were lost.
+- **Address resolution migration overload**: During migration from an external provider to an internal solution, the new service was not load tested. Under production traffic, it became overloaded and caused the delivery options page to fail globally (except market-cn) for approximately one hour. Hundreds of orders were lost.
 
 ### Known Issues
 - Load testing gaps — the migration incident revealed that capacity planning for this service was inadequate

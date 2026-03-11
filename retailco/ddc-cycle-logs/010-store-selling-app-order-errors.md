@@ -44,7 +44,7 @@ The agent could list plausible failure zones but produced a diagnostic-style che
 ### Failure Context
 - [x] Error behavior — orders stuck in pending/read-only state in store app, not flowing to Service Order Manager
 - [x] Specific failure mode — parameter name mismatch after incomplete refactoring
-- [x] Scope — total store order failure, global except China
+- [x] Scope — total store order failure, global except market-cn
 - [x] Time to first alert — 26 minutes, markets reported before formal escalation
 - [x] Resolution — rollback, ~16 minutes once decided
 
@@ -80,7 +80,7 @@ Root cause: **Incomplete Refactoring Pattern** across OrderCaptureAPI's 3 micros
 
 A developer consolidating duplicate parameters updated 2 of the 3 microservices in the store order path but missed the third. The third service still expected the old parameter name. Orders passed through the first two services (capture, validation) successfully, then failed at the third (coordination) because it couldn't find the parameter it needed.
 
-Result: every store order worldwide (except China) failed. Orders captured in the store app but stuck in pending/read-only state — never reaching Service Order Manager. Staff saw errors on submission.
+Result: every store order worldwide (except market-cn) failed. Orders captured in the store app but stuck in pending/read-only state — never reaching Service Order Manager. Staff saw errors on submission.
 
 Why it wasn't caught:
 - No integration test environment exercises the full 3-service pipeline

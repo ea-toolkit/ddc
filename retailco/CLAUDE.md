@@ -1,6 +1,6 @@
 # CLAUDE.md - DDC Knowledge Base
 
-> This is a DDC knowledge base for **RetailCo** — a large European home furnishing retailer.
+> This is a DDC knowledge base for **RetailCo** — a large European multi-channel retailer.
 
 ## What This Is
 

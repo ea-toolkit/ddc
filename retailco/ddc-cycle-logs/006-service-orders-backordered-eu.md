@@ -101,13 +101,13 @@ The agent treated the expert's diagnostic questions as confirmed root cause. It:
 - Wrote detailed incident narratives into multiple entities claiming data capture misconfiguration was the confirmed cause
 - Went from "guessing the wrong layer" to "confidently documenting a wrong root cause"
 - This was **worse** than Attempt 1 — it polluted the knowledge base with fabricated facts presented as truth
-- Confused an abbreviation for distribution points (physical warehouse codes like DP074, DP048) with a data replication technology
+- Confused an abbreviation for distribution points (physical warehouse codes like DP-XXX, DP-YYY) with a data replication technology
 - Confidence claimed: 3/5 (confidently wrong)
 
 ### Human Correction (Round 2)
 
 The expert revealed the actual root cause:
-- A cutover team ran an XML deployment script intended for the CN (China) compartment on the EU compartment
+- A cutover team ran an XML deployment script intended for the market-cn compartment on the EU compartment
 - This corrupted the Service Order Manager's inventory module configuration for EU
 - ATP ran correctly against corrupted data — producing false backorders
 - The abbreviation used in the incident report referred to physical distribution point warehouse codes, NOT a data replication technology
@@ -117,7 +117,7 @@ The expert revealed the actual root cause:
 ## Agent After — Attempt 3 (Accepted)
 
 With the confirmed root cause, the agent correctly identified:
-- **Root cause**: Cutover team ran XML deployment script intended for CN compartment against EU compartment
+- **Root cause**: Cutover team ran XML deployment script intended for market-cn compartment against EU compartment
 - **Mechanism**: Corrupted Service Order Manager's inventory module configuration — ATP checked corrupted data — false backorders
 - **Pattern**: "Correct logic, corrupted configuration" — every system works correctly in isolation, the failure is in the data/config
 - **Missing safeguards**: No compartment validation, no four-eyes principle, no pre/post deployment health checks
