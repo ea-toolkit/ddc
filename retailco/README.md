@@ -1,10 +1,10 @@
 # RetailCo — DDC Knowledge Base
 
-> A large European home furnishing retailer — anonymized domain for DDC research.
+> A large European multi-channel retailer — anonymized domain for DDC research.
 
 ## About
 
-This is the primary domain knowledge base for the DDC methodology research project. It captures the enterprise architecture of "RetailCo" — an anonymized representation of a real large European retailer — through demand-driven context curation.
+This is the primary domain knowledge base for the DDC methodology research project. It captures the enterprise architecture of "RetailCo" — an anonymized representation of a real large multi-channel retailer — through demand-driven context curation.
 
 ## How It Works
 
