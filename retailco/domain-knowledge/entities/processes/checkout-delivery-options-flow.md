@@ -78,5 +78,5 @@ If the picking capacity template has undefined scenarios for a store/delivery-ty
 - **No capacity headroom**: Services sized for average traffic, not peaks
 - **No graceful degradation**: Any single service failure = complete checkout failure
 - **No fallback**: No cached results, no partial options, no "try again later" with retry
-- **Global blast radius**: Failure affects all markets simultaneously (except China)
+- **Global blast radius**: Failure affects all markets simultaneously (except market-cn)
 - **No delivery availability monitoring**: No alerting when delivery slot availability drops suddenly for specific zip codes, markets, or delivery types — config-driven failures go undetected until customer complaints
