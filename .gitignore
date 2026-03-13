@@ -30,6 +30,9 @@ Thumbs.db
 # Research PDFs (large binaries, not suitable for git)
 ddc online resources/
 
+# Private skills (paper drafting, internal workflows)
+.claude/skills/paper-section/
+
 # LaTeX
 *.aux
 *.bbl

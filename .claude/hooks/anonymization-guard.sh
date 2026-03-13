@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
-# PreToolUse hook: block writes containing real (non-anonymized) names
-# Reads .private/anonymization-map.yaml and checks content for leaked real names
+# PreToolUse hook: block writes containing terms that violate anonymization
+# If an anonymization map exists, checks content against it
 # Exit 0 = allow, Exit 2 = block with message
 
 input=$(cat)
@@ -24,6 +24,7 @@ if [ -z "$REPO_DIR" ]; then
   exit 0
 fi
 
+# Look for an anonymization map — if none exists, skip check
 ANON_MAP="$REPO_DIR/.private/anonymization-map.yaml"
 if [ ! -f "$ANON_MAP" ]; then
   exit 0
@@ -36,15 +37,14 @@ if [ -z "$CONTENT" ]; then
   exit 0
 fi
 
-# Extract all 'real:' values, trim whitespace, filter to 4+ chars
-# Store as newline-separated string
+# Extract all 'real:' values, trim whitespace, filter to 3+ chars
 REAL_NAMES=$(grep -E 'real:' "$ANON_MAP" | grep -v '^#' | sed 's/.*real://' | sed 's/^[[:space:]]*//' | sed 's/[[:space:]]*$//' | awk 'length >= 3')
 
 if [ -z "$REAL_NAMES" ]; then
   exit 0
 fi
 
-# Check content for each real name (case-insensitive, word boundary)
+# Check content for each term (case-insensitive, word boundary)
 FOUND=""
 while IFS= read -r name; do
   [ -z "$name" ] && continue
@@ -54,10 +54,9 @@ while IFS= read -r name; do
 done <<< "$REAL_NAMES"
 
 if [ -n "$FOUND" ]; then
-  echo "BLOCKED: Content contains real (non-anonymized) names:"
+  echo "BLOCKED: Content contains non-anonymized terms:"
   echo -e "$FOUND"
-  echo "Check .private/anonymization-map.yaml and replace with anonymized equivalents."
-  echo "This file is public — real system/company names must not appear."
+  echo "Replace with anonymized equivalents before writing."
   exit 2
 fi
 
