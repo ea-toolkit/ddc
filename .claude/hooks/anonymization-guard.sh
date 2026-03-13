@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
-# PreToolUse hook: block writes containing terms that violate anonymization
-# If an anonymization map exists, checks content against it
+# PreToolUse hook: block writes containing terms that break naming consistency
+# If a naming map exists, checks content against it
 # Exit 0 = allow, Exit 2 = block with message
 
 input=$(cat)
@@ -24,7 +24,7 @@ if [ -z "$REPO_DIR" ]; then
   exit 0
 fi
 
-# Look for an anonymization map — if none exists, skip check
+# Look for a naming map — if none exists, skip check
 ANON_MAP="$REPO_DIR/.private/anonymization-map.yaml"
 if [ ! -f "$ANON_MAP" ]; then
   exit 0
@@ -54,9 +54,9 @@ while IFS= read -r name; do
 done <<< "$REAL_NAMES"
 
 if [ -n "$FOUND" ]; then
-  echo "BLOCKED: Content contains non-anonymized terms:"
+  echo "BLOCKED: Content contains terms that break naming consistency:"
   echo -e "$FOUND"
-  echo "Replace with anonymized equivalents before writing."
+  echo "Replace with the established fictional names before writing."
   exit 2
 fi
 

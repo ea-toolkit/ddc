@@ -44,8 +44,8 @@ When staff create a return:
 - **Symptom**: No orders from CustomerServicePlatform could reach Service Order Manager in APAC markets
 - **Root cause**: A security group was accidentally removed during infrastructure "sanity checks". The MessageBroker queue that CustomerServicePlatform uses to send orders to Service Order Manager lost its permissions.
 - **Impact**: Orders created in CustomerServicePlatform but stuck in draft/retry state
-- **Detection time**: ~3 hours — no monitoring alerted on the infrastructure permission change
-- **Fix**: Re-add the security group to the queue (~12 minutes once diagnosed)
+- **Detection time**: several hours — no monitoring alerted on the infrastructure permission change
+- **Fix**: Re-add the security group to the queue (quick fix once identified)
 - **Pattern**: See `infrastructure-permission-revocation`
 
 ### Global Outage Indicators

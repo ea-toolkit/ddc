@@ -46,7 +46,7 @@ The agent completely misunderstood the problem. "DC" was interpreted as "Distrib
 ### Business Logic I Need Explained
 - [x] How data center migration affects warehouse operations
 - [x] What infrastructure services warehouses depend on (DNS, auth, network)
-- [x] The two specific failure modes from the NA data center migration
+- [x] The two specific failure modes from the regional data center migration
 
 ### Infrastructure I Need Described
 - [x] DNS redundancy (or lack thereof) at warehouse sites
@@ -54,13 +54,13 @@ The agent completely misunderstood the problem. "DC" was interpreted as "Distrib
 - [x] Infrastructure dependency mapping (or lack thereof)
 
 ### Failure Details I Need
-- [x] DNS SPOF — 6 hour outage, 3 distribution points affected
-- [x] LB stale member — 2.5 hour outage, stores and warehouses affected
+- [x] DNS SPOF — multi-hour outage, multiple distribution points affected
+- [x] LB stale member — multi-hour outage, stores and warehouses affected
 - [x] Root cause chain for each failure
 - [x] Missing safeguards
 
 ### Unmapped Terms
-- [x] Data center identifier → referred to generically as "a North American data center"
+- [x] Data center identifier → referred to generically as "a regional data center"
 - [x] Network auth vendor/product → NetworkAuthenticationPlatform
 - [x] Warehouse handling solution → MaterialHandlingSystem
 
@@ -70,11 +70,11 @@ The user corrected the fundamental misunderstanding and provided detailed incide
 
 **DC = Data Center.** Physical facility being decommissioned. Infrastructure migration, not software.
 
-**Two incidents during NA data center migration (same day):**
+**Two incidents during regional data center migration (same day):**
 
-1. **DNS SPOF (6 hours):** Three distribution points had primary DNS pointing to a physical DNS server in the data center being decommissioned. No secondary DNS configured. When the DC went offline, DNS failed at those sites. Warehouse terminals, forklifts, label printers — total network loss. Took 6 hours because nobody knew those sites lacked DNS redundancy.
+1. **DNS SPOF (multi-hour outage):** Multiple distribution points had primary DNS pointing to a physical DNS server in the data center being decommissioned. No secondary DNS configured. When the DC went offline, DNS failed at those sites. Warehouse terminals, forklifts, label printers — total network loss. Took hours because nobody knew those sites lacked DNS redundancy.
 
-2. **LB stale member (2.5 hours):** Authentication servers (NetworkAuthenticationPlatform) were being migrated. Procedure: shut down → disable in LB → move. Someone shut down the server but forgot to disable it in the load balancer. LB kept routing auth requests to the dead server. Stores lost ModernStoreSellingApp, MaterialHandlingSystem, websites. Warehouses lost WarehouseManagementSystem access. Resolved when someone manually disabled the stale member.
+2. **LB stale member (multi-hour outage):** Authentication servers (NetworkAuthenticationPlatform) were being migrated. Procedure: shut down → disable in LB → move. Someone shut down the server but forgot to disable it in the load balancer. LB kept routing auth requests to the dead server. Stores lost ModernStoreSellingApp, MaterialHandlingSystem, websites. Warehouses lost WarehouseManagementSystem access. Resolved when someone manually disabled the stale member.
 
 **Systemic pattern:** No infrastructure dependency mapping. Nobody knows which sites depend on which infrastructure in which data centers. No monitoring for DNS resolution rates or auth success rates. Manual procedures with no automated validation.
 
@@ -107,9 +107,9 @@ The user explained that DC = Data Center, migration = physical decommissioning, 
 
 After curation, the agent correctly identified:
 
-1. **DNS Single Point of Failure** — distribution points with single DNS server in the decommissioned DC, no secondary. Total network loss at affected sites. 6 hours to diagnose.
+1. **DNS Single Point of Failure** — distribution points with single DNS server in the decommissioned DC, no secondary. Total network loss at affected sites. Multi-hour outage to diagnose.
 
-2. **Load Balancer Stale Member** — authentication server shut down but not disabled in LB. LB routes auth traffic to dead server. Stores and warehouses lose access to all authenticated services. 2.5 hours.
+2. **Load Balancer Stale Member** — authentication server shut down but not disabled in LB. LB routes auth traffic to dead server. Stores and warehouses lose access to all authenticated services. Multi-hour outage.
 
 3. **Systemic root cause: Infrastructure Dependency Mapping Gap** — no registry mapping sites to infrastructure components to data centers. No pre-migration impact assessment possible. Failures discovered reactively.
 

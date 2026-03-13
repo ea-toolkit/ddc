@@ -18,7 +18,7 @@ domain: retailco
 
 ## Problem Input
 
-RetailCo's operations in one Asia-Pacific market (market-au) cannot book any orders or deliveries. Customers reaching checkout see no available delivery slots for truck/curbside delivery in certain zip codes. The entire market appears unable to process these order types.
+RetailCo's operations in one Asia-Pacific market (market-au) cannot book any orders or deliveries. Customers reaching checkout see no available delivery slots for large-item delivery in certain zip codes. The entire market appears unable to process these order types.
 
 ## Agent Before (Zero Context)
 
@@ -30,16 +30,16 @@ Searched the knowledge base and found entities covering: order capture flow, in-
 3. OrderIntegrationHub routing rule misconfiguration for the market
 4. DeliveryOptionsOrchestrator / AddressResolutionService failure for the market
 
-**Confidence: 2/5** — Could hypothesize from known patterns but lacked knowledge of: picking capacity templates, how dispatch dates are calculated, the Service Order Manager → External Routing Provider delivery slot path for truck/curbside, and what "book" specifically means in this context.
+**Confidence: 2/5** — Could hypothesize from known patterns but lacked knowledge of: picking capacity templates, how dispatch dates are calculated, the Service Order Manager → External Routing Provider delivery slot path for large-item, and what "book" specifically means in this context.
 
-**Key gaps:** No knowledge of picking capacity template system, no understanding of how truck/curbside delivery slots are calculated (distinct from parcel), no awareness that the Service Order Manager feeds dispatch dates to the External Routing Provider for slot calculation.
+**Key gaps:** No knowledge of picking capacity template system, no understanding of how large-item delivery slots are calculated (distinct from parcel), no awareness that the Service Order Manager feeds dispatch dates to the External Routing Provider for slot calculation.
 
 ## Information Checklist
 
 ### Terminology
 - [x] What does "book" mean — delivery slot selection at checkout
 - [x] Which APAC market — market-au
-- [x] Delivery types affected — truck and curbside only, not parcel
+- [x] Delivery types affected — large-item delivery only, not parcel
 
 ### Systems
 - [x] Picking capacity template system within Service Order Manager — defines warehouse picking capacity and lead times
@@ -53,7 +53,7 @@ Searched the knowledge base and found entities covering: order capture flow, in-
 ### Process
 - [x] Root cause — someone modified picking capacity thresholds in production, creating undefined template scenarios
 - [x] Detection — 3-hour investigation, no automated alerts fired
-- [x] Impact — partial (specific zip codes + truck/curbside only)
+- [x] Impact — partial (specific zip codes + large-item only)
 - [x] Fix — reverted template configuration change (2-minute workaround)
 
 ### Missing Safeguards
@@ -67,10 +67,10 @@ Searched the knowledge base and found entities covering: order capture flow, in-
 The human provided all answers directly:
 
 - **Market**: market-au. Single market, not whole APAC.
-- **"Book" means**: Customer reaches checkout, system queries delivery time slots, returns nothing for certain zip codes trying to book truck or curbside delivery.
+- **"Book" means**: Customer reaches checkout, system queries delivery time slots, returns nothing for certain zip codes trying to book large-item delivery.
 - **System**: Service Order Manager has a picking capacity template system — configuration defining warehouse picking capacity and lead times per fulfillment unit. Modifiable directly in production.
 - **Root cause**: Someone modified picking capacity thresholds in production. The change created undefined template scenarios for certain stores. Service Order Manager calculated dispatch dates months in the future. External Routing Provider received those absurd dates and correctly returned no delivery slots.
-- **Impact**: Only specific zip codes and truck/curbside delivery types. Parcel unaffected. System-wide order counts looked normal. No alerts — technically nothing errored.
+- **Impact**: Only specific zip codes and large-item delivery types. Parcel unaffected. System-wide order counts looked normal. No alerts — technically nothing errored.
 - **Investigation**: 3 hours. Subtle and partial, not a complete outage.
 - **Fix**: Reverted the template configuration change. 2-minute workaround once identified.
 - **Pattern**: Production configuration change without validation. No value bounds, no impact preview, no post-change alerting.
@@ -101,11 +101,11 @@ External Routing Provider correctly returned zero slots (can't deliver months ou
     |
 DeliveryOptionsOrchestrator returned empty results to frontend
     |
-Customer saw no delivery options for truck/curbside in affected zip codes
+Customer saw no delivery options for large-item in affected zip codes
 ```
 
 ### Why It Was Hard to Find
-1. **Partial impact**: Only specific zip codes + truck/curbside. Parcel unaffected. Aggregate metrics normal.
+1. **Partial impact**: Only specific zip codes + large-item. Parcel unaffected. Aggregate metrics normal.
 2. **No errors**: Every system behaved correctly given its inputs. No exceptions, no alerts.
 3. **Config-driven**: Failure in data, not logic. Logs showed normal processing.
 

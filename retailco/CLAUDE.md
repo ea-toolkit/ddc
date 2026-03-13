@@ -1,6 +1,6 @@
 # CLAUDE.md - DDC Knowledge Base
 
-> This is a DDC knowledge base for **RetailCo** — a large European multi-channel retailer.
+> This is a DDC knowledge base for **RetailCo** — a synthetic example domain for a large-scale retail operation.
 
 ## What This Is
 
@@ -112,7 +112,7 @@ Now re-read the entity files you just created and answer the original question u
 
 ## Domain-Specific Rules
 
-- RetailCo is an **anonymized representation** of a real large European retailer. All system names, team names, and internal terminology are fictional but structurally accurate.
+- RetailCo is a synthetic example domain representing a large-scale retail operation. All system names, team names, and terminology are fictional, designed to reflect realistic enterprise architecture patterns.
 - When documenting systems, always capture: make_or_buy status, owning team, key integrations, and the business capability it implements.
 - Retail domain has distinct areas: **store operations**, **e-commerce**, **supply chain**, **range & product**, **customer engagement**, and **corporate functions**. Use these as top-level capability groupings.
 - All entity descriptions should be precise enough for an enterprise architect to reason about integration design.

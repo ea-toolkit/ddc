@@ -29,7 +29,7 @@ Picking Service (coordinates warehouse picking)
     ↓
 External Routing Provider (RoutingPlatformV2)
     ↓
-Transport Service Providers (DHL, etc.)
+Transport Service Providers (third-party carriers)
     ↓
 Delivered to customer
 ```

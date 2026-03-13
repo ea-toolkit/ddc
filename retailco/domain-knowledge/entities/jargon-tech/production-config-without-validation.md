@@ -40,12 +40,12 @@ No alert fires — technically no system error occurred
 - Requires correlating "no delivery slots for zip code X" with "config change at time T"
 
 ### Observed Instances
-- **Picking capacity template change** (market-au): Modified thresholds created undefined template scenarios, producing dispatch dates months in the future. External Routing Provider returned no slots. Affected truck/curbside delivery for specific zip codes. 3-hour investigation time, 2-minute fix once found.
+- **Picking capacity template change** (market-au): Modified thresholds created undefined template scenarios, producing dispatch dates months in the future. External Routing Provider returned no slots. Affected scheduled delivery for specific zip codes. Multi-hour investigation time, quick fix once found.
 - **Cross-compartment deployment** (EU): Different mechanism (wrong deployment target) but same pattern — bad config, correct logic, garbage output. See `cross-compartment-deployment-error`.
 
 ### Missing Safeguards
 - No validation rules on config values (min/max bounds, reasonableness checks)
-- No impact preview ("if you change this, these 47 zip codes will lose truck delivery")
+- No impact preview ("if you change this, these zip codes will lose scheduled delivery")
 - No post-change health check (did delivery slot availability change dramatically?)
 - No alerting on sudden drops in delivery option availability per market/zip/delivery-type
 - No change approval workflow (four-eyes principle not enforced for config changes)

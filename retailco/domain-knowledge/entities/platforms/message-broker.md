@@ -27,7 +27,7 @@ MessageBroker is the primary message queuing platform for asynchronous communica
 - **No queue depth monitoring**: Queue backlogs go undetected
 
 ### Incident Impact
-The lack of a queue registry directly caused a major incident where a deployment made one service start consuming from another service's queue, splitting messages and causing 8,000-9,000 orders to get stuck.
+The lack of a queue registry directly caused a major incident where a deployment made one service start consuming from another service's queue, splitting messages and causing thousands of orders to get stuck.
 
 ### Recommended Safeguards
 1. Maintain a queue registry mapping queues to owning services

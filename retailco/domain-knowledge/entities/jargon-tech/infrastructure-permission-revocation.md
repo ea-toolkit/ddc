@@ -30,7 +30,7 @@ A failure pattern where infrastructure-level permissions (security groups, queue
 
 ### Known Instance
 - CustomerServicePlatform → Service Order Manager queue in APAC region lost permissions when a security group was removed during maintenance
-- Detection took ~3 hours; fix took ~12 minutes once identified
+- Detection took several hours; quick fix once identified
 - See `customer-service-platform` for details
 
 ### Mitigation

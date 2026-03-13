@@ -13,7 +13,7 @@ depends_on: [message-broker]
 
 ## Overview
 
-The Picking Service is the middleman between "order created" and "get it on a truck." It receives orders from the Service Order Manager, coordinates picking at fulfillment units (distribution centers, stores), and sends parcel data (weight, dimensions, destination) to the External Routing Provider via direct API calls.
+The Picking Service is the middleman between "order created" and "get it shipped." It receives orders from the Service Order Manager, coordinates picking at fulfillment units (distribution centers, stores), and sends parcel data (weight, dimensions, destination) to the External Routing Provider via direct API calls.
 
 ## Details
 
@@ -34,7 +34,7 @@ The Picking Service is responsible for converting weight data from its upstream 
 - **Unit conversion bugs**: Has sent weight data in wrong units (e.g., grams sent as kg, off by 1000x) due to broken conversion logic. Neither side validates, so errors propagate silently to TSP pricing, affecting thousands of shipments. See `weight-based-pricing` for financial impact.
 - **No dead letter queue**: Poison messages (malformed orders) block the entire queue, halting all downstream processing
 - **Consumer lag**: When a message blocks the queue, all subsequent orders pile up with no automated recovery or auto-scaling
-- **Broken alerting pipeline**: Alerts exist and DO fire, but there is no on-call setup for the Picking Service team — so alerts go unacknowledged. In one incident, an alert fired 28 minutes before a user reported the issue but nobody got paged.
+- **Broken alerting pipeline**: Alerts exist and DO fire, but there is no on-call setup for the Picking Service team — so alerts go unacknowledged. In one incident, an alert fired shortly before a user reported the issue but nobody got paged.
 
 ### Incident Pattern: Poison Message
 A single legacy order from a store (created via StoreSellingApp with missing default configuration) can block the entire processing queue. Without a dead letter queue, one bad message stops all orders behind it from reaching the External Routing Provider.

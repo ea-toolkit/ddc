@@ -13,7 +13,7 @@ Execute a full Demand-Driven Context cycle for: $ARGUMENTS
 
 1. Find the nearest `domain-knowledge/` directory. If multiple exist, ask which one to use.
 2. Determine the next cycle number by checking existing files in `ddc-cycle-logs/`.
-3. Check if `.private/anonymization-map.yaml` exists. If yes, load it — all entity names, system names, and domain-specific terms MUST be mapped through it before writing any public entity files.
+3. Check if `.private/anonymization-map.yaml` exists. If yes, load it — all entity names, system names, and domain-specific terms MUST use the established fictional names before writing any public entity files.
 4. **Create a feature branch**: Run `git checkout -b ddc/<NNN>-<problem-slug>` (e.g., `ddc/005-in-store-orders-not-flowing`). All cycle work happens on this branch. If already on a `ddc/` branch, skip this step.
 
 ## Step 1: Source Document (optional)
@@ -46,7 +46,7 @@ If no source document is provided, use the problem description from $ARGUMENTS d
 From the user's input (direct answers, source documents, or both):
 
 1. Parse the information into discrete concepts
-2. **Apply anonymization**: If `.private/anonymization-map.yaml` exists, replace all mapped terms before writing files. If you encounter a new real-world term not in the map, ask the user for the anonymized name and note it for adding to the map.
+2. **Apply naming map**: If `.private/anonymization-map.yaml` exists, replace all mapped terms before writing files. If you encounter a new term not in the map, ask the user for the fictional name and note it for adding to the map.
 3. For each concept, create a typed entity file:
    ```
    domain-knowledge/entities/<type>/<kebab-case-id>.md

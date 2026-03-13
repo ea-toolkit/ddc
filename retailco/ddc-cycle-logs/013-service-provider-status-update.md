@@ -64,7 +64,7 @@ Best attempt was 4 vague hypotheses:
 
 **Root cause:** Deployment bug in how RoutingPlatformV2 calculated user access permissions. Multi-group users got filtered out incorrectly.
 
-**Detection gap:** Took 27 hours before anyone reported it. TSPs assumed "no jobs today" or worked around it. No monitoring on TSP login success or status update volumes.
+**Detection gap:** Took over a day before anyone reported it. TSPs assumed "no jobs today" or worked around it. No monitoring on TSP login success or status update volumes.
 
 **Fix:** Rollback the ExternalRoutingProvider release. ~45 minutes once identified.
 
@@ -95,7 +95,7 @@ Key improvements over RED phase:
 - Root cause: from 4 vague hypotheses → specific pattern match (access level deployment regression)
 - TSP persona: from unknown → fully documented (external companies, individual logins, multi-group access)
 - Status flow: from undocumented → bidirectional flow fully mapped
-- Detection gap: from unknown → documented (no monitoring, 24h+ detection time)
+- Detection gap: from unknown → documented (no monitoring, over a day detection time)
 - Fix: from unknown → rollback release (~45 min)
 
 ## Human Review

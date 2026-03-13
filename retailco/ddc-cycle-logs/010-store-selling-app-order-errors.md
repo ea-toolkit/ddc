@@ -27,7 +27,7 @@ The KB had entities for StoreSellingApp, OrderCaptureAPI, in-store-order-flow, a
 - Detail on what the 3 microservices within OrderCaptureAPI actually do (roles: capture, validation, coordination)
 - The specific failure mode (parameter name mismatch)
 - Error behavior from the store app perspective (pending/read-only state)
-- Incident timing details (26 min to alert, 16 min rollback)
+- Incident timing details (under 30 minutes to alert, under 20 minutes for rollback)
 - Deployment gap specifics (no canary, no health checks, no auto-rollback)
 
 The agent could list plausible failure zones but produced a diagnostic-style checklist asking the user to investigate logs and infrastructure — treating the user as an investigator rather than a domain expert.
@@ -45,8 +45,8 @@ The agent could list plausible failure zones but produced a diagnostic-style che
 - [x] Error behavior — orders stuck in pending/read-only state in store app, not flowing to Service Order Manager
 - [x] Specific failure mode — parameter name mismatch after incomplete refactoring
 - [x] Scope — total store order failure, global except market-cn
-- [x] Time to first alert — 26 minutes, markets reported before formal escalation
-- [x] Resolution — rollback, ~16 minutes once decided
+- [x] Time to first alert — under 30 minutes, markets reported before formal escalation
+- [x] Resolution — rollback, under 20 minutes once decided
 
 ### Deployment & Testing
 - [x] No canary deployment — change went to all traffic immediately
@@ -61,7 +61,7 @@ The domain expert provided:
 - Root cause: developer consolidating duplicate parameters across the 3 services, updated 2 of 3, missed the third. The missed service expected the old parameter name and failed.
 - Error behavior: order captured in store app but stuck in pending/read-only — not reaching Service Order Manager.
 - Deployment had no canary, no health checks, no auto-rollback. No test environment exercises the full 3-service flow.
-- 26 minutes to first alert. Markets reported before escalation. Rollback took ~16 minutes.
+- Under 30 minutes to first alert. Markets reported before escalation. Rollback took under 20 minutes.
 - Expert explicitly corrected the agent's approach: "Stop asking diagnostic questions — that's YOUR job. I'm here to fill domain knowledge gaps."
 
 ## Entities Curated
@@ -87,8 +87,8 @@ Why it wasn't caught:
 - Services tested locally in isolation — each passed individually
 - No canary deployment — change went to 100% of traffic
 - No automated health checks or auto-rollback
-- 26 minutes to first alert; markets reported before formal escalation
-- Rollback took ~16 minutes once decided
+- Under 30 minutes to first alert; markets reported before formal escalation
+- Rollback took under 20 minutes once decided
 
 The agent correctly recognized this as the same anti-pattern documented in cycle 005, applied the pattern to the specific failure mode (parameter name mismatch vs general refactoring), and identified the deployment gaps that allowed it to reach production.
 

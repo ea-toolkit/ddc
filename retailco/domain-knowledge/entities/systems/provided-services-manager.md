@@ -18,13 +18,13 @@ The Provided Services Manager handles the ServiceBooking domain — managing ser
 ## Details
 
 ### Service Types Managed
-- Kitchen assembly and installation
+- Installation services
 - Product installations (various)
 - Delivery and in-home placement of new products
 - Removal of old products
 
 ### Pricing
-- Advanced assembly: ~€200-300 per service
+- Advanced assembly: variable cost depending on complexity
 - Other services: varies (generally lower cost)
 
 ### Integration
@@ -32,4 +32,4 @@ The Provided Services Manager handles the ServiceBooking domain — managing ser
 - **Outbound**: Routes to `external-routing-provider` (RoutingPlatformV2/V1) for TSP dispatch
 
 ### Known Incident (INC-001)
-A deployment to a related attachment service (`attachment-service`) accidentally started consuming messages from the Provided Services Manager's MessageBroker queue. This caused message splitting — some orders reached this system, others were consumed by the wrong service. Result: 8,000-9,000 services stuck in ReadyToAssign status.
+A deployment to a related attachment service (`attachment-service`) accidentally started consuming messages from the Provided Services Manager's MessageBroker queue. This caused message splitting — some orders reached this system, others were consumed by the wrong service. Result: thousands of services stuck in ReadyToAssign status.

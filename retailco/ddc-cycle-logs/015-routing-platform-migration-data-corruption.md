@@ -31,7 +31,7 @@ Searched the knowledge base and found relevant entities:
 
 **Attempt**: Hypothesized three possible causes: (1) shared database concurrent access during parallel run, (2) SaveWorkOrder duplication amplified during migration, (3) migration-induced DB throttling causing silent transaction failures.
 
-**Confidence: 2/5** — Could identify architectural risks but had no information about the actual migration mechanism, cutover strategy, or whether this was a real incident.
+**Confidence: 2/5** — Could identify architectural risks but had no information about the actual migration mechanism, cutover strategy, or whether this was an actual incident.
 
 ## Information Checklist
 

@@ -81,7 +81,7 @@ The agent correctly identified:
 - Said "certain users' query patterns generated disproportionate database load" — too vague
 - Missed the specific root cause: RoutingPlatformV1 search shipment page had a buggy access level identification logic affecting users with historically modified access levels
 - Missed that this is the second access level incident on this platform
-- Missing mitigation details: didn't know about WOH/WOMGR pods (10→16), server restarts for connection pool exhaustion
+- Missing mitigation details: didn't know about order handler pods being scaled horizontally, server restarts for connection pool exhaustion
 - Missing secondary findings: duplicate SaveWorkOrder issue, UAT testing gap
 
 ## Human Correction
@@ -89,19 +89,19 @@ The agent correctly identified:
 Human scored 4/5 and provided specifics:
 - **Root cause precision**: The RoutingPlatformV1 search shipment page's user access level identification logic was buggy. Users whose access levels had changed historically (edited by IT help desk or External Routing Provider admin users) caused incorrect data fetches → expensive queries → throttling
 - **Second access level incident**: This follows the RoutingPlatformV2 deployment regression — emerging pattern of access level fragility
-- **Complete mitigation**: Rollback (70 minutes) + WOH/WOMGR pods scaled 10→16 + DSM team restarted WOH/WOMGR servers (connection pool exhaustion)
+- **Complete mitigation**: Rollback (over an hour) + handler pods scaled horizontally + operations team restarted order handler servers (connection pool exhaustion)
 - **Secondary findings**: Duplicate SaveWorkOrder from ServiceOrderManager (separate ongoing issue), UAT didn't catch the bug (testing gap)
-- **Detection gap**: User reported 24 minutes before official impact start
+- **Detection gap**: User reported shortly before official impact start
 
 ## Agent After — Attempt 2 (Accepted)
 
 **Confidence: 5/5**
 
-The root cause was a bug in RoutingPlatformV1's search shipment page access level identification logic. During the V1→V2 user migration, users whose access levels had been historically modified (by IT help desk or External Routing Provider admin users) triggered the bug, causing incorrect data retrieval and expensive database queries. The shared database throttled, WOH/WOMGR components exhausted their connection pools, and the Picking Service's synchronous API calls backed up. Orders accumulated with a growing delay.
+The root cause was a bug in RoutingPlatformV1's search shipment page access level identification logic. During the V1→V2 user migration, users whose access levels had been historically modified (by IT help desk or External Routing Provider admin users) triggered the bug, causing incorrect data retrieval and expensive database queries. The shared database throttled, order handler components exhausted their connection pools, and the Picking Service's synchronous API calls backed up. Orders accumulated with a growing delay.
 
 This is the second access level incident on the External Routing Provider platform (first: `access-level-deployment-regression` on V2), establishing that the access level model is fragile across both platform versions.
 
-Mitigation: Rollback (~70 minutes), WOH/WOMGR pods scaled 10→16, server restarts for connection pool recovery.
+Mitigation: Rollback (over an hour), handler pods scaled horizontally, server restarts for connection pool recovery.
 
 Secondary findings: Duplicate SaveWorkOrder requests from ServiceOrderManager (separate issue), UAT testing gap for access level edge cases.
 

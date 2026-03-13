@@ -17,7 +17,7 @@ A picking capacity template is a configuration object within the Service Order M
 
 ### What It Contains
 - **Capacity thresholds**: Maximum number of orders a fulfillment unit can pick per day
-- **Lead times**: Days required to prepare an order for dispatch, varying by delivery type (truck, curbside, parcel)
+- **Lead times**: Days required to prepare an order for dispatch, varying by delivery type (large-item, scheduled, parcel)
 - **Store/warehouse assignment**: Which fulfillment units the template applies to
 
 ### How It's Used

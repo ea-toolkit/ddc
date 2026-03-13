@@ -23,15 +23,15 @@ The RoutingPlatformV1 search shipment page had buggy access level identification
 2. Users with historically modified access levels trigger buggy access level identification logic on RoutingPlatformV1's search shipment page
 3. Bug causes incorrect data retrieval, generating expensive database queries
 4. Shared database throttles under query load
-5. Connection pools exhaust on WOH/WOMGR components
+5. Connection pools exhaust on order handler components
 6. Order processing pipeline backs up — Picking Service synchronous API calls to the routing API slow down or fail
 7. Orders accumulate with growing delay
-8. User reported the issue 24 minutes before official impact start — system monitoring did not detect first
+8. User reported the issue before official impact start — system monitoring did not detect first
 
 ### Mitigation Applied
-- **Rollback**: Migration rolled back (users sent back to V1) — took approximately 70 minutes, far too slow for a critical path system
-- **Pod scaling**: WOH/WOMGR pods scaled from 10 to 16
-- **Server restart**: DSM team restarted WOH/WOMGR servers to recover from connection pool exhaustion
+- **Rollback**: Migration rolled back (users sent back to V1) — took over an hour, far too slow for a critical path system
+- **Pod scaling**: order handler pods scaled horizontally
+- **Server restart**: DSM team restarted order handler servers to recover from connection pool exhaustion
 
 ### Secondary Findings
 - **Duplicate SaveWorkOrder issue**: ServiceOrderManager sends duplicate SaveWorkOrder requests at the exact same second, causing data duplication in the External Routing Provider. This is a separate ongoing issue discovered during investigation.

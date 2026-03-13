@@ -11,12 +11,12 @@ related_systems: [delivery-options-orchestrator, capacity-controller, address-re
 
 ## Overview
 
-A delivery arrangement is the full set of delivery options presented to a customer during the checkout flow. It encompasses the available delivery methods (home delivery, parcel, truck, click & collect), time windows/slots for each method, associated costs and service levels, and pickup point locations for click & collect.
+A delivery arrangement is the full set of delivery options presented to a customer during the checkout flow. It encompasses the available delivery methods (home delivery, parcel, large-item delivery, click & collect), time windows/slots for each method, associated costs and service levels, and pickup point locations for click & collect.
 
 ## Details
 
 ### Components
-- **Delivery methods**: Home delivery (truck), parcel delivery, click & collect
+- **Delivery methods**: Home delivery (large-item delivery), parcel delivery, click & collect
 - **Time windows**: Available date/time slots per method
 - **Costs**: Delivery fees per method and time slot
 - **Service levels**: Standard, express, etc.

@@ -184,7 +184,7 @@
         <mxCell id="legend-3" value="Layers: What | Why | Who | How | With | Context" style="text;html=1;fontSize=10;align=left;verticalAlign=middle;fontColor=#666666;" parent="1" vertex="1">
           <mxGeometry x="600" y="745" width="350" height="18" as="geometry" />
         </mxCell>
-        <mxCell id="legend-4" value="Derived from IKEA&apos;s 32-entity enterprise meta-model, simplified for general use" style="text;html=1;fontSize=10;fontStyle=2;align=left;verticalAlign=middle;fontColor=#999999;" parent="1" vertex="1">
+        <mxCell id="legend-4" value="Simplified from a 32-entity enterprise meta-model for general use" style="text;html=1;fontSize=10;fontStyle=2;align=left;verticalAlign=middle;fontColor=#999999;" parent="1" vertex="1">
           <mxGeometry x="600" y="763" width="380" height="18" as="geometry" />
         </mxCell>
 

@@ -53,7 +53,7 @@ A specific incident occurred where a team refactored code across the store order
 - The 3rd service was missed
 - Orders routed through the missed service never reached the Service Order Manager
 - Orders were captured correctly in StoreSellingApp — the failure was between the intermediate services and Service Order Manager
-- **Duration**: 2 hours 8 minutes
+- **Duration**: approximately two hours
 - **Scope**: Global (all markets except market-cn)
 - **Detection**: Not caught by automated tests — no integration test coverage exists for the complete StoreSellingApp → Service Order Manager path across all 3 services
 - See `incomplete-refactoring-pattern` for the anti-pattern and safeguards
