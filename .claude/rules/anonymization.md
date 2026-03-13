@@ -2,33 +2,18 @@
 
 Apply when writing ANY file in `domain-knowledge/` or `ddc-cycle-logs/`.
 
-## Hard Rule
+## Rule
 
-All content in `domain-knowledge/` and `ddc-cycle-logs/` is PUBLIC. Real company names, system names, team names, and internal terminology MUST NOT appear.
+RetailCo is an anonymized domain. All entities use anonymized names (RetailCo, ServiceOrderManager, ExternalRoutingProvider, etc.). When adding new entities or cycle logs, use only the anonymized names from the knowledge base. Do not introduce real company names, product names, or internal terminology.
 
-## Before Every Write
+## When Adding New Content
 
-1. Check `.private/anonymization-map.yaml` for the real-to-public name mapping
-2. Scan your content for ANY real name from the map before writing
-3. Replace every occurrence with the anonymized equivalent
-4. If you encounter a real-world term NOT in the map, ask the user for the anonymized name BEFORE writing
-
-## What Gets Anonymized
-
-- Company name (e.g., the real company behind "RetailCo")
-- System names (internal codenames, acronyms)
-- Team names (internal org names)
-- Platform names (vendor products used internally)
-- Market codes (country/region identifiers)
-- Jargon (internal acronyms and shorthand)
+- Use names consistent with existing entities in the knowledge base
+- If you need to reference a new system, team, or term not yet in the KB, ask the user for the appropriate anonymized name
+- Market references should use the format `market-xx` (e.g., market-nl, market-cn)
 
 ## Common Mistakes
 
-- Forgetting to anonymize in cycle logs (they're public too, not just entities)
 - Using real acronyms in parenthetical references like "WMS (REALNAME)"
 - Leaking real names in "Human Answers" sections of cycle logs when quoting user input
-- Short acronyms slipping through — check the map even for 3-4 letter terms
-
-## The Hook Catches Most Leaks
-
-A PreToolUse hook (`anonymization-guard.sh`) blocks writes containing real names 3+ chars. Only 2-char market codes (`NL`, `SE`) bypass the hook — manually check those.
+- Short acronyms slipping through — check existing entity names for consistency

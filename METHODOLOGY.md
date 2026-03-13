@@ -16,14 +16,14 @@ This document explains the DDC methodology for building domain knowledge bases t
 **Why it fails:**
 - The knowledge is massive — it takes forever
 - You don't know what's useful until you need it
-- Lots of wasted effort documenting things that never get used
+- Lots of effort spent documenting things that never get used
 - Hard to know when you're "done"
 
 ---
 
 ## The Solution: Demand-Driven Context Curation
 
-Instead of top-down, go **bottom-up** — let real problems drive what gets documented.
+Instead of top-down, go bottom-up — let real problems drive what gets documented.
 
 ### The Mental Model
 
@@ -63,72 +63,68 @@ Think of a Technology Architect as a black box:
      artifact request)                    design, artifact)
 ```
 
-**The insight:** AI scores 10/10 on expertise and processing power. The only gap is domain knowledge. If you fill that gap with curated context, the AI agent should perform at the level of a human domain expert.
+**The insight:** AI scores 10/10 on expertise and processing power. The only gap is domain knowledge. Fill that gap with curated context, and the agent performs at the level of a human domain expert.
 
 ---
 
-## The Methodology: Reverse Engineering Knowledge Needs
+## The DDC Loop
 
-### The DDC Loop
+Every cycle follows the same structure. There is no sandbox phase, no staging area, no "collect first, curate later." The problem drives the work directly from the start.
 
-**Step 1: Take a Real Problem**
+### Step 1: Take a Real Problem
 
-A real problem arrives — a vendor document with integration questions, an architectural design task, a cross-team coordination challenge.
+A real problem arrives — a production incident, an architectural question, a design task, a cross-team coordination challenge. The problem must be specific enough that you can tell when the agent has answered it correctly.
 
-**Step 2: Create a Sandbox**
+### Step 2: RED Phase — Attempt Without Context
 
-Create a folder in `sandbox/` for the problem:
-```
-sandbox/
-+-- problem-name/
-    |-- README.md              # Problem overview, questions to answer
-    +-- information-checklist.md  # What context is needed
-```
+Ask the agent to attempt the problem using only what already exists in the knowledge base.
 
-**Step 3: AI Attempts to Solve (Day 1 New Joiner Simulation)**
+The agent will do two things:
+1. Search existing entities and assess how much is covered
+2. Produce a Demand Checklist — the specific gaps that prevent a confident answer
 
-Ask the AI agent to solve the problem as if it were a new domain expert who just joined with zero domain knowledge.
+The checklist is structured by entity type:
+- Terminology to define
+- Systems to document
+- Processes to describe
+- Data structures to explain
+- Business logic to clarify
 
-The AI will say: *"I need X, Y, Z information to answer this."*
+The agent rates its confidence (1-5) and explains what's missing. This is the honest baseline — not a warm-up exercise, but a real measure of where the knowledge base stands today.
 
-**Step 4: Document Information Needs**
+### Step 3: GREEN Phase — Curate Entities
 
-Create an information checklist:
-- What terminology needs defining?
-- What systems need documenting?
-- What reference data is needed?
-- What business logic needs explaining?
+The domain expert provides the missing information: direct answers, an incident report, a design doc, or a combination.
 
-**Step 5: Human Fills the Gaps**
+The agent structures that information into typed entity files and places them in the correct location in the knowledge base. Each entity gets frontmatter (type, id, status, relationships) and a short prose body. Relationships are wired up to existing entities.
 
-The domain expert provides the information:
-- Fill in definitions
-- Point to existing docs
-- Get info from subject matter experts
-- Add to the checklist
+The key discipline here: one concept per file, placed correctly, connected deliberately. Not a dump of everything the expert said into a single document.
 
-**Step 6: AI Re-Attempts**
+### Step 4: Answer the Problem (AFTER)
 
-With the new context, the AI tries again.
+With the newly curated entities in place, the agent re-reads all relevant context — existing and new — and re-answers the original problem.
 
-If output is wrong or incomplete, identify what's still missing and repeat Step 5.
+The answer should be specific: named systems, traced flows, identified failure mechanisms, concrete recommendations. Generic answers are a signal that curation was insufficient.
 
-**Step 7: Problem Solved**
+The agent rates confidence again and explains what improved.
 
-When the AI produces the expected output (validated by human), the problem is solved.
+### Step 5: Human Review
 
-**Step 8: Graduate Content**
+The domain expert reviews the answer. If it's wrong:
+1. The agent records what it got wrong and why
+2. The expert's correction is incorporated into entity files
+3. The agent re-answers
+4. Review repeats
 
-Move validated content from `sandbox/` to proper locations:
-- Terminology -> `entities/jargon-business/` or `entities/jargon-tech/`
-- Systems -> `entities/systems/`
-- Reference data -> `entities/data-models/reference-data/`
-- Diagrams -> `diagrams/`
-- Decisions -> `decisions/`
+Each rejected attempt gets logged in the cycle log. The correction loop is not a failure state — it's where the most valuable learning happens. Skipping rejected attempts in the log makes the data dishonest.
 
-**Step 9: Track Progress**
+### Step 6: Log the Cycle
 
-Log the cycle in a structured DDC cycle log. After multiple problems, patterns emerge — these become learning paths and reasoning paths.
+Every cycle produces a structured log at `ddc-cycle-logs/<NNN>-<problem-slug>.md`.
+
+The log captures: the problem, what the agent got wrong before, the demand checklist, what entities were curated, each attempt (including rejected ones), the accepted answer, and the human review score.
+
+The logs are the research record. Without them, you can't measure convergence, identify recurring gaps, or build learning paths.
 
 ---
 
@@ -142,79 +138,57 @@ Problem 3  -> fills to ~10%
 Problem 20-30 -> fills to ~100% (for one role)
 ```
 
-After 20-30 real problems, you have:
-- Curated context covering what a domain expert actually needs
-- Learning paths (what to read in what order)
-- Reasoning paths (how to approach different problem types)
+After 20-30 real problems in a role, you have curated context that covers what a domain expert actually needs. Each new problem requires less new curation because previous cycles already documented overlapping knowledge.
 
-Each new problem requires less new context because previous cycles already curated overlapping knowledge.
+This is visible in the cycle logs. By cycle 5 in the RetailCo domain, the agent was reusing entities from previous cycles instead of producing a full demand checklist. By cycle 10, it was recognizing recurring failure patterns — "orders not dropping" as a symptom class, not just a specific incident.
+
+The knowledge base converges toward completeness. The gap between agent and human closes.
 
 ---
 
-## Sandbox Structure Template
+## The TDD Parallel
 
-For each new problem, create:
+Engineers will recognize this structure:
 
-```
-sandbox/
-+-- <problem-name>/
-    |-- README.md
-    |   |-- Context (what triggered this problem)
-    |   |-- Source documents (if any)
-    |   |-- Questions to answer
-    |   |-- Status tracking
-    |   +-- Next steps
-    |
-    |-- information-checklist.md
-    |   |-- Part 1: What AI already understood (needs confirmation)
-    |   |-- Part 2: What AI still needs (organized by type)
-    |   |-- Part 3: Priority order
-    |   +-- Part 4: Format templates
-    |
-    |-- context-gathered.md (optional)
-    |   +-- Information collected during exploration
-    |
-    +-- proposed-answers.md (optional)
-        +-- Draft answers for stakeholder review
-```
+| TDD | DDC |
+|-----|-----|
+| Write a failing test | Give agent a failing problem |
+| Write minimum code to pass | Curate minimum context to succeed |
+| Test passes | Agent produces correct output |
+| Refactor | Validate and tighten entity definitions |
+| Next test | Next problem |
+
+Just as TDD lets failing tests drive code design, DDC lets failing agent responses drive knowledge curation. You don't write all the tests upfront. You don't curate all the context upfront. You let real failures tell you exactly what's missing.
 
 ---
 
 ## For AI Agents: How to Work with DDC
 
-When you receive a problem:
+### When Receiving a New Problem
 
-### If It's a New Problem
+1. Search `domain-knowledge/entities/` for existing knowledge relevant to the problem
+2. Read matching entity files and assess coverage honestly
+3. Attempt to answer using only what exists in the KB
+4. If coverage is insufficient, produce a Demand Checklist organized by entity type
+5. Rate your confidence (1-5) and explain what's missing
+6. Ask the human to fill the gaps
 
-1. Check if a sandbox already exists for it
-2. If not, create one following the template above
-3. Read the problem, identify what context you need
-4. Create an information checklist
-5. Ask the human to fill the gaps
-6. Iterate until you can solve the problem
-
-### If It's a Continuing Problem
-
-1. Go to the relevant `sandbox/` folder
-2. Read `README.md` for context
-3. Read `information-checklist.md` for what's been gathered vs. still needed
-4. Continue from where you left off
+Do not speculate beyond what the knowledge base contains. If the knowledge base doesn't have it, say so. Confident wrong answers pollute the knowledge base when they get curated as facts.
 
 ### When Looking for Existing Knowledge
 
-Follow this navigation pattern:
-1. **Terminology unclear?** -> Check `entities/jargon-business/` or `entities/jargon-tech/`
-2. **System question?** -> Check `entities/systems/`
-3. **Data/reference question?** -> Check `entities/data-models/`
-4. **Process question?** -> Check `diagrams/processes/` or `diagrams/sequences/`
-5. **Past decisions?** -> Check `decisions/resolved/`
+1. Terminology unclear? Start with `entities/jargon-business/` or `entities/jargon-tech/`
+2. System question? Start with `entities/systems/`
+3. Data or reference question? Start with `entities/data-models/`
+4. Process question? Start with `diagrams/processes/` or `diagrams/sequences/`
+5. Past decisions? Check `decisions/resolved/`
 
 ### When Adding New Content
 
-1. Use the correct format (see entity file templates)
-2. Place in the correct location based on content type
-3. Add relationships in frontmatter
-4. Commit with a clear message
+1. Use the correct entity format (see entity-format rule)
+2. Place in the correct location based on entity type
+3. Wire up relationships in frontmatter — connect to existing entities
+4. Commit each logical unit separately with a clear message
 
 ---
 
@@ -222,53 +196,39 @@ Follow this navigation pattern:
 
 ### Starting a New Session
 
-When you start a fresh AI session, tell it:
+When starting a fresh AI session, give it orientation:
 
-> "Read WHY.md, METHODOLOGY.md, and CLAUDE.md to understand this project. Then check the sandbox/ folder for any active problems we're working on."
+> "Read WHY.md, METHODOLOGY.md, and CLAUDE.md to understand this project. Then read the ddc-cycle-logs/ folder to see what problems we've worked on."
 
-This gives the AI all the context it needs to continue.
+This replaces the context the agent would otherwise be missing.
 
-### When AI Asks for Information
+### When the Agent Produces a Demand Checklist
 
-The AI will create an information checklist. Your job:
-1. Fill in what you know directly
-2. Point to existing docs for things that exist
-3. Note things that need to be obtained from others
-4. Mark status: `[ ]` not started, `[~]` partial, `[x]` complete
+Your job is to answer it:
+- Fill in what you know directly
+- Point to existing documents for things that are already written
+- Note what requires input from others
+- Be specific — rough notes are fine, but vague answers produce vague entities
 
-### Validating AI Output
+### Validating Agent Output
 
-When AI proposes an answer/solution:
-1. Check if it's correct based on your domain knowledge
-2. If wrong, identify what context was missing
-3. Add that context and have AI retry
+When the agent proposes an answer:
+1. Check whether it's correct based on your domain knowledge
+2. If it's wrong, explain what specifically is wrong and why
+3. Don't just say "incorrect" — tell the agent what the right answer is, or at least what direction to explore
+4. Corrections go into entity files immediately, not just into the conversation
 
 ---
 
 ## Success Metrics
 
 **For a Single Cycle:**
-- AI produces correct output that you would expect from a human domain expert
-- No manual intervention needed beyond providing the context
+- Agent produces a correct, specific answer that a domain expert would stand behind
+- Entities curated are reusable — they contain knowledge that will help future problems, not just this one
 
 **For the Overall Project:**
-- After 20-30 problems, AI can solve new problems with minimal new context
-- Learning paths exist for key roles
-- Reasoning patterns documented for common problem types
-- Human experts spend time on novel problems, AI handles routine reasoning
-
----
-
-## The TDD Parallel
-
-Engineers will recognize DDC's structure:
-
-| TDD | DDC |
-|-----|-----|
-| Write a failing test | Give agent a failing problem |
-| Write minimum code to pass | Curate minimum context to succeed |
-| Test passes | Agent produces correct output |
-| Refactor | Graduate content to proper locations |
-| Next test | Next problem |
-
-Just as TDD lets failing tests drive code design, DDC lets failing agent responses drive knowledge curation. You don't write all the tests upfront. You don't curate all the context upfront.
+- After 20-30 problems, agent can answer new problems in the same domain with minimal new curation
+- The demand checklist gets shorter each cycle as the knowledge base matures
+- Learning paths exist for key roles — structured reading lists derived from cycle logs
+- Reasoning patterns are documented for recurring problem types
+- Domain experts spend time on novel problems; agents handle routine reasoning
