@@ -19,7 +19,7 @@
             "command": "bash .claude/hooks/anonymization-guard.sh"
           }
         ],
-        "description": "Block writes containing real (non-anonymized) names in public knowledge base files"
+        "description": "Block writes containing terms that break the synthetic domain naming scheme"
       }
     ],
     "PostToolUse": [

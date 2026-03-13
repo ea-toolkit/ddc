@@ -17,7 +17,7 @@ A load balancer stale member failure occurs when a server is shut down (e.g., du
 
 ### Incident Pattern
 
-During a North American data center migration, the planned procedure for authentication server migration was:
+During a regional data center migration, the planned procedure for authentication server migration was:
 1. Shut down the authentication server
 2. Disable it in the load balancer
 3. Physically move it to the new location
@@ -29,7 +29,7 @@ Someone executed step 1 (shut down the server) but **forgot step 2** (disable in
 - Stores could not use ModernStoreSellingApp (POS)
 - Stores could not access MaterialHandlingSystem or websites
 - Warehouse staff could not log into WarehouseManagementSystem
-- **Duration: 2.5 hours** — auto-resolved when someone noticed and disabled the dead server in the load balancer
+- **Duration: multi-hour outage** — auto-resolved when someone noticed and disabled the dead server in the load balancer
 
 ### Why This Happens
 

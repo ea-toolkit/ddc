@@ -18,7 +18,7 @@ The CapacityController is the core backend service that determines what delivery
 ## Details
 
 ### Key Responsibilities
-- Determine available delivery methods for a cart + address combination (home delivery, parcel, truck, click & collect)
+- Determine available delivery methods for a cart + address combination (home delivery, parcel, large-item delivery, click & collect)
 - Check capacity and return available time windows/slots for each method
 - Factor in product type, cart weight/dimensions, and delivery zone when determining options
 - Return cost and service level information for each option

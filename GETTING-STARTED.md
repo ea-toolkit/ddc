@@ -23,13 +23,13 @@ Open http://localhost:3000. Click around — look at entities, relationships, an
 
 Open `examples/healthcare-claims/ddc-cycle-logs/001-vendor-integration-questions.md`. This is what a DDC cycle produces:
 
-1. A real problem came in
+1. A concrete problem came in
 2. The agent tried to answer it, couldn't (knowledge base was too thin)
 3. A demand checklist was generated — exactly what was missing
 4. A human filled the gaps with rough notes
 5. The agent curated those notes into structured entities
 
-That's DDC. The knowledge base grew because a real problem demanded it.
+That's DDC. The knowledge base grew because a concrete problem demanded it.
 
 ---
 
@@ -108,7 +108,7 @@ After the cycle, see what was created:
 /ddc-status
 ```
 
-This shows entity counts by type, recent changes, and coverage. Your knowledge base just went from empty to having its first real entities — driven by a real problem.
+This shows entity counts by type, recent changes, and coverage. Your knowledge base just went from empty to having its first entities — driven by a concrete problem.
 
 ### Run another cycle
 
@@ -125,7 +125,7 @@ The entity and relationship types in the template work for any domain. You don't
 The defaults cover business jargon, systems, capabilities, data models, teams, APIs, personas, decisions, and more. Start with them as-is.
 
 **Don't try to document everything up front.**
-That's the exact anti-pattern DDC solves. Let real problems pull knowledge into the base. After 20-30 cycles, you'll have a focused, relevant knowledge base — not a stale wiki.
+That's the exact anti-pattern DDC solves. Let concrete problems pull knowledge into the base. After 20-30 cycles, you'll have a focused, relevant knowledge base — not a stale wiki.
 
 ---
 

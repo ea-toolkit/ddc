@@ -47,7 +47,7 @@ The knowledge base had no coverage of inventory/availability systems, backorder 
 The domain expert provided partial answers:
 
 - **Backordered** = inventory not available, order queued waiting for stock, customer gets no firm delivery date
-- **Distinction from ReadyToAssign**: Backordered is for product orders (inventory), ReadyToAssign stuck is for service orders (assembly/installation)
+- **Distinction from ReadyToAssign**: Backordered is for product orders (inventory), ReadyToAssign stuck is for service orders (scheduled services)
 - **Inventory system**: "There's definitely an inventory system... probably multiple. Warehouses track their own stock, there might be a central inventory service."
 - **Backorder assignment**: "Probably ServiceOrderManager, or maybe something that talks to it about inventory allocation"
 - **Backorder logic**: If system can't find available inventory at a fulfillment location that can ship to customer, marks backordered. Exact rules unknown.
@@ -75,7 +75,7 @@ The domain expert provided partial answers:
 | Entity | Type | Reason |
 |--------|------|--------|
 | Change Data Capture | jargon-tech | Fabricated — agent treated unverified hypothesis as confirmed fact |
-| Distribution Center | jargon-business | Replaced with Distribution Point (DP) due to anonymization collision |
+| Distribution Center | jargon-business | Replaced with Distribution Point (DP) due to naming collision |
 
 ## Agent After — Attempt 1 (Rejected)
 
@@ -133,6 +133,6 @@ Expert confirmed Attempt 3 as correct.
 
 1. **Never treat diagnostic questions as confirmed facts.** When a human says "what if X?", that's an invitation to explore, not a confirmation of X.
 2. **Ask for the incident report.** The agent should have asked "can you point me to the specific incident?" instead of building theories.
-3. **Vocabulary without insight is noise.** Generic definitions are useful, but entities must capture domain-specific patterns and real incident details to be actionable.
+3. **Vocabulary without insight is noise.** Generic definitions are useful, but entities must capture domain-specific patterns and incident scenario details to be actionable.
 4. **Acronym disambiguation matters.** An abbreviation for distribution point warehouses was confused with a data replication technology. The agent assumed the wrong meaning and built an entire fabricated entity around it.
 5. **Confidence scores must reflect actual certainty.** Claiming 3/5 while guessing is dishonest. The agent should have stayed at 1/5 until the root cause was confirmed.

@@ -74,7 +74,7 @@ With 4 new + 3 reused entities, the agent correctly identified:
 ## Human Review
 
 **Score: 4.5/5** — Analysis solid. Minor additions:
-- Alert fired 28 minutes before user report but nobody paged (broken alerting pipeline, not missing alerts)
+- Alert fired shortly before user report but nobody paged (broken alerting pipeline, not missing alerts)
 - Legacy order originated from a store via StoreSellingApp with missing default configuration
 - Consumer lag monitoring with auto-remediation as additional safeguard
 - "Orders not dropping" is a recurring cross-system pattern, not a one-off

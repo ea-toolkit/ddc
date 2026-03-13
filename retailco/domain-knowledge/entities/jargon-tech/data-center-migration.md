@@ -47,6 +47,6 @@ This manifests as "orders failing" or "orders in error state" but the root cause
 
 ### Known Incident
 
-During a North American data center migration, two infrastructure failures occurred on the same day affecting multiple distribution points:
-1. **DNS failure (6 hours)** — see `dns-single-point-of-failure`
-2. **Authentication failure (2.5 hours)** — see `load-balancer-stale-member`
+During a regional data center migration, two infrastructure failures occurred on the same day affecting multiple distribution points:
+1. **DNS failure (multi-hour outage)** — see `dns-single-point-of-failure`
+2. **Authentication failure (multi-hour outage)** — see `load-balancer-stale-member`

@@ -4,7 +4,7 @@
 
 **If you treat AI agents as first-class citizens — providing them with curated knowledge the same way you onboard a new joiner — they can perform at least 60% of the cognitive and construction work that human domain experts do.**
 
-This is no longer purely a hypothesis. After 15 real DDC cycles across a production domain, the pattern holds: agents that start with zero domain knowledge and produce generic, wrong, or incomplete answers consistently reach expert-level output once structured context is in place. The framework exists to make that process repeatable and measurable.
+This is no longer purely a hypothesis. After 15 DDC cycles across a representative domain, the pattern holds: agents that start with zero domain knowledge and produce generic, wrong, or incomplete answers consistently reach expert-level output once structured context is in place. The framework exists to make that process repeatable and measurable.
 
 ---
 
@@ -99,7 +99,7 @@ The agents are defined. The knowledge base is growing. The DDC cycles are what f
 
 ## What We Learned First
 
-The first 15 cycles didn't start with Technology Architecture. They started with SRE incident analysis — real production failures with known root causes and a domain expert who could validate the output.
+The first 15 cycles didn't start with Technology Architecture. They started with SRE incident analysis — production-like failure scenarios with clear success criteria and a domain expert who could validate the output.
 
 That turned out to be the right place to start:
 - Clear success criteria: the agent either finds the root cause or it doesn't
@@ -120,7 +120,7 @@ Everything must be machine-parseable — structured frontmatter, consistent rela
 Every piece of knowledge must be placed correctly, connected to related entities, and maintained when things change. A dump of unstructured notes is noise, not context.
 
 ### 3. Slow and Deliberate
-Quality over quantity. Small commits. One concept at a time. If adding information doesn't enable better reasoning on a real problem, it's probably not worth adding yet.
+Quality over quantity. Small commits. One concept at a time. If adding information doesn't enable better reasoning on a concrete problem, it's probably not worth adding yet.
 
 ### 4. Prove, Then Scale
 Get one problem type working well before expanding to others. Incident analysis first. Architecture reasoning next. Then the full set of domain roles.

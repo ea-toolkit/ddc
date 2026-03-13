@@ -68,7 +68,7 @@ Key information provided by the domain expert:
 - **Consumer shutdown is the primary cause**: During lifecycle management activities on OrderIntegrationHub, its consumers get shut down, stopping all order flow to WMS. Not just routing rules.
 - **"Received" is ambiguous**: Could mean WMS has it, logs show arrival, OR upstream thinks it sent successfully. Critical distinction.
 - **Communication gaps**: OrderIntegrationHub team doesn't notify WMS/warehouse teams before maintenance. No dependency registry exists.
-- **Specific incidents**: OrderIntegrationHub deployment breaking flow; lifecycle management shutting down consumers without notice. Multiple distribution centers affected across EU and UK regions.
+- **Specific incidents**: OrderIntegrationHub deployment breaking flow; lifecycle management shutting down consumers without notice. Multiple distribution centers affected across several regions.
 
 ## Entities Curated
 

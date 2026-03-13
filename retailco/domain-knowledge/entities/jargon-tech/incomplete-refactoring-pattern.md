@@ -35,8 +35,8 @@ The incomplete refactoring pattern occurs when a shared integration point (e.g.,
 - The 3rd service still expected the old parameter name — orders passed through the first two services, then failed at the third
 - **Failure mode**: Parameter name mismatch — the missed service couldn't find the parameter it needed
 - **Scope**: Total store order failure, global (all markets except market-cn, which has its own stack)
-- **Time to first alert**: 26 minutes — markets reported the issue before formal escalation
-- **Resolution**: Rollback, took ~16 minutes once the decision was made
+- **Time to first alert**: under 30 minutes — markets reported the issue before formal escalation
+- **Resolution**: Rollback, took under 20 minutes once the decision was made
 - Orders were captured correctly in the store app but stuck in "pending"/"read-only" state — not flowing to Service Order Manager
 
 ### Deployment Gaps That Enabled This

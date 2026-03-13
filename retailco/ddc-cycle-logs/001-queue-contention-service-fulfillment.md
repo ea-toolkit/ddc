@@ -18,7 +18,7 @@ domain: retailco
 
 ## Problem Input
 
-RetailCo's service fulfillment platform processes customer-booked services (assembly, installation, delivery). After a routine deployment, 8,000-9,000 service orders got stuck in a "Ready to Assign" status, meaning customers had confirmed appointments but no service provider was dispatched. The issue went undetected for 24 hours. Analyze the root cause and propose architectural safeguards to prevent queue contention between microservices.
+RetailCo's scheduled services platform processes customer-booked services (installation, delivery). After a routine deployment, thousands of service orders got stuck in a "Ready to Assign" status, meaning customers had confirmed appointments but no service provider was dispatched. The issue went undetected for over a day. Analyze the root cause and propose architectural safeguards to prevent queue contention between microservices.
 
 ## Agent Before (Zero Context)
 
@@ -45,12 +45,12 @@ With an empty knowledge base, the agent produced a generic guess:
 
 ## Human Answers
 
-Answers provided from deep-dive analysis of an internal production incident and domain knowledge base. Key information included:
+Answers provided from structured incident analysis and domain knowledge base. Key information included:
 - Complete system landscape: Service Order Manager, Provided Services Manager, External Routing Provider
 - Message broker details: MessageBroker platform, no queue registry, no competing consumer detection
 - Full order lifecycle: Order Created → ReadyToAssign → Assigned → Confirmed → Delivered
 - Integration map: OrderCaptureAPI → (Kafka) → Service Order Manager → (MessageBroker) → Provided Services Manager → External Routing Provider → TSPs
-- Business context: Services cost €100-300, 8,000-9,000 customers affected, brand-damaging impact
+- Business context: Moderate cost per service, thousands of customers affected, brand-damaging impact
 
 ## Entities Curated
 

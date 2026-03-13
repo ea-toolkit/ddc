@@ -64,7 +64,7 @@ Searched the RetailCo knowledge base for anything related to returns management.
 
 The domain expert provided comprehensive context:
 
-**System**: CustomerServicePlatform (anonymized) — handles returns, complaints, order adjustments, manual order corrections, and post-sale customer service operations. Store staff use it to process returns, reschedule deliveries, and fix backorder issues. In APAC markets, it also creates forward orders flowing through StoreSellingApp → ServiceOrderManager.
+**System**: CustomerServicePlatform (fictional) — handles returns, complaints, order adjustments, manual order corrections, and post-sale customer service operations. Store staff use it to process returns, reschedule deliveries, and fix backorder issues. In APAC markets, it also creates forward orders flowing through StoreSellingApp → ServiceOrderManager.
 
 **Return order flow**: Customer/staff initiates return → CustomerServicePlatform captures return details → validates eligibility (time since purchase, product condition) → saves return order record → coordinates with ServiceOrderManager for refund/inventory adjustments → if exchange, new order created through normal path.
 
@@ -74,7 +74,7 @@ The domain expert provided comprehensive context:
 3. Integration failure (dependent system down — ServiceOrderManager, payment gateway, customer database)
 4. Infrastructure issue (network, security groups, queue permissions)
 
-**Known precedent**: Previous year (March), CustomerServicePlatform couldn't process APAC region orders because a security group was accidentally removed during "sanity checks". The MessageBroker queue lost permissions. Orders created but stuck in draft/retry. ~3 hours to diagnose (no monitoring on infrastructure changes), ~12 minutes to fix once identified.
+**Known precedent**: In a previous incident, CustomerServicePlatform couldn't process APAC region orders because a security group was accidentally removed during "sanity checks". The MessageBroker queue lost permissions. Orders created but stuck in draft/retry. several hours to diagnose (no monitoring on infrastructure changes), quick fix once identified.
 
 ## Entities Curated
 

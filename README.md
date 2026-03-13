@@ -4,7 +4,7 @@
 
 **A methodology for building enterprise AI agent knowledge bases through problem-driven curation.**
 
-Stop trying to document everything. Give your agent a real problem. Let it tell you what's missing. Repeat 30 times.
+Stop trying to document everything. Give your agent a concrete problem. Let it tell you what's missing. Repeat 30 times.
 
 ---
 
@@ -22,7 +22,7 @@ Enterprise AI agents excel at reasoning but lack the domain-specific context to 
 DDC flips the approach: instead of telling agents what to know, let problems reveal what to curate.
 
 ```
-Real Problem -> Agent Attempts (fails) -> Information Checklist
+Problem -> Agent Attempts (fails) -> Information Checklist
      -> Human Fills Gaps -> Agent Curates -> Agent Succeeds
                                               |
                               Repeat 20-30x --+-- Knowledge Base Emerges
@@ -50,7 +50,7 @@ Have Claude Code (or any AI coding agent) installed? Follow the **[Getting Start
 
 1. Browse the example healthcare claims knowledge base
 2. Copy the template and start your own domain
-3. Run your first DDC cycle on a real problem
+3. Run your first DDC cycle on a concrete problem
 
 See [demo/DEMO-SCRIPT.md](./demo/DEMO-SCRIPT.md) for a live demo walkthrough.
 
@@ -82,7 +82,7 @@ cp -r templates/domain-skeleton my-domain/
 
 ## The Convergence Hypothesis
 
-After 20-30 real problems:
+After 20-30 problems:
 - Each new problem requires fewer new entities (knowledge converges)
 - Learning paths emerge naturally from most-referenced entities
 - The knowledge base is smaller, more relevant, and more maintainable than top-down

@@ -23,7 +23,7 @@ This document explains the DDC methodology for building domain knowledge bases t
 
 ## The Solution: Demand-Driven Context Curation
 
-Instead of top-down, go bottom-up — let real problems drive what gets documented.
+Instead of top-down, go bottom-up — let realistic problems drive what gets documented.
 
 ### The Mental Model
 
@@ -71,9 +71,9 @@ Think of a Technology Architect as a black box:
 
 Every cycle follows the same structure. There is no sandbox phase, no staging area, no "collect first, curate later." The problem drives the work directly from the start.
 
-### Step 1: Take a Real Problem
+### Step 1: Take a Representative Problem
 
-A real problem arrives — a production incident, an architectural question, a design task, a cross-team coordination challenge. The problem must be specific enough that you can tell when the agent has answered it correctly.
+A representative problem arrives — a production incident, an architectural question, a design task, a cross-team coordination challenge. The problem must be specific enough that you can tell when the agent has answered it correctly.
 
 ### Step 2: RED Phase — Attempt Without Context
 
@@ -138,7 +138,7 @@ Problem 3  -> fills to ~10%
 Problem 20-30 -> fills to ~100% (for one role)
 ```
 
-After 20-30 real problems in a role, you have curated context that covers what a domain expert actually needs. Each new problem requires less new curation because previous cycles already documented overlapping knowledge.
+After 20-30 representative problems in a role, you have curated context that covers what a domain expert actually needs. Each new problem requires less new curation because previous cycles already documented overlapping knowledge.
 
 This is visible in the cycle logs. By cycle 5 in the RetailCo domain, the agent was reusing entities from previous cycles instead of producing a full demand checklist. By cycle 10, it was recognizing recurring failure patterns — "orders not dropping" as a symptom class, not just a specific incident.
 
@@ -158,7 +158,7 @@ Engineers will recognize this structure:
 | Refactor | Validate and tighten entity definitions |
 | Next test | Next problem |
 
-Just as TDD lets failing tests drive code design, DDC lets failing agent responses drive knowledge curation. You don't write all the tests upfront. You don't curate all the context upfront. You let real failures tell you exactly what's missing.
+Just as TDD lets failing tests drive code design, DDC lets failing agent responses drive knowledge curation. You don't write all the tests upfront. You don't curate all the context upfront. You let failures tell you exactly what's missing.
 
 ---
 

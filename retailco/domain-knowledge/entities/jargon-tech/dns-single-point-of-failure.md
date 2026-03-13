@@ -17,15 +17,15 @@ A DNS single point of failure occurs when a site (warehouse, store) has its prim
 
 ### Incident Pattern
 
-During a North American data center migration, three distribution points had their primary DNS pointing to a physical DNS server located in the data center being decommissioned. No secondary DNS was configured at these sites.
+During a regional data center migration, multiple distribution points had their primary DNS pointing to a physical DNS server located in the data center being decommissioned. No secondary DNS was configured at these sites.
 
 When the data center migration proceeded and the DNS server became unreachable:
 - All DNS lookups at the affected distribution points failed
 - Warehouse terminals, forklifts, and label printers lost network connectivity
 - Staff could not access WarehouseManagementSystem or any network-dependent application
-- **Duration: 6 hours** to diagnose and fix
+- **Duration: multi-hour outage** to diagnose and fix
 
-### Why It Took 6 Hours
+### Why It Took So Long
 
 Nobody realized these sites lacked DNS redundancy. The dependency between specific warehouse sites and specific DNS servers in specific data centers was not mapped. Investigation had to work backwards from "nothing works at these warehouses" to "DNS is failing" to "their DNS server is in the DC we just migrated."
 
