@@ -13,7 +13,42 @@
 </head>
 <body>
   <main id="app">
-    <!-- Sections injected by JS or built in subsequent issues -->
+
+    <!-- Hero Section -->
+    <section class="section hero" id="hero">
+      <div class="container">
+        <p class="hero__label text-mono text-accent">CONTEXT GAP SCANNER</p>
+        <h1 class="hero__title">See where your<br>AI agents will fail.</h1>
+        <p class="hero__subtitle">Paste your company docs. We probe them with AI agents. You see the tribal knowledge gaps that make your agents useless on real work.</p>
+        <div class="hero__points">
+          <div class="hero__point">
+            <span class="text-mono text-accent">01</span>
+            <span>Paste a domain description — architecture docs, README, onboarding guide</span>
+          </div>
+          <div class="hero__point">
+            <span class="text-mono text-accent">02</span>
+            <span>We fire AI agent probes — incident diagnosis, integration design, data flow questions</span>
+          </div>
+          <div class="hero__point">
+            <span class="text-mono text-accent">03</span>
+            <span>See your gaps — what's documented, what's tribal, what's missing entirely</span>
+          </div>
+        </div>
+        <a href="#scanner" class="btn btn--primary hero__cta">Scan your domain</a>
+      </div>
+    </section>
+
+    <!-- Scanner Section (form + results built in later issues) -->
+    <section class="section" id="scanner">
+      <div class="container">
+        <!-- Input form: issue #19 -->
+        <!-- Processing state: issue #23 -->
+        <!-- Results dashboard: issues #24-26 -->
+      </div>
+    </section>
+
+    <!-- DDC Explainer Section (issue #27) -->
+
   </main>
   <script type="module" src="js/app.js"></script>
 </body>

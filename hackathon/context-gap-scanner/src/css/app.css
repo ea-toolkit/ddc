@@ -1,1 +1,63 @@
-/* Placeholder — component styles built per issue */
+/* ==========================================================================
+   App-specific component styles
+   ========================================================================== */
+
+/* --- Hero --- */
+.hero {
+  padding: var(--space-3xl) 0;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero__label {
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  margin-bottom: var(--space-lg);
+  line-height: 1.05;
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  max-width: 56ch;
+  margin-bottom: var(--space-2xl);
+}
+
+.hero__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
+  padding-left: var(--space-sm);
+  border-left: var(--border-heavy);
+}
+
+.hero__point {
+  display: flex;
+  gap: var(--space-md);
+  align-items: baseline;
+}
+
+.hero__point span:first-child {
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.hero__cta {
+  display: inline-block;
+  font-size: var(--font-size-base);
+  padding: var(--space-md) var(--space-xl);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.hero__cta:hover {
+  border-bottom: none;
+}
