@@ -259,3 +259,24 @@
 .checklist__cta {
   border-color: var(--color-accent);
 }
+
+/* --- DDC Explainer --- */
+.ddc-cycle {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  border-left: var(--border-heavy);
+  padding-left: var(--space-lg);
+}
+
+.ddc-cycle__step {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.ddc-cycle__number {
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
