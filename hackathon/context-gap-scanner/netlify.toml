@@ -1,6 +1,7 @@
 [build]
   publish = "src"
   functions = "netlify/functions"
+  command = "npm install"
 
 [dev]
   publish = "src"
@@ -9,3 +10,10 @@
 
 [functions]
   node_bundler = "esbuild"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
