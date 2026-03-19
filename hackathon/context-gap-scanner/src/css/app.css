@@ -61,3 +61,18 @@
 .hero__cta:hover {
   border-bottom: none;
 }
+
+/* --- Input Form --- */
+.input-wrapper textarea {
+  min-height: 240px;
+}
+
+.input-footer {
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.preset-buttons .btn--secondary {
+  font-size: var(--font-size-xs);
+  padding: var(--space-xs) var(--space-md);
+}

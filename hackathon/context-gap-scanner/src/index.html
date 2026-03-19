@@ -38,12 +38,44 @@
       </div>
     </section>
 
-    <!-- Scanner Section (form + results built in later issues) -->
+    <!-- Scanner Section -->
     <section class="section" id="scanner">
       <div class="container">
-        <!-- Input form: issue #19 -->
+
+        <!-- Input Form -->
+        <div id="input-section">
+          <h2>Describe your domain</h2>
+          <p class="text-muted mt-sm mb-lg">Paste anything — architecture docs, README, onboarding notes, system descriptions. The more context, the better the scan.</p>
+
+          <div class="preset-buttons mb-md">
+            <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">TRY A PRESET:</span>
+            <div class="flex flex-wrap gap-sm mt-sm">
+              <button class="btn btn--secondary preset-btn" data-preset="payments" type="button">Payment Processing</button>
+              <button class="btn btn--secondary preset-btn" data-preset="healthcare" type="button">Healthcare Claims</button>
+              <button class="btn btn--secondary preset-btn" data-preset="ecommerce" type="button">E-commerce Fulfillment</button>
+            </div>
+          </div>
+
+          <div class="input-wrapper">
+            <textarea
+              id="domain-input"
+              rows="12"
+              placeholder="Example: We run a payment processing platform. Three main services: transaction gateway (handles card payments, bank transfers), risk engine (real-time fraud scoring, velocity checks), and settlement service (daily batch settlements to merchants). The gateway talks to 4 external payment providers via REST APIs. Risk engine uses an ML model retrained weekly. Settlement runs as a nightly batch job on a legacy system that nobody fully understands anymore..."
+              aria-label="Domain description"
+            ></textarea>
+            <div class="input-footer flex justify-between items-center mt-sm">
+              <span id="char-count" class="text-mono text-muted" style="font-size: var(--font-size-xs);">0 characters</span>
+              <button id="scan-btn" class="btn btn--accent" disabled type="button">Scan for gaps</button>
+            </div>
+          </div>
+        </div>
+
         <!-- Processing state: issue #23 -->
+        <div id="processing-section" class="hidden"></div>
+
         <!-- Results dashboard: issues #24-26 -->
+        <div id="results-section" class="hidden"></div>
+
       </div>
     </section>
 
