@@ -1,5 +1,10 @@
 // Context Gap Scanner — main entry point
 
+import { renderProcessing, updateStep, renderProbeProgress, renderProbeComplete } from './processing.js';
+import { renderDashboard } from './dashboard.js';
+import { renderBreakdown } from './breakdown.js';
+import { renderChecklist } from './checklist.js';
+
 const PRESETS = {
   payments: `We run a payment processing platform serving 2,000+ merchants. Three core services:
 
@@ -30,14 +35,12 @@ function init() {
   const scanBtn = document.getElementById('scan-btn');
   const presetBtns = document.querySelectorAll('.preset-btn');
 
-  // Character count and button state
   textarea.addEventListener('input', () => {
     const len = textarea.value.length;
     charCount.textContent = `${len} character${len !== 1 ? 's' : ''}`;
     scanBtn.disabled = len < MIN_CHARS;
   });
 
-  // Preset buttons
   presetBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const preset = btn.dataset.preset;
@@ -49,23 +52,93 @@ function init() {
     });
   });
 
-  // Scan button
   scanBtn.addEventListener('click', () => {
     const description = textarea.value.trim();
     if (description.length < MIN_CHARS) return;
-    // Integration with serverless functions handled in issue #28
     startScan(description);
   });
 }
 
-function startScan(description) {
-  // Placeholder — wired up in issue #28
-  const inputSection = document.getElementById('input-section');
-  const processingSection = document.getElementById('processing-section');
-  inputSection.classList.add('hidden');
-  processingSection.classList.remove('hidden');
-  processingSection.innerHTML = `<p class="text-mono">Scanning... (functions wired in issue #28)</p>`;
+async function callFunction(name, body) {
+  const response = await fetch(`/.netlify/functions/${name}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ error: 'Unknown error' }));
+    throw new Error(error.detail || error.error || `${name} failed`);
+  }
+
+  return response.json();
 }
 
-// Boot
+async function startScan(description) {
+  const inputSection = document.getElementById('input-section');
+  const processingSection = document.getElementById('processing-section');
+  const resultsSection = document.getElementById('results-section');
+
+  inputSection.classList.add('hidden');
+  processingSection.classList.remove('hidden');
+  resultsSection.classList.add('hidden');
+
+  renderProcessing(processingSection);
+
+  try {
+    // Step 1: Generate probes
+    updateStep('generate', 'active');
+    const { probes } = await callFunction('generate-probes', { description });
+    updateStep('generate', 'complete', `<span class="text-mono" style="font-size: var(--font-size-xs);">${probes.length} probes generated</span>`);
+
+    // Step 2: Execute probes
+    updateStep('execute', 'active');
+    const { results } = await callFunction('execute-probes', { description, probes });
+
+    // Show completion for each probe
+    results.forEach((result, i) => {
+      renderProbeComplete(i, results.length, result);
+    });
+    updateStep('execute', 'complete');
+
+    // Step 3: Analyze gaps
+    updateStep('analyze', 'active');
+    const { analysis } = await callFunction('analyze-gaps', { results });
+    updateStep('analyze', 'complete');
+
+    // Render results
+    setTimeout(() => {
+      processingSection.classList.add('hidden');
+      resultsSection.classList.remove('hidden');
+      resultsSection.innerHTML = '';
+
+      const dashboardContainer = document.createElement('div');
+      const breakdownContainer = document.createElement('div');
+      const checklistContainer = document.createElement('div');
+
+      resultsSection.appendChild(dashboardContainer);
+      resultsSection.appendChild(breakdownContainer);
+      resultsSection.appendChild(checklistContainer);
+
+      renderDashboard(dashboardContainer, analysis);
+      renderBreakdown(breakdownContainer, results);
+      renderChecklist(checklistContainer, analysis.topGaps);
+    }, 800);
+
+  } catch (error) {
+    const activeStep = document.querySelector('[data-status="active"]');
+    if (activeStep) {
+      const stepId = activeStep.id.replace('step-', '');
+      updateStep(stepId, 'error', `<span class="text-danger text-mono" style="font-size: var(--font-size-xs);">${error.message}</span>`);
+    }
+
+    // Show retry option
+    processingSection.innerHTML += `
+      <div class="mt-lg">
+        <button class="btn btn--secondary" onclick="window.location.reload()">Try again</button>
+      </div>
+    `;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', init);
