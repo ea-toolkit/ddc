@@ -21,6 +21,33 @@ Return a JSON object with fields:
 
 Return ONLY the JSON object, no other text.`;
 
+async function executeProbe(description, probe) {
+  const response = await client.messages.create({
+    model: 'claude-sonnet-4-20250514',
+    max_tokens: 1024,
+    system: SYSTEM_PROMPT,
+    messages: [
+      {
+        role: 'user',
+        content: `DOMAIN CONTEXT (this is ALL you know):\n\n${description}\n\nQUESTION: ${probe.question}\n\nAttempt to answer using ONLY the context above. Be honest about gaps.`
+      }
+    ]
+  });
+
+  const raw = response.content[0].text;
+  const text = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```\s*$/m, '');
+  const result = JSON.parse(text);
+
+  return {
+    category: probe.category,
+    question: probe.question,
+    probeDescription: probe.description,
+    attempt: result.attempt,
+    confidence: result.confidence,
+    gaps: result.gaps
+  };
+}
+
 export async function handler(event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: JSON.stringify({ error: 'Method not allowed' }) };
@@ -36,34 +63,10 @@ export async function handler(event) {
       };
     }
 
-    const results = [];
-
-    for (const probe of probes) {
-      const response = await client.messages.create({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1024,
-        system: SYSTEM_PROMPT,
-        messages: [
-          {
-            role: 'user',
-            content: `DOMAIN CONTEXT (this is ALL you know):\n\n${description}\n\nQUESTION: ${probe.question}\n\nAttempt to answer using ONLY the context above. Be honest about gaps.`
-          }
-        ]
-      });
-
-      const raw = response.content[0].text;
-      const text = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```\s*$/m, '');
-      const result = JSON.parse(text);
-
-      results.push({
-        category: probe.category,
-        question: probe.question,
-        probeDescription: probe.description,
-        attempt: result.attempt,
-        confidence: result.confidence,
-        gaps: result.gaps
-      });
-    }
+    // Run all probes in parallel to avoid timeout
+    const results = await Promise.all(
+      probes.map(probe => executeProbe(description, probe))
+    );
 
     return {
       statusCode: 200,
