@@ -57,7 +57,8 @@ export async function handler(event) {
       ]
     });
 
-    const text = response.content[0].text;
+    const raw = response.content[0].text;
+    const text = raw.replace(/^```(?:json)?\s*/m, '').replace(/\s*```\s*$/m, '');
     const analysis = JSON.parse(text);
 
     return {
