@@ -1,0 +1,11 @@
+{
+  "name": "context-gap-scanner",
+  "version": "0.2.0",
+  "description": "Paste your company docs. See where your AI agents will fail.",
+  "private": true,
+  "scripts": {
+    "dev": "firebase emulators:start",
+    "deploy": "firebase deploy",
+    "install:functions": "cd functions && npm install"
+  }
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Context Gap Scanner — See where your AI agents will fail</title>
+  <meta name="description" content="Paste your company docs. See where your AI agents will fail. Discover the tribal knowledge gaps blocking your AI agents.">
+  <meta property="og:title" content="Context Gap Scanner">
+  <meta property="og:description" content="Paste your company docs. See where your AI agents will fail.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Context Gap Scanner">
+  <meta name="twitter:description" content="Paste your company docs. See where your AI agents will fail.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <main id="app">
+
+    <!-- Hero Section -->
+    <section class="section hero" id="hero">
+      <div class="container">
+        <p class="hero__label text-mono text-accent">CONTEXT GAP SCANNER</p>
+        <h1 class="hero__title">See where your<br>AI agents will fail.</h1>
+        <p class="hero__subtitle">Your AI agent doesn't know your domain. Find out exactly what's missing — before it matters.</p>
+        <a href="#scanner" class="btn btn--primary hero__cta">Scan a domain</a>
+      </div>
+    </section>
+
+    <!-- Scanner Section -->
+    <section class="section" id="scanner">
+      <div class="container">
+
+        <!-- Input Form -->
+        <div id="input-section">
+
+          <!-- Tab switcher -->
+          <div class="input-tabs">
+            <button class="input-tab active" data-tab="presets" type="button">Load a domain package</button>
+            <button class="input-tab" data-tab="custom" type="button">Describe your own</button>
+          </div>
+
+          <!-- Tab: Presets -->
+          <div id="tab-presets" class="tab-content active">
+            <p class="text-muted mt-md mb-lg">Select a domain. We'll load realistic knowledge base files and scan them for gaps.</p>
+
+            <div class="domain-grid">
+
+              <button class="domain-card" data-preset="sre" type="button">
+                <div class="domain-card__header">
+                  <span class="domain-card__icon text-mono">SRE</span>
+                  <span class="domain-card__title">SRE / Platform Operations</span>
+                </div>
+                <p class="domain-card__desc">OrderFlow platform — 47 microservices on Kubernetes, incident management, runbooks, SLOs</p>
+                <div class="domain-card__files" id="files-sre"></div>
+              </button>
+
+              <button class="domain-card" data-preset="customer-support" type="button">
+                <div class="domain-card__header">
+                  <span class="domain-card__icon text-mono">CS</span>
+                  <span class="domain-card__title">Customer Support</span>
+                </div>
+                <p class="domain-card__desc">TechFlow SaaS — billing, subscriptions, escalation workflows, product-specific troubleshooting</p>
+                <div class="domain-card__files" id="files-customer-support"></div>
+              </button>
+
+              <button class="domain-card" data-preset="healthcare" type="button">
+                <div class="domain-card__header">
+                  <span class="domain-card__icon text-mono">HC</span>
+                  <span class="domain-card__title">Healthcare Claims</span>
+                </div>
+                <p class="domain-card__desc">Claims processing — adjudication rules, payer exceptions, pre-auth requirements, appeals workflows</p>
+                <div class="domain-card__files" id="files-healthcare"></div>
+              </button>
+
+              <button class="domain-card" data-preset="ecommerce" type="button">
+                <div class="domain-card__header">
+                  <span class="domain-card__icon text-mono">EC</span>
+                  <span class="domain-card__title">E-commerce Fulfillment</span>
+                </div>
+                <p class="domain-card__desc">Multi-channel retail — order routing, warehouse capacity, split orders, carrier integrations</p>
+                <div class="domain-card__files" id="files-ecommerce"></div>
+              </button>
+
+              <button class="domain-card" data-preset="code-review" type="button">
+                <div class="domain-card__header">
+                  <span class="domain-card__icon text-mono">CR</span>
+                  <span class="domain-card__title">Code Review Agent</span>
+                </div>
+                <p class="domain-card__desc">Engineering team — review checklist, security patterns, architecture conventions, CI/CD pipeline</p>
+                <div class="domain-card__files" id="files-code-review"></div>
+              </button>
+
+            </div>
+
+            <div id="loaded-files" class="loaded-files hidden">
+              <div class="loaded-files__header">
+                <span class="text-mono text-accent" id="loaded-domain-name">DOMAIN</span>
+                <span class="text-mono text-muted" id="loaded-file-count">0 files loaded</span>
+              </div>
+              <div class="loaded-files__list" id="loaded-files-list"></div>
+              <div class="flex justify-between items-center mt-md">
+                <button class="btn btn--secondary" id="clear-preset-btn" type="button">Clear</button>
+                <button class="btn btn--accent" id="scan-preset-btn" type="button">Scan for gaps</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab: Custom -->
+          <div id="tab-custom" class="tab-content">
+            <p class="text-muted mt-md mb-lg">Describe your company's domain in a paragraph. The more specific, the better the scan.</p>
+
+            <div class="input-wrapper">
+              <textarea
+                id="domain-input"
+                rows="10"
+                placeholder="Example: We run a payment processing platform serving 2,000+ merchants. Three core services: transaction gateway (handles card payments, bank transfers), risk engine (real-time fraud scoring, velocity checks), and settlement service (daily batch settlements to merchants). The gateway talks to 4 external payment providers. Risk engine uses an ML model retrained weekly. Settlement runs as a nightly batch job on a legacy system that nobody fully understands anymore..."
+                aria-label="Domain description"
+              ></textarea>
+              <div class="input-footer flex justify-between items-center mt-sm">
+                <span id="char-count" class="text-mono text-muted" style="font-size: var(--font-size-xs);">0 characters</span>
+                <button id="scan-btn" class="btn btn--accent" disabled type="button">Scan for gaps</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Processing state -->
+        <div id="processing-section" class="hidden"></div>
+
+        <!-- Results dashboard -->
+        <div id="results-section" class="hidden"></div>
+
+      </div>
+    </section>
+
+  </main>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
