@@ -5,6 +5,7 @@ import { renderProcessing, updateStep, renderProbeComplete } from './processing.
 import { renderDashboard } from './dashboard.js';
 import { renderBreakdown } from './breakdown.js';
 import { renderChecklist } from './checklist.js';
+import { renderVision } from './vision.js';
 
 const MIN_CHARS = 50;
 let activePreset = null;
@@ -157,14 +158,17 @@ async function startScan(description) {
       const dashboardContainer = document.createElement('div');
       const breakdownContainer = document.createElement('div');
       const checklistContainer = document.createElement('div');
+      const visionContainer = document.createElement('div');
 
       resultsSection.appendChild(dashboardContainer);
       resultsSection.appendChild(breakdownContainer);
       resultsSection.appendChild(checklistContainer);
+      resultsSection.appendChild(visionContainer);
 
       renderDashboard(dashboardContainer, analysis);
       renderBreakdown(breakdownContainer, results);
       renderChecklist(checklistContainer, analysis.topGaps);
+      renderVision(visionContainer);
     }, 600);
 
   } catch (error) {
