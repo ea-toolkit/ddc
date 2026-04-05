@@ -85,6 +85,43 @@ runbooks:
 
 On-call rotation: Weekly, Mon-Mon. Current: Team Alpha.
 Backup: Team Bravo (payment-engine expertise).`
+      },
+      {
+        name: 'resolved-tickets.csv',
+        size: '12.8 KB',
+        content: `# Previous Work Items (50 resolved Jira tickets)
+
+TICKET-2891 | Bug | P0 | payment-engine p99 spike to 12s during EU peak | RESOLVED
+TICKET-2847 | Incident | P1 | 23-min outage ap-southeast1 — GKE node auto-repair killed 3 nodes | RESOLVED
+TICKET-2803 | Bug | P2 | notification-service dropped 14K order confirmation emails | RESOLVED
+TICKET-2790 | Task | P1 | Migrate fulfillment-orchestrator to new cluster | RESOLVED
+TICKET-2756 | Story | P2 | Add circuit breaker to order-gateway → payment-engine path | RESOLVED
+TICKET-2734 | Bug | P0 | inventory-api cache stampede during flash sale | RESOLVED
+TICKET-2701 | Incident | P1 | Split-brain in fulfillment after region failover | RESOLVED
+TICKET-2688 | Task | P2 | Implement dead letter queue for notification-service | RESOLVED
+TICKET-2654 | Bug | P1 | warehouse-sync 429 errors after removing 2s sleep | RESOLVED
+TICKET-2621 | Story | P2 | Add jittered TTL to catalog category cache | RESOLVED`
+      },
+      {
+        name: 'recent-prs.md',
+        size: '3.1 KB',
+        content: `# Recent Pull Requests (engineering context)
+
+PR #847 — Fix: Add exponential backoff to payment-engine retries
+  Changed: order-gateway/src/clients/payment.ts
+  Review comment: "Why 3 retries with no backoff? This has been causing thundering herd for months"
+
+PR #832 — Feat: Implement reconciliation script for split-brain orders
+  Changed: scripts/reconcile_orders.sh
+  Review comment: "Only Sarah and José know how to run this manually. Automating."
+
+PR #819 — Fix: Increase SendGrid rate limit handling
+  Changed: notification-service/src/providers/email.ts
+  Review comment: "Still no DLQ — dropped messages are gone forever"
+
+PR #805 — Chore: Document warehouse-sync sleep workaround
+  Changed: warehouse-sync/README.md
+  Review comment: "Added the 2s sleep explanation. If anyone removes this, 429s will come back"`
       }
     ]
   },
