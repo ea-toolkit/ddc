@@ -156,7 +156,7 @@ export function renderVision(container) {
           <div class="ticket-progress mt-md">
             <div class="flex justify-between items-center mb-sm">
               <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">BATCH PROGRESS</span>
-              <span class="text-mono text-accent" style="font-size: var(--font-size-xs);">47 / 50 tickets analyzed</span>
+              <span class="text-mono text-accent" style="font-size: var(--font-size-xs);">38 / 40 tickets analyzed</span>
             </div>
             <div class="progress-bar">
               <div class="progress-bar__fill progress-bar__fill--accent" style="width: 94%;"></div>
@@ -172,7 +172,7 @@ export function renderVision(container) {
           <span class="text-mono">CONSOLIDATED ANALYSIS</span>
           <span class="text-muted" style="font-size: var(--font-size-xs); margin-left: auto;">User-triggered — review before proceeding</span>
         </div>
-        <p class="text-muted mb-md" style="font-size: var(--font-size-sm);">All 50 demand checklists merged, deduplicated, and classified. This is your KB health report — what's usable, what needs work, and what doesn't exist.</p>
+        <p class="text-muted mb-md" style="font-size: var(--font-size-sm);">All 40 demand checklists merged, deduplicated, and classified. This is your KB health report — what's usable, what needs work, and what doesn't exist.</p>
 
         <!-- Data Quality Heatmap -->
         <div class="quality-heatmap">
@@ -242,7 +242,7 @@ export function renderVision(container) {
         <div class="consolidated-summary mt-xl">
           <div class="summary-stats">
             <div class="summary-stat">
-              <span class="summary-stat__value text-mono">50</span>
+              <span class="summary-stat__value text-mono">40</span>
               <span class="summary-stat__label">tickets analyzed</span>
             </div>
             <div class="summary-stat">
