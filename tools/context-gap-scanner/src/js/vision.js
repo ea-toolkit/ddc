@@ -72,7 +72,7 @@ export function renderVision(container) {
                 <span class="text-mono text-muted">DOMAIN DESCRIPTION</span>
                 <span class="badge badge--success">PROVIDED</span>
               </div>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">Delivery & Services domain — 200 people, 6 PEDx teams, 100+ systems, 300+ sync/async APIs. Handles last-mile delivery, service bookings, capacity management, carrier integrations across 30+ markets.</p>
+              <p class="text-muted" style="font-size: var(--font-size-sm);">E-commerce operations domain — 180 people, 5 product teams, 80+ systems, 250+ sync/async APIs. Handles order processing, payment orchestration, fulfillment coordination, and customer service across multiple regions.</p>
             </div>
             <div class="input-meta__item mt-md">
               <div class="input-meta__header">
@@ -127,12 +127,12 @@ export function renderVision(container) {
           <div class="ticket-card mt-md">
             <div class="ticket-card__header">
               <span class="text-mono text-accent">DLVR-1044</span>
-              <span class="text-muted">Add planned billing proposal to the app</span>
+              <span class="text-muted">Add refund policy override to merchant dashboard</span>
             </div>
             <div class="ticket-card__demands">
               <div class="demand-item demand-item--missing">
                 <span class="demand-status">NOT FOUND</span>
-                <span class="demand-text">What is a "billing proposal"? No definition anywhere.</span>
+                <span class="demand-text">What is a "refund policy override"? No definition anywhere.</span>
                 <span class="demand-source text-muted">Tribal knowledge — business concept</span>
               </div>
               <div class="demand-item demand-item--found-stale">
@@ -231,7 +231,7 @@ export function renderVision(container) {
           </div>
           <div class="quality-legend mt-md">
             <span class="quality-legend__item"><span class="quality-swatch quality-swatch--clean"></span> Clean — current, reliable, usable as-is</span>
-            <span class="quality-legend__item"><span class="quality-swatch quality-swatch--stale"></span> Stale — exists but outdated (half-life decay detected)</span>
+            <span class="quality-legend__item"><span class="quality-swatch quality-swatch--stale"></span> Stale — exists but outdated (last modified 6+ months ago)</span>
             <span class="quality-legend__item"><span class="quality-swatch quality-swatch--incomplete"></span> Incomplete — partial info, needs enrichment</span>
             <span class="quality-legend__item"><span class="quality-swatch quality-swatch--missing"></span> Missing — referenced but not documented anywhere</span>
             <span class="quality-legend__item"><span class="quality-swatch quality-swatch--tribal"></span> Tribal — exists only in people's heads</span>
@@ -280,7 +280,7 @@ export function renderVision(container) {
             </div>
             <div class="kanban-card kanban-card--critical">
               <div class="kanban-card__type badge badge--danger">TRIBAL</div>
-              <div class="kanban-card__title">"Billing proposal" business definition</div>
+              <div class="kanban-card__title">"Refund override" business definition</div>
               <div class="kanban-card__meta">
                 <span class="text-mono text-muted">terminology</span>
                 <span class="text-muted">Needs: Business Analyst</span>
@@ -288,7 +288,7 @@ export function renderVision(container) {
             </div>
             <div class="kanban-card kanban-card--critical">
               <div class="kanban-card__type badge badge--danger">TRIBAL</div>
-              <div class="kanban-card__title">Partner access levels & onboarding</div>
+              <div class="kanban-card__title">Vendor API authentication flow</div>
               <div class="kanban-card__meta">
                 <span class="text-mono text-muted">process</span>
                 <span class="text-muted">Needs: Integration Lead</span>
@@ -312,7 +312,7 @@ export function renderVision(container) {
             </div>
             <div class="kanban-card kanban-card--critical">
               <div class="kanban-card__type badge badge--danger">TRIBAL</div>
-              <div class="kanban-card__title">Carrier routing decision logic</div>
+              <div class="kanban-card__title">Payment gateway fallback logic</div>
               <div class="kanban-card__meta">
                 <span class="text-mono text-muted">process</span>
                 <span class="text-accent">Marcus L.</span>
@@ -325,7 +325,7 @@ export function renderVision(container) {
             </div>
             <div class="kanban-card kanban-card--high">
               <div class="kanban-card__type badge badge--warning">STALE</div>
-              <div class="kanban-card__title">Capacity template validation rules</div>
+              <div class="kanban-card__title">Rate limit configuration rules</div>
               <div class="kanban-card__meta">
                 <span class="text-mono text-muted">system</span>
                 <span class="text-accent">Auto-migrating...</span>
@@ -346,7 +346,7 @@ export function renderVision(container) {
             </div>
             <div class="kanban-card kanban-card--high">
               <div class="kanban-card__type badge badge--success">MIGRATED</div>
-              <div class="kanban-card__title">Delivery orchestrator system entity</div>
+              <div class="kanban-card__title">Order processing service entity</div>
               <div class="kanban-card__meta">
                 <span class="text-mono text-muted">system</span>
                 <span class="text-accent">PR #127</span>
@@ -376,7 +376,7 @@ export function renderVision(container) {
               </div>
             </div>
             <div class="kanban-card kanban-card--done">
-              <div class="kanban-card__title text-muted">Market-specific delivery rules</div>
+              <div class="kanban-card__title text-muted">Region-specific pricing rules</div>
               <div class="kanban-card__meta">
                 <span class="text-mono text-muted">process</span>
                 <span class="text-success">Live</span>
@@ -431,7 +431,7 @@ export function renderVision(container) {
             <div class="lake-content">
               <div class="lake-entity">
                 <div class="lake-entity__header">
-                  <span class="text-mono text-accent">delivery-orchestrator.md</span>
+                  <span class="text-mono text-accent">order-processing-service.md</span>
                   <div class="lake-entity__badges">
                     <span class="badge badge--success">AUTO-MIGRATED</span>
                     <span class="badge">HUMAN-VERIFIED</span>
@@ -440,19 +440,19 @@ export function renderVision(container) {
                 </div>
                 <div class="lake-entity__frontmatter">
                   <code>type: system</code>
-                  <code>id: delivery-orchestrator</code>
+                  <code>id: order-processing-service</code>
                   <code>status: active</code>
-                  <code>owned_by: delivery-platform-team</code>
-                  <code>related_systems: [capacity-controller, carrier-gateway, order-management]</code>
-                  <code>source: confluence/delivery-arch + github/delivery-orch/README</code>
+                  <code>owned_by: platform-team</code>
+                  <code>related_systems: [payment-gateway, inventory-service, notification-service]</code>
+                  <code>source: confluence/platform-arch + github/order-service/README</code>
                   <code>freshness_score: 0.97</code>
-                  <code>decay_rate: 0.02/month  # half-life: ~35 months</code>
+                  <code>last_verified: 2026-03-28</code>
                 </div>
                 <div class="lake-entity__trail">
                   <span class="text-mono text-muted" style="font-size: var(--font-size-xs);">MIGRATION TRAIL</span>
                   <div class="lake-trail-item">
                     <span class="text-muted">Step 1</span>
-                    <span>Extracted from Confluence: Delivery Architecture Space</span>
+                    <span>Extracted from Confluence: Platform Architecture Space</span>
                     <span class="badge badge--info" style="font-size: 9px;">AUTO</span>
                   </div>
                   <div class="lake-trail-item">
@@ -462,7 +462,7 @@ export function renderVision(container) {
                   </div>
                   <div class="lake-trail-item">
                     <span class="text-muted">Step 3</span>
-                    <span>Tribal knowledge added: carrier routing decision logic</span>
+                    <span>Tribal knowledge added: payment gateway fallback logic</span>
                     <span class="badge badge--warning" style="font-size: 9px;">HUMAN</span>
                   </div>
                   <div class="lake-trail-item">
@@ -477,81 +477,10 @@ export function renderVision(container) {
         </div>
       </div>
 
-      <!-- Screen 5: Underlying Framework -->
+      <!-- Screen 5: Agent Performance / ROI -->
       <div class="vision__screen mt-xl">
         <div class="vision__screen-label">
           <span class="badge badge--info">05</span>
-          <span class="text-mono">UNDER THE HOOD</span>
-        </div>
-        <p class="text-muted mb-md" style="font-size: var(--font-size-sm);">Not just pattern matching — built on proven frameworks from information theory, neuroscience, and machine learning.</p>
-        <div class="framework-grid">
-          <div class="framework-card">
-            <div class="framework-card__header">
-              <span class="text-mono text-accent">FRESHNESS</span>
-            </div>
-            <div class="framework-card__body">
-              <p class="text-strong">Half-Life Decay (HLD)</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">Every piece of knowledge decays over time. API docs decay faster than architectural decisions. Half-life scoring auto-flags stale content before agents use outdated info.</p>
-              <code class="text-muted" style="font-size: var(--font-size-xs);">freshness = e^(-&lambda;t) where &lambda; = decay rate per entity type</code>
-            </div>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__header">
-              <span class="text-mono text-accent">NOISE REMOVAL</span>
-            </div>
-            <div class="framework-card__body">
-              <p class="text-strong">1/f White Noise Filtering</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">Enterprise KBs are noisy — meeting notes, drafts, duplicates. Signal-to-noise filtering removes low-information content before migration, keeping only actionable knowledge.</p>
-              <code class="text-muted" style="font-size: var(--font-size-xs);">S(f) = 1/f^&alpha; — filter below information density threshold</code>
-            </div>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__header">
-              <span class="text-mono text-accent">SIMILARITY</span>
-            </div>
-            <div class="framework-card__body">
-              <p class="text-strong">RBF Kernel Matching</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">Demand deduplication uses radial basis function kernels to find semantically similar demands across tickets — even when phrased differently. "Partner portal access" ≈ "external gateway permissions."</p>
-              <code class="text-muted" style="font-size: var(--font-size-xs);">K(x,y) = exp(-||x-y||&sup2; / 2&sigma;&sup2;)</code>
-            </div>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__header">
-              <span class="text-mono text-accent">RETENTION</span>
-            </div>
-            <div class="framework-card__body">
-              <p class="text-strong">Spaced Repetition for KB</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">Borrowed from language learning — knowledge that agents use frequently gets reinforced. Knowledge that decays without use gets flagged for review. The KB stays lean.</p>
-              <code class="text-muted" style="font-size: var(--font-size-xs);">R(t) = e^(-t/S) where S = stability (usage frequency)</code>
-            </div>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__header">
-              <span class="text-mono text-accent">CLEANSING</span>
-            </div>
-            <div class="framework-card__body">
-              <p class="text-strong">Data Cleansing Pipeline</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">ML-inspired: segregation (separate clean from noisy), labelling (classify by entity type + quality), normalization (standardize format), validation (cross-reference against meta model).</p>
-              <code class="text-muted" style="font-size: var(--font-size-xs);">raw → segment → label → normalize → validate → publish</code>
-            </div>
-          </div>
-          <div class="framework-card">
-            <div class="framework-card__header">
-              <span class="text-mono text-accent">MEMORY</span>
-            </div>
-            <div class="framework-card__body">
-              <p class="text-strong">Memory Decay Model</p>
-              <p class="text-muted" style="font-size: var(--font-size-sm);">From neuroscience — organizational memory follows Ebbinghaus curves. New employees lose 70% of tribal knowledge within 6 months without reinforcement. The platform makes organizational memory persistent.</p>
-              <code class="text-muted" style="font-size: var(--font-size-xs);">M(t) = M&#8320; &middot; e^(-t/&tau;) + reinforcement(usage)</code>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Screen 6: Agent Performance / ROI -->
-      <div class="vision__screen mt-xl">
-        <div class="vision__screen-label">
-          <span class="badge badge--info">06</span>
           <span class="text-mono">AGENT PERFORMANCE</span>
         </div>
         <div class="vision__performance">

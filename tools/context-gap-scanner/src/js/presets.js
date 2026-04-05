@@ -263,19 +263,19 @@ Multi-channel retail platform. Customers order online (web/mobile) and in-store 
 | Order Capture API | Receives orders from all channels (web, mobile, POS, API partners) |
 | Inventory Allocation Service | Checks stock across 12 distribution centers, reserves inventory |
 | Fulfillment Engine | Orchestrates picking, packing, shipping per warehouse |
-| Delivery Orchestrator | Routes to carriers (3 partners), calculates delivery slots |
+| Shipping Coordinator | Routes to carriers (3 partners), calculates delivery slots |
 | Returns Processing | Handles 7 different return paths depending on channel and item type |
 
 ## Delivery Slot Calculation
-- Slots depend on warehouse capacity templates modified by operations directly in production
+- Slots depend on warehouse scheduling configs modified by operations directly in production
 - Different calculation for standard delivery (parcel) vs large-item delivery vs click & collect
-- The Delivery Orchestrator queries each carrier's availability API and merges results
+- The Shipping Coordinator queries each carrier's availability API and merges results
 - When a carrier API is slow (>3s), the orchestrator returns partial results without flagging it
 
 ## Known Operational Quirks
 - Split orders (items from different warehouses) have special routing logic built during a holiday surge. Never properly documented. The logic lives in a 400-line config file that one engineer understands.
 - Returns processing has 7 paths: in-store return of online order, in-store return of store order, mail return with label, mail return without label, exchange, damaged item, and warranty claim. The rules for which path to use are partially in code, partially in a spreadsheet maintained by the returns team.
-- Warehouse capacity templates have no validation on values. Operations can enter negative numbers or dates in the past. The system processes them without error.
+- Warehouse scheduling configs have no validation on values. Operations can enter negative numbers or dates in the past. The system processes them without error.
 - The "holiday surge workaround" from 2024 is still active. It bypasses inventory reservation for orders under a certain value. The threshold was never reverted from the holiday setting.`
       },
       {
