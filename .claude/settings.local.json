@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit:*)",
+      "Bash(git:*)",
+      "Bash(gh pr:*)",
+      "Skill(commit)",
+      "WebSearch",
+      "Bash(gh repo:*)",
+      "Bash(gh issue:*)",
+      "Bash(cd /Users/raj.navakoti/Desktop/github/ddc-framework/.private/ieee-data/raw/confluence ls -1 *.pdf)",
+      "Bash(__NEW_LINE_68e251545a99873e__ python3:*)"
+    ]
+  }
+}
