@@ -1,0 +1,13 @@
+{
+  "projects": {},
+  "targets": {
+    "ea-toolkit-demo-ac513": {
+      "hosting": {
+        "scanner": [
+          "context-gap-scanner"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
