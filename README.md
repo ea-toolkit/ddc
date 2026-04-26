@@ -87,6 +87,18 @@ After 20-30 problems:
 - Learning paths emerge naturally from most-referenced entities
 - The knowledge base is smaller, more relevant, and more maintainable than top-down
 
+## Research
+
+DDC is backed by peer-reviewed research:
+
+- **Methodology paper (arXiv):** R. Navakoti and S. Navakoti, "Demand-Driven Context: A Methodology for Building Enterprise Knowledge Bases Through Agent Failure," [arXiv:2603.14057](https://arxiv.org/abs/2603.14057), 2026.
+- **Empirical evaluation (IEEE Software):** R. Navakoti and S. Navakoti, "Demand-Driven Context: Curating Enterprise Knowledge for AI Agents from Work Item Signals," *IEEE Software*, 2026 (under review).
+
+Key findings from the empirical evaluation on 50 real enterprise tickets:
+- Only 20.2% of demanded knowledge is fully answered by existing documentation
+- 39.4% is missing or tribal — unretrievable by any RAG system
+- 24 DDC-curated entities outperform RAG over 127 documentation pages (4.49 vs 3.20 on a 5-point scale, Cohen's d = 1.84, p < 0.001)
+
 ## Contributing
 
 This is an active research project. If you're experimenting with enterprise AI agent context — whether with DDC or your own approach — contributions and experience reports are welcome.
