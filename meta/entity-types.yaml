@@ -102,6 +102,37 @@ entity_types:
         values: [cloud, on-premise, hybrid]
         description: Where the platform runs
 
+  # How — Domain logic and decision policies
+  - id: domain-logic
+    display_name: Domain Logic
+    description: Algorithmic rules, decision policies, and business calculations that live in code but constitute first-class domain knowledge at the intent level
+    icon: "logic"
+    color: "#059669"
+    fields:
+      - name: authority
+        type: enum
+        values: [code, documentation, both]
+        description: Whether the source of truth is in code, documentation, or both
+
+  # What values — Reference data and enumerations
+  - id: reference-data
+    display_name: Reference Data
+    description: Code tables, enumerations, accounting codes, and taxonomies that power operational decisions
+    icon: "list"
+    color: "#0891B2"
+
+  # Who — External organizations
+  - id: external-party
+    display_name: External Party
+    description: Suppliers, carriers, regulators, and other organizations outside the enterprise that participate in the domain
+    icon: "external"
+    color: "#BE185D"
+    fields:
+      - name: party_type
+        type: enum
+        values: [supplier, carrier, regulator, partner, data-provider]
+        description: Classification of the external party
+
   # Context — Domain knowledge and decisions
   - id: jargon-business
     display_name: Business Jargon
