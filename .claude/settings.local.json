@@ -9,7 +9,17 @@
       "Bash(gh repo:*)",
       "Bash(gh issue:*)",
       "Bash(cd /Users/raj.navakoti/Desktop/github/ddc-framework/.private/ieee-data/raw/confluence ls -1 *.pdf)",
-      "Bash(__NEW_LINE_68e251545a99873e__ python3:*)"
+      "Bash(__NEW_LINE_68e251545a99873e__ python3:*)",
+      "Bash(pytest:*)",
+      "Bash(python:*)",
+      "Bash(npx astro:*)",
+      "Bash(mkdir -p synthetic-domains/healthcare-claims-rich-seed)",
+      "Bash(mkdir -p synthetic-domains/healthcare-claims-no-seed)",
+      "Bash(ls /Users/raj.navakoti/Desktop/github/context-blocks/synthetic-domains/novacrm/*.md /Users/raj.navakoti/Desktop/github/context-blocks/synthetic-domains/novacrm/*.yaml /Users/raj.navakoti/Desktop/github/context-blocks/synthetic-domains/novacrm/*.json)",
+      "Bash(grep *)",
+      "Bash(python3 -c \"from context_blocks.config import Settings; s = Settings\\(\\); print\\('OK, provider:', s.llm_provider, 'key:', repr\\(s.llm_api_key[:5]\\) if s.llm_api_key else 'EMPTY'\\)\")",
+      "Bash(python3 -c \"import pydantic_settings; print\\('pydantic-settings version:', pydantic_settings.__version__\\)\")",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('context_blocks/cli.py'\\).read\\(\\)\\); print\\('syntax OK'\\)\")"
     ]
   }
 }
