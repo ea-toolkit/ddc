@@ -53,7 +53,7 @@ Don't create files randomly. Every piece of content has a designated location ba
 |   |   |-- entity-types.yaml      # What entity types exist
 |   |   +-- relationship-types.yaml # How things connect
 |   |
-|   |-- entities/                  # Domain entities (13 types)
+|   |-- entities/                  # Domain entities (18 types)
 |   |   |-- offerings/             # Products and services delivered
 |   |   |-- capabilities/          # Business capabilities
 |   |   |-- teams/                 # Product teams
@@ -61,10 +61,15 @@ Don't create files randomly. Every piece of content has a designated location ba
 |   |   |-- processes/             # Business processes and workflows
 |   |   |-- business-events/       # Domain events that trigger actions
 |   |   |-- systems/               # Software systems
+|   |   |-- software-components/   # Software components within systems
 |   |   |-- apis/                  # API documentation
 |   |   |-- data-models/           # Data structures and schemas
 |   |   |-- data-products/         # Curated data assets for consumption
 |   |   |-- platforms/             # Infrastructure and platform services
+|   |   |-- domain-logic/          # Business rules and validation logic
+|   |   |-- reference-data/        # Reference/lookup data sets
+|   |   |-- external-parties/      # External organizations and vendors
+|   |   |-- decisions/             # Architecture and design decisions
 |   |   |-- jargon-business/       # Business terminology
 |   |   +-- jargon-tech/           # Technical terminology
 |   |
